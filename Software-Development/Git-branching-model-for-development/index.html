@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="Yu of Daphne">
 <meta property="og:description" content="A good branching model matters a lot for development efficiency, but same as many other topics, there isn’t a golden way that fits all. The current development flow I am using:Feature DevelopmentWe cr">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-21T00:35:13.441Z">
+<meta property="og:updated_time" content="2019-12-03T02:32:29.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git branching model for development">
 <meta name="twitter:description" content="A good branching model matters a lot for development efficiency, but same as many other topics, there isn’t a golden way that fits all. The current development flow I am using:Feature DevelopmentWe cr">
@@ -416,7 +416,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-20 20:35:13" itemprop="dateModified" datetime="2019-09-20T20:35:13-04:00">2019-09-20</time>
+                <time title="Modified: 2019-12-02 21:32:29" itemprop="dateModified" datetime="2019-12-02T21:32:29-05:00">2019-12-02</time>
               
             
           </span>
@@ -482,19 +482,20 @@
 
       
         <p>A good branching model matters a lot for development efficiency, but same as many other topics, there isn’t a golden way that fits all.</p>
-<h1 id="The-current-development-flow-I-am-using"><a href="#The-current-development-flow-I-am-using" class="headerlink" title="The current development flow I am using:"></a>The current development flow I am using:</h1><h2 id="Feature-Development"><a href="#Feature-Development" class="headerlink" title="Feature Development"></a>Feature Development</h2><p>We create <code>feature branch</code> when we are working on a specific feature, we name the feature branch by the jira ticket name(we integrated Jira with github, so the branch will show up on jira tickets).<br>After feature completes and finished testing locally, we deploy the feature branch onto a test environment.</p>
-<p>Test environment is also controlled by developer, we can do more deep integration tests there than local, this is useful for a micro services based architecture.</p>
+<h1 id="The-current-development-flow-I-am-using"><a href="#The-current-development-flow-I-am-using" class="headerlink" title="The current development flow I am using:"></a>The current development flow I am using:</h1><h2 id="Feature-Development"><a href="#Feature-Development" class="headerlink" title="Feature Development"></a>Feature Development</h2><p>We create a <code>feature branch</code> when we are working on a specific feature, we name the feature branch by the jira ticket name(we integrated Jira with Github, so the branch will show up on Jira tickets, e.g USER-100).<br>After feature completes and finished testing locally, we deploy the feature branch onto a test environment.</p>
+<p>Test environment is controlled by developers, so we can do more integration tests instead of local, this is useful in micro services based architecture.</p>
 <p>Once developer is pleased with the tests on test environment, A pull request is made and after code review by peer, the pull request is merged to develop branch.</p>
 <h2 id="Release-candidate"><a href="#Release-candidate" class="headerlink" title="Release candidate"></a>Release candidate</h2><p>Everything on develop branch is ready for next release. we will deploy develop branch to staging environment, QA will run automation tests and gives green light for the release.</p>
-<p>Then we create a pull request from develop to merge to master, master always has the latest stable release.<br>We will merge the pull request to master first and tag the release and deploy the release to production.</p>
-<h2 id="Hotfix"><a href="#Hotfix" class="headerlink" title="Hotfix"></a>Hotfix</h2><p>hotfix is directly based off master, then merge back to master and release, then create a pull request to merge it to develop to make develop up to date.</p>
+<p>Then we create a pull request from develop to master, master always has the latest stable release.</p>
+<p>We then merge the pull request to master, tag the release and deploy the release to production.</p>
+<h2 id="Hotfix"><a href="#Hotfix" class="headerlink" title="Hotfix"></a>Hotfix</h2><p>hotfix is directly based on master, then merge back to master after release, we also need to create a pull request to merge it to develop to make develop branch up to date.</p>
 <h1 id="Problems-and-improvements"><a href="#Problems-and-improvements" class="headerlink" title="Problems and improvements"></a>Problems and improvements</h1><p>Apparently, this approach is not robust and has some potential problems.</p>
-<p>Since release candidate is always on develop and we need to merge it to master, this will block other features to merge to develop if the release takes long or there are many features working in parallel.</p>
+<p>Since release candidates are always in develop and need to be merged to master, this will block other features merging to develop if the release takes long or there are many features working in parallel.</p>
 <h2 id="Add-release-branch"><a href="#Add-release-branch" class="headerlink" title="Add release branch"></a>Add <code>release</code> branch</h2><p>So for a big project that with a lot of features, we can introduce another branch <code>release</code> branch, when the features merged back to develop and is planned for the next release, then create a <code>release</code> branch based on develop, so other features can still be merged to develop without affecting the upcoming release.</p>
 <p>With <code>release</code> branch introduced, our flow works much like  <a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">http://nvie.com/posts/a-successful-git-branching-model/</a>, this branching model was later be considered harmful, while in my opinion, it’s not really harmful, it’s just different development team needs a way best suits.</p>
-<h2 id="Github-flow"><a href="#Github-flow" class="headerlink" title="Github flow"></a>Github flow</h2><p>Github flow is very straightforward, feature branches merge back to master and then master can be deployed to production, this is super efficient to integrate with CI/CD tools to achieve 0 developer intervention.</p>
+<h2 id="Github-flow"><a href="#Github-flow" class="headerlink" title="Github flow"></a>Github flow</h2><p>Github flow is very straightforward, feature branches merge back to master and then master can be deployed to production, this is super efficient to integrate with CI/CD tools with no developer intervention.</p>
 <h2 id="Gitlab-flow"><a href="#Gitlab-flow" class="headerlink" title="Gitlab flow"></a>Gitlab flow</h2><p>While this will not work for us, because our releases always rely on a configuration management system, that you need to add configuration changes first and then release your code.</p>
-<p>In this case, a gitlab flow then introduces a <code>production</code> branch, master branch becomes the release candidate or pre-release.</p>
+<p>In this case, a gitlab flow introduces a <code>production</code> branch, master branch becomes the release candidate or pre-release.</p>
 <h2 id="Some-other-variations"><a href="#Some-other-variations" class="headerlink" title="Some other variations"></a>Some other variations</h2><p>Some teams do release based on cherry-pick, when feature branches merged to develop, then create a release branch based on master instead of develop, and then cherry pick all commits need to be released from develop to master. This will cause master and develop commit history diverged, and you will not be able to merge master back to develop soon.</p>
 
       

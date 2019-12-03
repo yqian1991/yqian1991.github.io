@@ -97,18 +97,18 @@
 
 
 
-  <meta name="description" content="The first streaming framework I got to know is Apache Spark(spark streaming, to be more accurate), my team owns a small spark cluster which comprised of 1 leader and 4 followers(It is said that master">
+  <meta name="description" content="The first streaming framework I got to know is Apache Spark, my team owns a small spark cluster which has 1 leader and 4 followers(It is said that master/slave is not good words now). We use spark str">
 <meta name="keywords" content="Streaming processing,Data pipeline">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Compare streaming frameworks">
 <meta property="og:url" content="http://yqian1991.github.io/System-Design/Compare-streaming-frameworks/index.html">
 <meta property="og:site_name" content="Yu of Daphne">
-<meta property="og:description" content="The first streaming framework I got to know is Apache Spark(spark streaming, to be more accurate), my team owns a small spark cluster which comprised of 1 leader and 4 followers(It is said that master">
+<meta property="og:description" content="The first streaming framework I got to know is Apache Spark, my team owns a small spark cluster which has 1 leader and 4 followers(It is said that master/slave is not good words now). We use spark str">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-21T00:35:13.440Z">
+<meta property="og:updated_time" content="2019-12-03T02:25:50.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Compare streaming frameworks">
-<meta name="twitter:description" content="The first streaming framework I got to know is Apache Spark(spark streaming, to be more accurate), my team owns a small spark cluster which comprised of 1 leader and 4 followers(It is said that master">
+<meta name="twitter:description" content="The first streaming framework I got to know is Apache Spark, my team owns a small spark cluster which has 1 leader and 4 followers(It is said that master/slave is not good words now). We use spark str">
 
 
 
@@ -416,7 +416,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-20 20:35:13" itemprop="dateModified" datetime="2019-09-20T20:35:13-04:00">2019-09-20</time>
+                <time title="Modified: 2019-12-02 21:25:50" itemprop="dateModified" datetime="2019-12-02T21:25:50-05:00">2019-12-02</time>
               
             
           </span>
@@ -481,33 +481,33 @@
       
 
       
-        <p>The first streaming framework I got to know is Apache Spark(spark streaming, to be more accurate), my team owns a small spark cluster which comprised of 1 leader and 4 followers(It is said that master/slave is not good works now). we use spark streaming to read messages off kafka topic and rollup metrics and send to RabbitMQ for later notification alerts.</p>
-<p>There are 20 million questions answered each day on our platform, to better engage customers and provide them better insights, it’s a good feature to send notifications to the survey owners about the responses they collected. and it needs to be time fashion, so Apache Spark seems to be a good fit.</p>
-<p>Spark is so popular that at that time, it is the only streaming framework I know, and I even thought that is the only one ever exists. Later on, I heard more and more voices that spark is not a real streaming tool, that is batching for real. Now I understand it’s true that Apache spark is for batch processing and spark streaming is for mini-batch processing. With the arising of LAMBDA framework, spark becomes popular since it can do both batch and “streaming” process.</p>
-<p>There are some other streaming frameworks in the market that works very well, Apache Storm, Apache Samza, Apache Flink. It is easy to get lost when facing too many choices, it is also true that each of them has siutable use cases. what’s more important is to understand the problem we are going to solve.</p>
+        <p>The first streaming framework I got to know is Apache Spark, my team owns a small spark cluster which has 1 leader and 4 followers(It is said that master/slave is not good words now). We use spark streaming to read messages from Kafka and rollup metrics, then send to RabbitMQ which will be used to send out notifications.</p>
+<p>There are 20 million questions answered each day on our platform, to better keep customers engaged and provide them better insights, it’s nice to send notifications to the survey owners about the responses they collected, this needs to be happen in a timely manner, so Apache Spark seems to be a good fit.</p>
+<p>Spark is so popular at that time, it is the only streaming framework I know, and I even thought that is the only streaming framework ever exists. Later on, I heard more and more voices that spark is not a real streaming tool, instead a batching process. Now I understand that Apache spark is for batch processing and spark streaming is for mini-batch processing. With the arising of LAMBDA framework, spark becomes popular since it can do both batch and “streaming” process.</p>
+<p>There are some other streaming frameworks in the market, Apache Storm, Apache Samza, Apache Flink etc. It is easy to get lost when facing too many choices, it is also true that each of them has suitable use cases. what’s important is to understand the problem we are going to solve.</p>
 <p>Here are some facts of those frameworks:</p>
-<h1 id="Apache-Storm"><a href="#Apache-Storm" class="headerlink" title="Apache Storm"></a>Apache Storm</h1><p>Open sourced by Twitter and has a initial release in 2011.</p>
+<h1 id="Apache-Storm"><a href="#Apache-Storm" class="headerlink" title="Apache Storm"></a>Apache Storm</h1><p>Open sourced by Twitter and was initially released in 2011.</p>
 <p>Key concepts:</p>
 <ul>
-<li>Spouts: (data source</li>
+<li>Spouts: (data source)</li>
 <li>Bolts: functions</li>
 <li>Tuple: stream</li>
 </ul>
-<p>Storm is able to process +1M msgs/second/node<br>A cluster can be configured to have &gt; 1k workers<br>Storm provides at least once delivery</p>
-<p>Based on its core, Storm also provides Trident API for micro batch processing,<br>it assures exactly once guarantee.</p>
-<p>with Trident API, you can do aggregation, merge, join, grouping, functions, filters.</p>
+<p>Storm is able to process +1M msgs/second/node, A cluster can be configured to have &gt; 1k workers, Storm provides at least once delivery</p>
+<p>On top of its core, Storm also provides Trident API for micro batch processing,<br>it assures exactly once guarantee.</p>
+<p>With Trident API, you can do aggregation, merge, join, grouping, functions, filters etc.</p>
 <p>Storm supports data transfer protocol: Avro, thrift.</p>
-<h1 id="Apache-Flink"><a href="#Apache-Flink" class="headerlink" title="Apache Flink"></a>Apache Flink</h1><p>Flink is orignated from an academic project called Stratosphere, it had the first release after  transferred to Apache incubator at 2014.</p>
+<h1 id="Apache-Flink"><a href="#Apache-Flink" class="headerlink" title="Apache Flink"></a>Apache Flink</h1><p>Flink is originated from an academic project called <code>Stratosphere</code>, it had the first release after transferring to Apache incubator at 2014.</p>
 <p>Flink unified stream and batch processing, streaming is the nature of flink, and batch is regarded as a special case of streaming which in contrast of Spark.</p>
-<p>Flink provides exactly once processing</p>
+<p>Flink provides exactly once processing.</p>
 <p>It has rich higher level API compared to Storm, also support out of order process</p>
 <p>It is able to process 1.5M msgs/second/node</p>
 <h1 id="Apache-Spark"><a href="#Apache-Spark" class="headerlink" title="Apache Spark"></a>Apache Spark</h1><p>Originally developed at the University of California, Berkeley’s AMPLab in 2009 and open sourced in 2010.</p>
-<p>Spark can do exactly once delivery as well, it is working with RDD, but now suggested to use DataFrame.</p>
+<p>Spark can do exactly once delivery as well, it is working with RDD, but now suggested to use DataFrame/DataSet.</p>
 <p>Spark is also known as hard to tune those complicate parameters for better performance.</p>
-<h1 id="Aapche-Samza"><a href="#Aapche-Samza" class="headerlink" title="Aapche Samza"></a>Aapche Samza</h1><p>The project entered Apache Incubator in 2013 and was originally created at LinkedIn.</p>
+<h1 id="Apache-Samza"><a href="#Apache-Samza" class="headerlink" title="Apache Samza"></a>Apache Samza</h1><p>The project entered Apache Incubator in 2013 and was originally created at LinkedIn.</p>
 <p>Samza achieves at least once delivery.</p>
-<p>Samza is famous for it’s excellent state management based on RockDB, but it’s tightly coupled with Kafka and Yarn.</p>
+<p>Samza is famous for its state management based on RockDB, but it’s tightly coupled with Kafka and Yarn.</p>
 <p>It lacks some advanced features like watermarks, sessions.</p>
 
       
@@ -781,7 +781,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Storm"><span class="nav-number">1.</span> <span class="nav-text">Apache Storm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Flink"><span class="nav-number">2.</span> <span class="nav-text">Apache Flink</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Spark"><span class="nav-number">3.</span> <span class="nav-text">Apache Spark</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Aapche-Samza"><span class="nav-number">4.</span> <span class="nav-text">Aapche Samza</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Storm"><span class="nav-number">1.</span> <span class="nav-text">Apache Storm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Flink"><span class="nav-number">2.</span> <span class="nav-text">Apache Flink</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Spark"><span class="nav-number">3.</span> <span class="nav-text">Apache Spark</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Samza"><span class="nav-number">4.</span> <span class="nav-text">Apache Samza</span></a></li></ol></div>
             
 
           </div>
