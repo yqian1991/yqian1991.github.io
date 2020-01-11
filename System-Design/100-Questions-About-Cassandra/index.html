@@ -97,17 +97,18 @@
 
 
 
-  <meta name="description" content="Some quick numbers: Read sequentially from main memory:     4 GB/s   (1Mb needs 0.25 ms) Read sequentially from SSD:             1 GB/s   (1Mb needs 1 ms) Read sequentially from 1 Gbps Ethernet: 100 M">
+  <meta name="description" content="Fast facts about Cassandra A Columnar based fault tolerant NoSQL database An AP system (Sacrifice Consistency for Available and Partition) Easy to scale horizontally (No master) No join or subquery fo">
+<meta name="keywords" content="Cassandra,Database">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Some numbers for back-of-the-envelope usage calculations">
-<meta property="og:url" content="http://yqian1991.github.io/System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/index.html">
+<meta property="og:title" content="100 Questions About Cassandra">
+<meta property="og:url" content="http://yqian1991.github.io/System-Design/100-Questions-About-Cassandra/index.html">
 <meta property="og:site_name" content="Yu of Daphne">
-<meta property="og:description" content="Some quick numbers: Read sequentially from main memory:     4 GB/s   (1Mb needs 0.25 ms) Read sequentially from SSD:             1 GB/s   (1Mb needs 1 ms) Read sequentially from 1 Gbps Ethernet: 100 M">
+<meta property="og:description" content="Fast facts about Cassandra A Columnar based fault tolerant NoSQL database An AP system (Sacrifice Consistency for Available and Partition) Easy to scale horizontally (No master) No join or subquery fo">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-21T00:35:13.442Z">
+<meta property="og:updated_time" content="2020-01-11T19:04:46.702Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Some numbers for back-of-the-envelope usage calculations">
-<meta name="twitter:description" content="Some quick numbers: Read sequentially from main memory:     4 GB/s   (1Mb needs 0.25 ms) Read sequentially from SSD:             1 GB/s   (1Mb needs 1 ms) Read sequentially from 1 Gbps Ethernet: 100 M">
+<meta name="twitter:title" content="100 Questions About Cassandra">
+<meta name="twitter:description" content="Fast facts about Cassandra A Columnar based fault tolerant NoSQL database An AP system (Sacrifice Consistency for Available and Partition) Easy to scale horizontally (No master) No join or subquery fo">
 
 
 
@@ -115,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://yqian1991.github.io/System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/">
+  <link rel="canonical" href="http://yqian1991.github.io/System-Design/100-Questions-About-Cassandra/">
 
 
 
@@ -125,7 +126,7 @@
   };
 </script>
 
-  <title>Some numbers for back-of-the-envelope usage calculations | Yu of Daphne</title>
+  <title>100 Questions About Cassandra | Yu of Daphne</title>
   
 
 
@@ -355,7 +356,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/">
+    <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/System-Design/100-Questions-About-Cassandra/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yu Qian">
@@ -372,7 +373,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Some numbers for back-of-the-envelope usage calculations
+          <h1 class="post-title" itemprop="name headline">100 Questions About Cassandra
 
               
             
@@ -398,24 +399,12 @@
                 
               
 
-              <time title="Created: 2016-05-11 21:02:41" itemprop="dateCreated datePublished" datetime="2016-05-11T21:02:41-04:00">2016-05-11</time>
+              <time title="Created: 2020-01-11 12:41:47 / Modified: 14:04:46" itemprop="dateCreated datePublished" datetime="2020-01-11T12:41:47-05:00">2020-01-11</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-09-20 20:35:13" itemprop="dateModified" datetime="2019-09-20T20:35:13-04:00">2019-09-20</time>
               
             
           </span>
@@ -451,8 +440,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/" itemprop="commentCount"></span>
+                <a href="/System-Design/100-Questions-About-Cassandra/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="System-Design/100-Questions-About-Cassandra/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -480,34 +469,42 @@
       
 
       
-        <h3 id="Some-quick-numbers"><a href="#Some-quick-numbers" class="headerlink" title="Some quick numbers:"></a>Some quick numbers:</h3><ul>
-<li>Read sequentially from main memory:     4 GB/s   (1Mb needs 0.25 ms)</li>
-<li>Read sequentially from SSD:             1 GB/s   (1Mb needs 1 ms)</li>
-<li>Read sequentially from 1 Gbps Ethernet: 100 MB/s (1Mb needs 10 ms)</li>
-<li>Read sequentially from disk:            30 MB/s  (1Mb needs 30 ms)</li>
+        <h2 id="Fast-facts-about-Cassandra"><a href="#Fast-facts-about-Cassandra" class="headerlink" title="Fast facts about Cassandra"></a>Fast facts about Cassandra</h2><ul>
+<li>A Columnar based fault tolerant NoSQL database</li>
+<li>An AP system (Sacrifice Consistency for Available and Partition)</li>
+<li>Easy to scale horizontally (No master)</li>
+<li>No join or subquery for aggregation</li>
 </ul>
-<p>main memory 4x &gt; SSD<br>SSD 10x &gt; 1 Gbps Ethernet<br>1 Gbps Ethernet 3 &gt; disk</p>
-<p>more statistics:</p>
+<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h2><h3 id="What-is-Cassandra’s-Replication-Strategy"><a href="#What-is-Cassandra’s-Replication-Strategy" class="headerlink" title="What is Cassandra’s Replication Strategy?"></a>What is Cassandra’s Replication Strategy?</h3><p>Replication strategies define the technique how the replicas are placed in a cluster.<br>There are mainly two types of Replication Strategy:</p>
 <ul>
-<li>6-7 world-wide round trips per second</li>
-<li>2,000 round trips per second within a data center</li>
-<li>1 RPS = 2.5 million requests per month</li>
-<li>40 RPS = 100 million requests per month</li>
-<li>400 RPS = 1 billion requests per month</li>
+<li>Simple strategy: For single data center</li>
+<li>Network Topology Strategy: For multi-datacenter</li>
 </ul>
-<h3 id="Here-is-a-detailed-table"><a href="#Here-is-a-detailed-table" class="headerlink" title="Here is a detailed table:"></a>Here is a detailed table:</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Latency Comparison Numbers</span><br><span class="line">----------------------------------------------------------------------------------------</span><br><span class="line">L1 cache reference                           <span class="number">0.5</span> ns</span><br><span class="line">Branch mispredict                            <span class="number">5</span>   ns</span><br><span class="line">L2 cache reference                           <span class="number">7</span>   ns                      <span class="number">14</span>x L1 cache</span><br><span class="line">Mutex lock/unlock                          <span class="number">100</span>   ns</span><br><span class="line">Main memory reference                      <span class="number">100</span>   ns                      <span class="number">20</span>x L2 cache, <span class="number">200</span>x L1 cache</span><br><span class="line">Compress <span class="number">1</span>K bytes with Zippy            <span class="number">10</span>,<span class="number">000</span>   ns       <span class="number">10</span> us</span><br><span class="line">Send <span class="number">1</span> KB bytes over <span class="number">1</span> Gbps network     <span class="number">10</span>,<span class="number">000</span>   ns       <span class="number">10</span> us</span><br><span class="line">Read <span class="number">4</span> KB randomly from SSD*           <span class="number">150</span>,<span class="number">000</span>   ns      <span class="number">150</span> us          ~<span class="number">1</span>GB/sec SSD</span><br><span class="line">Read <span class="number">1</span> MB sequentially from memory     <span class="number">250</span>,<span class="number">000</span>   ns      <span class="number">250</span> us</span><br><span class="line">Round trip within same datacenter      <span class="number">500</span>,<span class="number">000</span>   ns      <span class="number">500</span> us</span><br><span class="line">Read <span class="number">1</span> MB sequentially from SSD*     <span class="number">1</span>,<span class="number">000</span>,<span class="number">000</span>   ns    <span class="number">1</span>,<span class="number">000</span> us    <span class="number">1</span> ms  ~<span class="number">1</span>GB/sec SSD, <span class="number">4</span>X memory</span><br><span class="line">Disk seek                           <span class="number">10</span>,<span class="number">000</span>,<span class="number">000</span>   ns   <span class="number">10</span>,<span class="number">000</span> us   <span class="number">10</span> ms  <span class="number">20</span>x datacenter roundtrip</span><br><span class="line">Read <span class="number">1</span> MB sequentially from <span class="number">1</span> Gbps  <span class="number">10</span>,<span class="number">000</span>,<span class="number">000</span>   ns   <span class="number">10</span>,<span class="number">000</span> us   <span class="number">10</span> ms  <span class="number">40</span>x memory, <span class="number">10</span>X SSD</span><br><span class="line">Read <span class="number">1</span> MB sequentially from disk    <span class="number">30</span>,<span class="number">000</span>,<span class="number">000</span>   ns   <span class="number">30</span>,<span class="number">000</span> us   <span class="number">30</span> ms <span class="number">120</span>x memory, <span class="number">30</span>X SSD</span><br><span class="line">Send packet CA-&gt;Netherlands-&gt;CA    <span class="number">150</span>,<span class="number">000</span>,<span class="number">000</span>   ns  <span class="number">150</span>,<span class="number">000</span> us  <span class="number">150</span> ms</span><br><span class="line"></span><br><span class="line">Notes</span><br><span class="line">-----</span><br><span class="line"><span class="number">1</span> ns = <span class="number">10</span>^<span class="number">-9</span> seconds</span><br><span class="line"><span class="number">1</span> us = <span class="number">10</span>^<span class="number">-6</span> seconds = <span class="number">1</span>,<span class="number">000</span> ns</span><br><span class="line"><span class="number">1</span> ms = <span class="number">10</span>^<span class="number">-3</span> seconds = <span class="number">1</span>,<span class="number">000</span> us = <span class="number">1</span>,<span class="number">000</span>,<span class="number">000</span> ns</span><br></pre></td></tr></table></figure>
-<h3 id="Powers-of-two-table"><a href="#Powers-of-two-table" class="headerlink" title="Powers of two table"></a>Powers of two table</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Power           Exact Value         Approx Value        Bytes</span><br><span class="line">---------------------------------------------------------------</span><br><span class="line"><span class="number">7</span>                             <span class="number">128</span></span><br><span class="line"><span class="number">8</span>                             <span class="number">256</span></span><br><span class="line"><span class="number">10</span>                           <span class="number">1024</span>   <span class="number">1</span> thousand           <span class="number">1</span> KB</span><br><span class="line"><span class="number">16</span>                         <span class="number">65</span>,<span class="number">536</span>                       <span class="number">64</span> KB</span><br><span class="line"><span class="number">20</span>                      <span class="number">1</span>,<span class="number">048</span>,<span class="number">576</span>   <span class="number">1</span> million            <span class="number">1</span> MB</span><br><span class="line"><span class="number">30</span>                  <span class="number">1</span>,<span class="number">073</span>,<span class="number">741</span>,<span class="number">824</span>   <span class="number">1</span> billion            <span class="number">1</span> GB</span><br><span class="line"><span class="number">32</span>                  <span class="number">4</span>,<span class="number">294</span>,<span class="number">967</span>,<span class="number">296</span>                        <span class="number">4</span> GB</span><br><span class="line"><span class="number">40</span>              <span class="number">1</span>,<span class="number">099</span>,<span class="number">511</span>,<span class="number">627</span>,<span class="number">776</span>   <span class="number">1</span> trillion           <span class="number">1</span> TB</span><br></pre></td></tr></table></figure>
-<h3 id="Example-Calculations"><a href="#Example-Calculations" class="headerlink" title="Example Calculations"></a>Example Calculations</h3><p>For example, if we are designing a financial transaction system, we need to calculate the data size of transactions:</p>
-<p>Size per transaction:</p>
+<h3 id="What-is-Cassandra-Consistency-Level"><a href="#What-is-Cassandra-Consistency-Level" class="headerlink" title="What is Cassandra Consistency Level?"></a>What is Cassandra Consistency Level?</h3><p>The minimum number of Cassandra nodes that must acknowledge a read or write operation before the operation can be considered successful</p>
 <ul>
-<li>user_id - 8 bytes</li>
-<li>created_at - 5 bytes</li>
-<li>seller - 32 bytes</li>
-<li>amount - 5 bytes<br>Total: ~50 bytes/transaction</li>
+<li>Write Consistency: ALL, ANY, ONE, EACH_QUORUM, LOCAL_ONE, LOCAL_QUORUM</li>
+<li>Read Consistency: ALL, ONE, TWO, THREE, QUORUM, LOCAL_ONE, LOCAL_QUORUM</li>
 </ul>
-<p>If the system has 5 billion transactions each month, the new transaction data size will be:<br>250 GB/month = 50 bytes * 5 billion /month, which will be<br>9 TB of new transaction content in 3 years</p>
-<p>Assume most are new transactions instead of updates to existing ones, then we have:<br>2,000 transactions per second on average<br>200 read requests per second on average</p>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">https://github.com/donnemartin/system-design-primer</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quorum = (sum_of_replication_factors / 2) + 1</span><br></pre></td></tr></table></figure>
+<p><a href="https://teddyma.gitbooks.io/learncassandra/content/replication/turnable_consistency.html" target="_blank" rel="noopener">https://teddyma.gitbooks.io/learncassandra/content/replication/turnable_consistency.html</a></p>
+<h3 id="What-is-Cassandra’s-compaction-strategy"><a href="#What-is-Cassandra’s-compaction-strategy" class="headerlink" title="What is Cassandra’s compaction strategy?"></a>What is Cassandra’s compaction strategy?</h3><p>To improve read performance as well as to utilize disk space, Cassandra periodically does compaction to create &amp; use new consolidated SSTable files instead of multiple old SSTables.</p>
+<ul>
+<li>SizeTieredCompactionStrategy: for write-intensive workloads</li>
+<li>LeveledCompactionStrategy: read-intensive workloads</li>
+</ul>
+<h3 id="Partition-key-and-clustering-key"><a href="#Partition-key-and-clustering-key" class="headerlink" title="Partition key and clustering key"></a>Partition key and clustering key</h3><p>Partition key is similar to primary key in relational databases, it decides which node to store the record.</p>
+<p>Clustering key is responsible for sorting data within a partition</p>
+<h4 id="Compound-key"><a href="#Compound-key" class="headerlink" title="Compound key"></a>Compound key</h4><p>Compound key are partition keys with multiple columns, but only the first column is considered as partition key and the rest are clustering keys.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PRIMARY KEY (p1, c1, c2, c3)</span><br></pre></td></tr></table></figure>
+<h4 id="Composite-key"><a href="#Composite-key" class="headerlink" title="Composite key"></a>Composite key</h4><p>Composite keys are partition keys that consist of multiple columns.<br>But when you do query, you will need to include all partition keys.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PRIMARY KEY ((p1, p2), c1, c2)</span><br></pre></td></tr></table></figure>
+<h3 id="What-are-some-of-Cassandra’s-limitations"><a href="#What-are-some-of-Cassandra’s-limitations" class="headerlink" title="What are some of Cassandra’s limitations?"></a>What are some of Cassandra’s limitations?</h3><ul>
+<li>A single column value is recommended to &lt;= 1 Mb (max is 2Gb)</li>
+<li>Number of rows within a partition is better to below 100,000 items and disk size under 100 Mb</li>
+</ul>
+<h3 id="How-does-Cassandra-use-bloom-filters"><a href="#How-does-Cassandra-use-bloom-filters" class="headerlink" title="How does Cassandra use bloom filters?"></a>How does Cassandra use bloom filters?</h3><p>Cassandra uses bloom filters to check if a partition key exists in any of the SSTables or not, without actually having to read their contents.</p>
+<p>Each SSTable has a bloom filter, bloom filter will be updated when a memtable is flushed to disk.</p>
+<h3 id="What-are-seed-node-in-Cassandra-cluster-setup"><a href="#What-are-seed-node-in-Cassandra-cluster-setup" class="headerlink" title="What are seed node in Cassandra cluster setup?"></a>What are seed node in Cassandra cluster setup?</h3><p>Seeds are used during startup to discover the cluster. Seeds are also referred by new nodes on bootstrap to learn other nodes in ring. When you add a new node to ring, you need to specify at least one live seed to contact. Once a node join the ring, it learns about the other nodes, so it doesn’t need seed on subsequent boot.</p>
 
       
     </div>
@@ -529,6 +526,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Cassandra/" rel="tag"># Cassandra</a>
+          
+            <a href="/tags/Database/" rel="tag"># Database</a>
+          
+        </div>
+      
 
       
       
@@ -538,8 +543,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Languages/Python-2-and-Python-3/" rel="next" title="Python 2 and Python 3">
-                <i class="fa fa-chevron-left"></i> Python 2 and Python 3
+              <a href="/System-Design/Best-practises-to-use-Apache-Spark/" rel="next" title="Best practices to use Apache Spark">
+                <i class="fa fa-chevron-left"></i> Best practices to use Apache Spark
               </a>
             
           </div>
@@ -547,10 +552,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Life/有一個姑娘/" rel="prev" title="有一個姑娘">
-                有一個姑娘 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -776,7 +777,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Some-quick-numbers"><span class="nav-number">1.</span> <span class="nav-text">Some quick numbers:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Here-is-a-detailed-table"><span class="nav-number">2.</span> <span class="nav-text">Here is a detailed table:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Powers-of-two-table"><span class="nav-number">3.</span> <span class="nav-text">Powers of two table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-Calculations"><span class="nav-number">4.</span> <span class="nav-text">Example Calculations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fast-facts-about-Cassandra"><span class="nav-number">1.</span> <span class="nav-text">Fast facts about Cassandra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">2.</span> <span class="nav-text">Q &amp; A</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Cassandra’s-Replication-Strategy"><span class="nav-number">2.1.</span> <span class="nav-text">What is Cassandra’s Replication Strategy?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Cassandra-Consistency-Level"><span class="nav-number">2.2.</span> <span class="nav-text">What is Cassandra Consistency Level?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Cassandra’s-compaction-strategy"><span class="nav-number">2.3.</span> <span class="nav-text">What is Cassandra’s compaction strategy?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partition-key-and-clustering-key"><span class="nav-number">2.4.</span> <span class="nav-text">Partition key and clustering key</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Compound-key"><span class="nav-number">2.4.1.</span> <span class="nav-text">Compound key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Composite-key"><span class="nav-number">2.4.2.</span> <span class="nav-text">Composite key</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-some-of-Cassandra’s-limitations"><span class="nav-number">2.5.</span> <span class="nav-text">What are some of Cassandra’s limitations?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-does-Cassandra-use-bloom-filters"><span class="nav-number">2.6.</span> <span class="nav-text">How does Cassandra use bloom filters?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-seed-node-in-Cassandra-cluster-setup"><span class="nav-number">2.7.</span> <span class="nav-text">What are seed node in Cassandra cluster setup?</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -963,9 +964,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yqian1991.github.io/System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/";
-    this.page.identifier = "System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/";
-    this.page.title = 'Some numbers for back-of-the-envelope usage calculations';
+    this.page.url = "http://yqian1991.github.io/System-Design/100-Questions-About-Cassandra/";
+    this.page.identifier = "System-Design/100-Questions-About-Cassandra/";
+    this.page.title = '100 Questions About Cassandra';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
@@ -1075,13 +1076,13 @@
       var articles = db.collection('articles')
 
       //https://hexo.io/docs/variables.html
-      var isPost = 'Some numbers for back-of-the-envelope usage calculations'.length > 0
+      var isPost = '100 Questions About Cassandra'.length > 0
       var isArchive = '' === 'true'
       var isCategory = ''.length > 0
       var isTag = ''.length > 0
 
       if (isPost) { //is article page
-        var title = 'Some numbers for back-of-the-envelope usage calculations'
+        var title = '100 Questions About Cassandra'
         var doc = articles.doc(title)
 
         getCount(doc, true).then(appendCountTo($('.post-meta')))
