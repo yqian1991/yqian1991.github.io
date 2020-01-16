@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="Yu of Daphne">
 <meta property="og:description" content="Fast facts about Cassandra A Columnar based fault tolerant NoSQL database An AP system (Sacrifice Consistency for Available and Partition) Easy to scale horizontally (No master) No join or subquery fo">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-11T19:09:54.902Z">
+<meta property="og:updated_time" content="2020-01-16T04:05:02.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="100 Questions About Cassandra">
 <meta name="twitter:description" content="Fast facts about Cassandra A Columnar based fault tolerant NoSQL database An AP system (Sacrifice Consistency for Available and Partition) Easy to scale horizontally (No master) No join or subquery fo">
@@ -399,12 +399,24 @@
                 
               
 
-              <time title="Created: 2020-01-11 12:41:47 / Modified: 14:09:54" itemprop="dateCreated datePublished" datetime="2020-01-11T12:41:47-05:00">2020-01-11</time>
+              <time title="Created: 2020-01-11 12:41:47" itemprop="dateCreated datePublished" datetime="2020-01-11T12:41:47-05:00">2020-01-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-01-15 23:05:02" itemprop="dateModified" datetime="2020-01-15T23:05:02-05:00">2020-01-15</time>
               
             
           </span>
@@ -505,6 +517,18 @@
 <h3 id="How-does-Cassandra-use-bloom-filters"><a href="#How-does-Cassandra-use-bloom-filters" class="headerlink" title="How does Cassandra use bloom filters?"></a>How does Cassandra use bloom filters?</h3><p>Cassandra uses bloom filters to check if a partition key exists in any of the SSTables or not, without actually having to read their contents.</p>
 <p>Each SSTable has a bloom filter, bloom filter will be updated when a memtable is flushed to disk.</p>
 <h3 id="What-are-seed-node-in-Cassandra-cluster-setup"><a href="#What-are-seed-node-in-Cassandra-cluster-setup" class="headerlink" title="What are seed node in Cassandra cluster setup?"></a>What are seed node in Cassandra cluster setup?</h3><p>Seeds are used during startup to discover the cluster. Seeds are also referred by new nodes on bootstrap to learn other nodes in ring. When you add a new node to ring, you need to specify at least one live seed to contact. Once a node join the ring, it learns about the other nodes, so it doesn’t need seed on subsequent boot.</p>
+<h3 id="How-to-add-a-new-node-to-a-single-datacenter-cluster"><a href="#How-to-add-a-new-node-to-a-single-datacenter-cluster" class="headerlink" title="How to add a new node to a single datacenter cluster?"></a>How to add a new node to a single datacenter cluster?</h3><ul>
+<li>Calculate tokens for the new node, below is the script to generate tokens with Murmur3Partitioner.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">"print [str(((2**64 / number_of_tokens) * i) - 2**63) for i in range(number_of_tokens)]"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Install Cassandra on the node with proper <code>cassandra.yaml</code></p>
+</li>
+<li><p>Use <code>nodetool move</code> to assign new token for it.</p>
+</li>
+<li><p>Use <code>nodetool cleanup</code> to remove keys that no longer belong to the previously existing nodes.</p>
+</li>
+</ul>
 
       
     </div>
@@ -779,7 +803,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fast-facts-about-Cassandra"><span class="nav-number">1.</span> <span class="nav-text">Fast facts about Cassandra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">2.</span> <span class="nav-text">Q &amp; A</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Cassandra’s-Replication-Strategy"><span class="nav-number">2.1.</span> <span class="nav-text">What is Cassandra’s Replication Strategy?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Cassandra-Consistency-Level"><span class="nav-number">2.2.</span> <span class="nav-text">What is Cassandra Consistency Level?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Cassandra’s-compaction-strategy"><span class="nav-number">2.3.</span> <span class="nav-text">What is Cassandra’s compaction strategy?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partition-key-and-clustering-key"><span class="nav-number">2.4.</span> <span class="nav-text">Partition key and clustering key</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Compound-key"><span class="nav-number">2.4.1.</span> <span class="nav-text">Compound key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Composite-key"><span class="nav-number">2.4.2.</span> <span class="nav-text">Composite key</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-some-of-Cassandra’s-limitations"><span class="nav-number">2.5.</span> <span class="nav-text">What are some of Cassandra’s limitations?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-does-Cassandra-use-bloom-filters"><span class="nav-number">2.6.</span> <span class="nav-text">How does Cassandra use bloom filters?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-seed-node-in-Cassandra-cluster-setup"><span class="nav-number">2.7.</span> <span class="nav-text">What are seed node in Cassandra cluster setup?</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fast-facts-about-Cassandra"><span class="nav-number">1.</span> <span class="nav-text">Fast facts about Cassandra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">2.</span> <span class="nav-text">Q &amp; A</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Cassandra’s-Replication-Strategy"><span class="nav-number">2.1.</span> <span class="nav-text">What is Cassandra’s Replication Strategy?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Cassandra-Consistency-Level"><span class="nav-number">2.2.</span> <span class="nav-text">What is Cassandra Consistency Level?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Cassandra’s-compaction-strategy"><span class="nav-number">2.3.</span> <span class="nav-text">What is Cassandra’s compaction strategy?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partition-key-and-clustering-key"><span class="nav-number">2.4.</span> <span class="nav-text">Partition key and clustering key</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Compound-key"><span class="nav-number">2.4.1.</span> <span class="nav-text">Compound key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Composite-key"><span class="nav-number">2.4.2.</span> <span class="nav-text">Composite key</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-some-of-Cassandra’s-limitations"><span class="nav-number">2.5.</span> <span class="nav-text">What are some of Cassandra’s limitations?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-does-Cassandra-use-bloom-filters"><span class="nav-number">2.6.</span> <span class="nav-text">How does Cassandra use bloom filters?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-seed-node-in-Cassandra-cluster-setup"><span class="nav-number">2.7.</span> <span class="nav-text">What are seed node in Cassandra cluster setup?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-add-a-new-node-to-a-single-datacenter-cluster"><span class="nav-number">2.8.</span> <span class="nav-text">How to add a new node to a single datacenter cluster?</span></a></li></ol></li></ol></div>
             
 
           </div>
