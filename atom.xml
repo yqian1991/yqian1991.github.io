@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yqian1991.github.io/"/>
-  <updated>2020-01-16T04:06:04.910Z</updated>
+  <updated>2020-02-20T03:37:40.953Z</updated>
   <id>http://yqian1991.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Realtime Distributed OLAP Datastore</title>
+    <link href="http://yqian1991.github.io/System-Design/Realtime-Distributed-OLAP-Datastore/"/>
+    <id>http://yqian1991.github.io/System-Design/Realtime-Distributed-OLAP-Datastore/</id>
+    <published>2020-02-20T03:32:16.000Z</published>
+    <updated>2020-02-20T03:37:40.953Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Apache-Pinot"><a href="#Apache-Pinot" class="headerlink" title="Apache Pinot"></a>Apache Pinot</h1><p>Pinot is a realtime distributed OLAP datastore for scalable real time analytics with low latency.</p><p>It’s using Apache Helix for cluster management, data stored as segment in Pinot.</p><p>Components:</p><h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><p>Manage brokers and servers, responsible for assigning segments to servers.</p><h2 id="Broker"><a href="#Broker" class="headerlink" title="Broker"></a>Broker</h2><p>Accepting queries from clients and return query results to clients.</p><h2 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h2><p>Hosts one or more segments, and respond to queries from broker.</p><h1 id="Apache-Druid"><a href="#Apache-Druid" class="headerlink" title="Apache Druid"></a>Apache Druid</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Apache-Pinot&quot;&gt;&lt;a href=&quot;#Apache-Pinot&quot; class=&quot;headerlink&quot; title=&quot;Apache Pinot&quot;&gt;&lt;/a&gt;Apache Pinot&lt;/h1&gt;&lt;p&gt;Pinot is a realtime distribute
+      
+    
+    </summary>
+    
+      <category term="System Design" scheme="http://yqian1991.github.io/categories/System-Design/"/>
+    
+    
+      <category term="Streaming processing" scheme="http://yqian1991.github.io/tags/Streaming-processing/"/>
+    
+      <category term="Data pipeline" scheme="http://yqian1991.github.io/tags/Data-pipeline/"/>
+    
+      <category term="Learning Notes" scheme="http://yqian1991.github.io/tags/Learning-Notes/"/>
+    
+  </entry>
   
   <entry>
     <title>100 Questions About Cassandra</title>
@@ -525,33 +554,6 @@
       <category term="Feed" scheme="http://yqian1991.github.io/tags/Feed/"/>
     
       <category term="database" scheme="http://yqian1991.github.io/tags/database/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>有一個姑娘</title>
-    <link href="http://yqian1991.github.io/Life/%E6%9C%89%E4%B8%80%E5%80%8B%E5%A7%91%E5%A8%98/"/>
-    <id>http://yqian1991.github.io/Life/有一個姑娘/</id>
-    <published>2016-09-02T02:47:35.000Z</published>
-    <updated>2019-09-21T00:35:13.443Z</updated>
-    
-    <content type="html"><![CDATA[<p>我在太阳还没升起的地方等你<br>朝露 沾湿我衣<br>晨风 吹不乱我心</p><p>我在太阳还没升起的地方等你<br>尽管这里芳草依依<br>我只守望你的足迹</p><p>我在太阳还没升起的地方等你<br>他们都从我身邊呼嘯而去<br>只有在你身旁我才春风得意</p><p>我在太阳还没升起的地方等你<br>消耗了所有糧食 喝光了水<br>太阳来了又已西去</p><p>明天，<br>我还会在那里等你！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;我在太阳还没升起的地方等你&lt;br&gt;朝露 沾湿我衣&lt;br&gt;晨风 吹不乱我心&lt;/p&gt;
-&lt;p&gt;我在太阳还没升起的地方等你&lt;br&gt;尽管这里芳草依依&lt;br&gt;我只守望你的足迹&lt;/p&gt;
-&lt;p&gt;我在太阳还没升起的地方等你&lt;br&gt;他们都从我身邊呼嘯而去&lt;br&gt;只有在你身旁我才春风得意&lt;/p&gt;
-      
-    
-    </summary>
-    
-      <category term="Life" scheme="http://yqian1991.github.io/categories/Life/"/>
-    
-    
-      <category term="She" scheme="http://yqian1991.github.io/tags/She/"/>
     
   </entry>
   
