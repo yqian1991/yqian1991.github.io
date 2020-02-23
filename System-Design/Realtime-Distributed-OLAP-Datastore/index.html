@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="Yu of Daphne">
 <meta property="og:description" content="Apache PinotPinot is a realtime distributed OLAP datastore for scalable real time analytics with low latency. It’s using Apache Helix for cluster management, data stored as segment in Pinot. Component">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-22T20:32:58.042Z">
+<meta property="og:updated_time" content="2020-02-23T15:34:32.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Realtime Distributed OLAP Datastore">
 <meta name="twitter:description" content="Apache PinotPinot is a realtime distributed OLAP datastore for scalable real time analytics with low latency. It’s using Apache Helix for cluster management, data stored as segment in Pinot. Component">
@@ -416,7 +416,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-02-22 15:32:58" itemprop="dateModified" datetime="2020-02-22T15:32:58-05:00">2020-02-22</time>
+                <time title="Modified: 2020-02-23 10:34:32" itemprop="dateModified" datetime="2020-02-23T10:34:32-05:00">2020-02-23</time>
               
             
           </span>
@@ -485,13 +485,20 @@
 <p>It’s using Apache Helix for cluster management, data stored as segment in Pinot.</p>
 <h2 id="Components"><a href="#Components" class="headerlink" title="Components:"></a>Components:</h2><h3 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h3><p>Manage brokers and servers, responsible for assigning segments to servers.</p>
 <h3 id="Broker"><a href="#Broker" class="headerlink" title="Broker"></a>Broker</h3><p>Accepting queries from clients and return query results to clients.</p>
-<h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>Hosts one or more segments, and respond to queries from broker.<br>Data is stored as segment in servers.</p>
+<h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>Hosts one or more segments, and respond to queries from broker.<br>Data is stored as segment in servers. Segment is a columnar storage.</p>
 <h2 id="Data-Ingestion"><a href="#Data-Ingestion" class="headerlink" title="Data Ingestion"></a>Data Ingestion</h2><p>Data can be ingested in real time or offline ingestion mode</p>
-<h3 id="real-time-ingestion"><a href="#real-time-ingestion" class="headerlink" title="real time ingestion"></a>real time ingestion</h3><p>Data from kafka or other streaming source can be ingested to Pinot servers directly, and can serve query right away.</p>
-<h3 id="offline-ingestion"><a href="#offline-ingestion" class="headerlink" title="offline ingestion"></a>offline ingestion</h3><p>Data in storage can be ingested through Pinot controller, and pinot controller will assign the segments to Pinot servers.</p>
+<h3 id="Real-time-ingestion"><a href="#Real-time-ingestion" class="headerlink" title="Real time ingestion"></a>Real time ingestion</h3><p>Data from Kafka or other streaming source can be ingested to Pinot servers directly, and can serve query right away.</p>
+<h3 id="Offline-ingestion"><a href="#Offline-ingestion" class="headerlink" title="Offline ingestion"></a>Offline ingestion</h3><p>Data in storage can be ingested through Pinot controller, and pinot controller will assign the segments to Pinot servers.</p>
+<ul>
+<li>Add Schema</li>
+<li>Add Table</li>
+<li>Create Segment</li>
+<li>Upload Segment</li>
+</ul>
 <h2 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h2><p>Pinot query language is very similar to standard query language except that <code>JOIN</code> and <code>LIMIT</code> are not supported.</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT &lt;outputColumn&gt; (, outputColumn, outputColumn,<span class="built_in">..</span>.)</span><br><span class="line">  <span class="keyword">FROM</span> &lt;tableName&gt;</span><br><span class="line">  (WHERE <span class="built_in">..</span>. |<span class="built_in"> GROUP </span>BY <span class="built_in">..</span>. | ORDER BY <span class="built_in">..</span>. | TOP <span class="built_in">..</span>. | LIMIT <span class="built_in">..</span>.)</span><br></pre></td></tr></table></figure>
-<h1 id="Apache-Druid"><a href="#Apache-Druid" class="headerlink" title="Apache Druid"></a>Apache Druid</h1><h1 id="Presto"><a href="#Presto" class="headerlink" title="Presto"></a>Presto</h1>
+<h3 id="Indexing-technology"><a href="#Indexing-technology" class="headerlink" title="Indexing technology"></a>Indexing technology</h3><h1 id="Apache-Druid"><a href="#Apache-Druid" class="headerlink" title="Apache Druid"></a>Apache Druid</h1><p>Druid is very similar to Pinot in many ways: both for real time queries, both support real time and offline ingestions.</p>
+<h1 id="Presto"><a href="#Presto" class="headerlink" title="Presto"></a>Presto</h1>
       
     </div>
 
@@ -767,7 +774,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Pinot"><span class="nav-number">1.</span> <span class="nav-text">Apache Pinot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Components"><span class="nav-number">1.1.</span> <span class="nav-text">Components:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Controller"><span class="nav-number">1.1.1.</span> <span class="nav-text">Controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Broker"><span class="nav-number">1.1.2.</span> <span class="nav-text">Broker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Server"><span class="nav-number">1.1.3.</span> <span class="nav-text">Server</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Ingestion"><span class="nav-number">1.2.</span> <span class="nav-text">Data Ingestion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#real-time-ingestion"><span class="nav-number">1.2.1.</span> <span class="nav-text">real time ingestion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offline-ingestion"><span class="nav-number">1.2.2.</span> <span class="nav-text">offline ingestion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Query"><span class="nav-number">1.3.</span> <span class="nav-text">Query</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Druid"><span class="nav-number">2.</span> <span class="nav-text">Apache Druid</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Presto"><span class="nav-number">3.</span> <span class="nav-text">Presto</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Pinot"><span class="nav-number">1.</span> <span class="nav-text">Apache Pinot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Components"><span class="nav-number">1.1.</span> <span class="nav-text">Components:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Controller"><span class="nav-number">1.1.1.</span> <span class="nav-text">Controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Broker"><span class="nav-number">1.1.2.</span> <span class="nav-text">Broker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Server"><span class="nav-number">1.1.3.</span> <span class="nav-text">Server</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Ingestion"><span class="nav-number">1.2.</span> <span class="nav-text">Data Ingestion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Real-time-ingestion"><span class="nav-number">1.2.1.</span> <span class="nav-text">Real time ingestion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Offline-ingestion"><span class="nav-number">1.2.2.</span> <span class="nav-text">Offline ingestion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Query"><span class="nav-number">1.3.</span> <span class="nav-text">Query</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Indexing-technology"><span class="nav-number">1.3.1.</span> <span class="nav-text">Indexing technology</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apache-Druid"><span class="nav-number">2.</span> <span class="nav-text">Apache Druid</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Presto"><span class="nav-number">3.</span> <span class="nav-text">Presto</span></a></li></ol></div>
             
 
           </div>
