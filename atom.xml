@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yqian1991.github.io/"/>
-  <updated>2020-03-02T02:31:14.330Z</updated>
+  <updated>2020-03-03T02:02:00.156Z</updated>
   <id>http://yqian1991.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Canary Deployment with k8s ingress-controller</title>
+    <link href="http://yqian1991.github.io/SRE/Canary-Deployment-with-k8s-ingress-controller/"/>
+    <id>http://yqian1991.github.io/SRE/Canary-Deployment-with-k8s-ingress-controller/</id>
+    <published>2020-03-03T01:48:52.000Z</published>
+    <updated>2020-03-03T02:02:00.156Z</updated>
+    
+    <content type="html"><![CDATA[<p>Canary deployment is useful in many scenarios, like A/B testing.<br>k8s ingress-controller makes canary deployment easy, I will introduce the steps of it using the example of a microservice we have.</p><p>This document will not cover how to set up ELB. It will focus only on how to create a canary deployment along side an existing deployment.</p><h2 id="Situation"><a href="#Situation" class="headerlink" title="Situation"></a>Situation</h2><p>We have a service A running in k8s cluster, there is an external host name setup to expose the API to public, Requests sent through this API will be route to this service,</p><p>Here is the public host name setup:<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">▶ kubectl <span class="builtin-name">get</span> ingress -n ingress</span><br><span class="line">NAME                   HOSTS              <span class="built_in"> ADDRESS </span>  PORTS   AGE</span><br><span class="line">service-a          public.domain.com             80      297d</span><br></pre></td></tr></table></figure></p><p>and it also has k8s service set up:</p><p>So far, this is running happily on production,<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">▶ kubectl get pods -n emaildelivery</span><br><span class="line">NAME                                   READY   STATUS    RESTARTS   AGE</span><br><span class="line">service-a<span class="number">-68</span>db48dff7-pckg9         <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">0</span>          <span class="number">195</span>d</span><br><span class="line">service-a<span class="number">-68</span>db48dff7-rxtm4         <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">5</span>          <span class="number">159</span>d</span><br></pre></td></tr></table></figure></p><h2 id="Canary-Deployment"><a href="#Canary-Deployment" class="headerlink" title="Canary Deployment"></a>Canary Deployment</h2><h3 id="Deploy-new-pods-with-correct-annotation"><a href="#Deploy-new-pods-with-correct-annotation" class="headerlink" title="Deploy new pods with correct annotation"></a>Deploy new pods with correct annotation</h3><p>You will need to deploy new pods for sure, without overwriting current pods, you can do this by deploying new pods with a new application name or using a different namespace.</p><p>I want to reuse the same namespace, so I changed the application name to <code>service-a-canary</code>.</p><p>Then comes to the fun part, Keep all the necessary labels as <code>service-a</code> in the resources. Resources you will need to change include <code>service.yaml</code>, <code>deployment.yaml</code>, <code>ingress.yaml</code>.</p><p>Key changes are as follows:</p><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">metadata:</span></span><br><span class="line"><span class="symbol">  namespace:</span> service-a</span><br><span class="line"><span class="symbol">  name:</span> service-a-canary</span><br><span class="line"><span class="symbol">  labels:</span></span><br><span class="line"><span class="symbol">    name:</span> service-a</span><br><span class="line">...</span><br><span class="line"><span class="symbol">selector:</span></span><br><span class="line"><span class="symbol">    matchLabels:</span></span><br><span class="line"><span class="symbol">      app:</span> service-a</span><br></pre></td></tr></table></figure><p>If you release the new pods at this time point, new pods will running fine, but serving no traffic:</p><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">▶ kubectl get pods -n service-a</span><br><span class="line">NAME                               READY   STATUS    RESTARTS   AGE</span><br><span class="line">service-a<span class="number">-68</span>db48dff7-pckg9         <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">0</span>          <span class="number">195</span>d</span><br><span class="line">service-a<span class="number">-68</span>db48dff7-rxtm4         <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">0</span>          <span class="number">159</span>d</span><br><span class="line">service-a-canary<span class="number">-6</span>f7784fc7-wg7kz   <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">0</span>          <span class="number">2</span>d20h</span><br></pre></td></tr></table></figure><h3 id="Enable-canary-with-ingress-controller"><a href="#Enable-canary-with-ingress-controller" class="headerlink" title="Enable canary with ingress-controller"></a>Enable canary with ingress-controller</h3><p>To make canary deployment serving real traffic, simply adding few lines in ingress.yaml</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx<span class="selector-class">.ingress</span><span class="selector-class">.kubernetes</span><span class="selector-class">.io</span>/canary: <span class="string">"true"</span></span><br><span class="line">nginx<span class="selector-class">.ingress</span><span class="selector-class">.kubernetes</span><span class="selector-class">.io</span>/canary-weight: <span class="string">"10"</span></span><br></pre></td></tr></table></figure><p>nginx.ingress.kubernetes.io/canary-weight is the percentage of traffic that will be routed to canary deployment.</p><p>NOW, you can check your logs to see if traffic routed to canary deployment.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Canary deployment is useful in many scenarios, like A/B testing.&lt;br&gt;k8s ingress-controller makes canary deployment easy, I will introduce
+      
+    
+    </summary>
+    
+      <category term="SRE" scheme="http://yqian1991.github.io/categories/SRE/"/>
+    
+    
+      <category term="k8s" scheme="http://yqian1991.github.io/tags/k8s/"/>
+    
+  </entry>
   
   <entry>
     <title>Realtime Distributed OLAP Datastore</title>
@@ -530,30 +555,6 @@
     
     
       <category term="Python" scheme="http://yqian1991.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to build a feed system</title>
-    <link href="http://yqian1991.github.io/System-Design/how_to_build_a_feed_system/"/>
-    <id>http://yqian1991.github.io/System-Design/how_to_build_a_feed_system/</id>
-    <published>2018-04-17T03:05:31.000Z</published>
-    <updated>2019-09-21T00:35:13.443Z</updated>
-    
-    <content type="html"><![CDATA[<p>I recently read some articles about designing feed system, the reason I am interested in it is because a feed system design involves a lot of knowledge in system design(NoSQL or relational, affinity ranking and scalability). This is also a popular question for technical interview.</p><a id="more"></a><p>Traditional design is pretty simple with one app sever and one database, while this is not scalable at all, maybe it works for small site, but what if a site grows large like Twitter and Facebook?</p><h2 id="How-to-store-feed-for-user"><a href="#How-to-store-feed-for-user" class="headerlink" title="How to store feed for user"></a>How to store feed for user</h2><p>A feed system is special, because usually you will need to show a feed for a user, then you need to fetch all feeds a user liked, commented, mentioned and so on. A good way is to implement a message box for each user  with redis, if the data growing vastly, we can further consider clustering with Cassandra</p><h2 id="Push-or-Pull"><a href="#Push-or-Pull" class="headerlink" title="Push or Pull"></a>Push or Pull</h2><p>When a user generated a post, do we push it to all of the user’s follower right away? or we only render it when one of the follower request to view the feed. This is a problem since celebrities’ posts always have a  large number of followers, which pushing takes a lot of time.</p><p>For users who have a large number(it’s always need a way to figure out how large is large) of followers, we should apply pull model, and apply push model for others.</p><h2 id="How-to-display-the-feed"><a href="#How-to-display-the-feed" class="headerlink" title="How to display the feed"></a>How to display the feed</h2><p>A general way is to display the feed by timestamp, but for a system that cares about user experiences, we also need to take the affinities between user and followers, and the type of post into consideration.</p><p>Basically, after we get the feed, we need an algorithm to rank the feeds, there are 3 features used here to ranking:</p><ul><li>Affinity score: For each feed, affinity score evaluates how close you are with this user. For example, you are more likely to care about feed from your close friends instead of someone you just met once.</li><li>Edge weight. Edge weight basically reflects importance of each edge. For instance, comments are worth more than likes.</li><li>Time decay. The older the story, the less likely users find it interesting.</li></ul><h2 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h2><p><a href="http://blog.gainlo.co/index.php/2016/04/05/design-news-feed-system-part-2/" target="_blank" rel="noopener">http://blog.gainlo.co/index.php/2016/04/05/design-news-feed-system-part-2/</a><br><a href="https://thenewstack.io/building-scalable-news-feed-applications-using-redis-and-cassandra/" target="_blank" rel="noopener">https://thenewstack.io/building-scalable-news-feed-applications-using-redis-and-cassandra/</a><br><a href="https://www.slideshare.net/danmckinley/etsy-activity-feeds-architecture/" target="_blank" rel="noopener">https://www.slideshare.net/danmckinley/etsy-activity-feeds-architecture/</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;I recently read some articles about designing feed system, the reason I am interested in it is because a feed system design involves a lot of knowledge in system design(NoSQL or relational, affinity ranking and scalability). This is also a popular question for technical interview.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="System Design" scheme="http://yqian1991.github.io/categories/System-Design/"/>
-    
-    
-      <category term="Feed" scheme="http://yqian1991.github.io/tags/Feed/"/>
-    
-      <category term="database" scheme="http://yqian1991.github.io/tags/database/"/>
     
   </entry>
   

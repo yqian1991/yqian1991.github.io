@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yqian1991.github.io/SRE/Canary-Deployment-with-k8s-ingress-controller/</loc>
+    <lastmod>2020-03-03</lastmod>
+  </url>  <url>
     <loc>http://yqian1991.github.io/System-Design/Realtime-Distributed-OLAP-Datastore/</loc>
     <lastmod>2020-03-02</lastmod>
   </url>  <url>
@@ -19,19 +22,16 @@
     <loc>http://yqian1991.github.io/System-Design/Best-practises-to-use-Apache-Spark/</loc>
     <lastmod>2019-12-01</lastmod>
   </url>  <url>
-    <loc>http://yqian1991.github.io/System-Design/how_to_build_a_feed_system/</loc>
-    <lastmod>2019-09-21</lastmod>
-  </url>  <url>
     <loc>http://yqian1991.github.io/Life/%E5%86%99%E7%BB%99Daphne%E7%9A%84%E8%AF%97/</loc>
     <lastmod>2019-09-21</lastmod>
   </url>  <url>
     <loc>http://yqian1991.github.io/Life/%E6%9C%89%E4%B8%80%E5%80%8B%E5%A7%91%E5%A8%98/</loc>
     <lastmod>2019-09-21</lastmod>
   </url>  <url>
-    <loc>http://yqian1991.github.io/System-Design/%E8%AF%91-Airflow-%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</loc>
+    <loc>http://yqian1991.github.io/System-Design/how_to_build_a_feed_system/</loc>
     <lastmod>2019-09-21</lastmod>
   </url>  <url>
-    <loc>http://yqian1991.github.io/Data-Science/Notes-on-data-science-self-learning/</loc>
+    <loc>http://yqian1991.github.io/System-Design/%E8%AF%91-Airflow-%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</loc>
     <lastmod>2019-09-21</lastmod>
   </url>  <url>
     <loc>http://yqian1991.github.io/Languages/Python-2-and-Python-3/</loc>
@@ -40,10 +40,10 @@
     <loc>http://yqian1991.github.io/Software-Development/Searching-with-bloom-filter/</loc>
     <lastmod>2019-09-21</lastmod>
   </url>  <url>
-    <loc>http://yqian1991.github.io/System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/</loc>
+    <loc>http://yqian1991.github.io/Data-Science/Notes-on-data-science-self-learning/</loc>
     <lastmod>2019-09-21</lastmod>
   </url>  <url>
-    <loc>http://yqian1991.github.io/Life/Starting-a-new-journey/</loc>
+    <loc>http://yqian1991.github.io/System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/</loc>
     <lastmod>2019-09-21</lastmod>
   </url>  <url>
     <loc>http://yqian1991.github.io/Languages/The-poem-of-Python/</loc>
@@ -52,10 +52,13 @@
     <loc>http://yqian1991.github.io/Software-Development/Things-I-learnt-from-colleagues/</loc>
     <lastmod>2019-09-21</lastmod>
   </url>  <url>
-    <loc>http://yqian1991.github.io/System-Design/Fun-topics-in-distributed-system/</loc>
+    <loc>http://yqian1991.github.io/Life/Starting-a-new-journey/</loc>
     <lastmod>2019-09-21</lastmod>
   </url>  <url>
     <loc>http://yqian1991.github.io/System-Design/Data-pipeline-with-Airflow-Go-serverless/</loc>
+    <lastmod>2019-09-21</lastmod>
+  </url>  <url>
+    <loc>http://yqian1991.github.io/System-Design/Fun-topics-in-distributed-system/</loc>
     <lastmod>2019-09-21</lastmod>
   </url>  <url>
     <loc>http://yqian1991.github.io/Careers/Hidden-Companies/</loc>

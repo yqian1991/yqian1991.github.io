@@ -97,18 +97,18 @@
 
 
 
-  <meta name="description" content="June 28th, marked the end of my journey at SurveyMonkey, a great company I had worked for more than 3 years. It’s a bittersweet heart to say goodbye. Many colleagues were wondering why I leave when it">
-<meta name="keywords" content="Growth">
+  <meta name="description" content="Canary deployment is useful in many scenarios, like A/B testing.k8s ingress-controller makes canary deployment easy, I will introduce the steps of it using the example of a microservice we have. This">
+<meta name="keywords" content="k8s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Starting a new journey">
-<meta property="og:url" content="http://yqian1991.github.io/Life/Starting-a-new-journey/index.html">
+<meta property="og:title" content="Canary Deployment with k8s ingress-controller">
+<meta property="og:url" content="http://yqian1991.github.io/SRE/Canary-Deployment-with-k8s-ingress-controller/index.html">
 <meta property="og:site_name" content="Yu of Daphne">
-<meta property="og:description" content="June 28th, marked the end of my journey at SurveyMonkey, a great company I had worked for more than 3 years. It’s a bittersweet heart to say goodbye. Many colleagues were wondering why I leave when it">
+<meta property="og:description" content="Canary deployment is useful in many scenarios, like A/B testing.k8s ingress-controller makes canary deployment easy, I will introduce the steps of it using the example of a microservice we have. This">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-21T00:35:13.442Z">
+<meta property="og:updated_time" content="2020-03-03T02:02:00.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Starting a new journey">
-<meta name="twitter:description" content="June 28th, marked the end of my journey at SurveyMonkey, a great company I had worked for more than 3 years. It’s a bittersweet heart to say goodbye. Many colleagues were wondering why I leave when it">
+<meta name="twitter:title" content="Canary Deployment with k8s ingress-controller">
+<meta name="twitter:description" content="Canary deployment is useful in many scenarios, like A/B testing.k8s ingress-controller makes canary deployment easy, I will introduce the steps of it using the example of a microservice we have. This">
 
 
 
@@ -116,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://yqian1991.github.io/Life/Starting-a-new-journey/">
+  <link rel="canonical" href="http://yqian1991.github.io/SRE/Canary-Deployment-with-k8s-ingress-controller/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>Starting a new journey | Yu of Daphne</title>
+  <title>Canary Deployment with k8s ingress-controller | Yu of Daphne</title>
   
 
 
@@ -356,7 +356,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/Life/Starting-a-new-journey/">
+    <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/SRE/Canary-Deployment-with-k8s-ingress-controller/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yu Qian">
@@ -373,7 +373,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Starting a new journey
+          <h1 class="post-title" itemprop="name headline">Canary Deployment with k8s ingress-controller
 
               
             
@@ -399,24 +399,12 @@
                 
               
 
-              <time title="Created: 2019-07-01 14:36:56" itemprop="dateCreated datePublished" datetime="2019-07-01T14:36:56-04:00">2019-07-01</time>
+              <time title="Created: 2020-03-02 20:48:52 / Modified: 21:02:00" itemprop="dateCreated datePublished" datetime="2020-03-02T20:48:52-05:00">2020-03-02</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-09-20 20:35:13" itemprop="dateModified" datetime="2019-09-20T20:35:13-04:00">2019-09-20</time>
               
             
           </span>
@@ -433,7 +421,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Life/" itemprop="url" rel="index"><span itemprop="name">Life</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SRE/" itemprop="url" rel="index"><span itemprop="name">SRE</span></a></span>
 
                 
                 
@@ -452,8 +440,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/Life/Starting-a-new-journey/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Life/Starting-a-new-journey/" itemprop="commentCount"></span>
+                <a href="/SRE/Canary-Deployment-with-k8s-ingress-controller/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="SRE/Canary-Deployment-with-k8s-ingress-controller/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -481,13 +469,23 @@
       
 
       
-        <p>June 28th, marked the end of my journey at SurveyMonkey, a great company I had worked for more than 3 years. It’s a bittersweet heart to say goodbye.</p>
-<p>Many colleagues were wondering why I leave when it’s only half year to my 4 years anniversary. This is one of the reasons that makes Survey Monkey great. You will get extra 4 weeks vacation every 4 years. The company cares about employees life a lot and try to balance our work and life. Besides the generous take 4 policy, they provide free breakfast and lunch, support you to attend conference every year, allow working from home if you want, monthly bonus points(can redeem Amazon gift cards) etc. just name a few.</p>
-<p>It was not easy to say goodbye to such amazing benefits, leaving an amazing team is also risky. Although all my team members except me located in Bay area, I never feel I am alone, daily stand up, biweekly 1:1 with manager, sprint planning meetings every two weeks and a lot slack calls for discuss or pair programming, we have established a solid way to do remote communication. because of 3 hours time difference, they try their best to no bother me after 6:00pm (EST), and I try my best to cover incidents or issues happen in the morning (before 12:00pm PST), which proved to work very well.</p>
-<p>I was impressed the warm words the team delivered to me upon hearing my news, they even prepared a thank you card and gift to me which I was really touched. I was even questioning myself: is leaving  good?.</p>
-<p>Nobody know a decision is good or not until it proved to be. we experienced a lot good things in the past, nice people, wonderful place, but as life moving on and us growing up, everything has an end. Leaving is exactly a graduation for me. SurveyMonkey is indeed a university for me, where I focused on technology but also took a lot ‘courses’ in cooperation, leading, communication, understanding. And just like 6 years ago, and almost the same time when I graduated from University. maybe this is also a time for my graduation as an intermediate software engineer.</p>
-<p>Graduation marks the starting of a new journey, a new school, in the new journey, I will be a curious student to learn, be a good team player to contribute, be a better man.</p>
-<p>Last but not least, I will be a good husband to support my family. Thanks to my wife for accompanying me since 2016, the journey is meaningless without you.</p>
+        <p>Canary deployment is useful in many scenarios, like A/B testing.<br>k8s ingress-controller makes canary deployment easy, I will introduce the steps of it using the example of a microservice we have.</p>
+<p>This document will not cover how to set up ELB. It will focus only on how to create a canary deployment along side an existing deployment.</p>
+<h2 id="Situation"><a href="#Situation" class="headerlink" title="Situation"></a>Situation</h2><p>We have a service A running in k8s cluster, there is an external host name setup to expose the API to public, Requests sent through this API will be route to this service,</p>
+<p>Here is the public host name setup:<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">▶ kubectl <span class="builtin-name">get</span> ingress -n ingress</span><br><span class="line">NAME                   HOSTS              <span class="built_in"> ADDRESS </span>  PORTS   AGE</span><br><span class="line">service-a          public.domain.com             80      297d</span><br></pre></td></tr></table></figure></p>
+<p>and it also has k8s service set up:</p>
+<p>So far, this is running happily on production,<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">▶ kubectl get pods -n emaildelivery</span><br><span class="line">NAME                                   READY   STATUS    RESTARTS   AGE</span><br><span class="line">service-a<span class="number">-68</span>db48dff7-pckg9         <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">0</span>          <span class="number">195</span>d</span><br><span class="line">service-a<span class="number">-68</span>db48dff7-rxtm4         <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">5</span>          <span class="number">159</span>d</span><br></pre></td></tr></table></figure></p>
+<h2 id="Canary-Deployment"><a href="#Canary-Deployment" class="headerlink" title="Canary Deployment"></a>Canary Deployment</h2><h3 id="Deploy-new-pods-with-correct-annotation"><a href="#Deploy-new-pods-with-correct-annotation" class="headerlink" title="Deploy new pods with correct annotation"></a>Deploy new pods with correct annotation</h3><p>You will need to deploy new pods for sure, without overwriting current pods, you can do this by deploying new pods with a new application name or using a different namespace.</p>
+<p>I want to reuse the same namespace, so I changed the application name to <code>service-a-canary</code>.</p>
+<p>Then comes to the fun part, Keep all the necessary labels as <code>service-a</code> in the resources. Resources you will need to change include <code>service.yaml</code>, <code>deployment.yaml</code>, <code>ingress.yaml</code>.</p>
+<p>Key changes are as follows:</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">metadata:</span></span><br><span class="line"><span class="symbol">  namespace:</span> service-a</span><br><span class="line"><span class="symbol">  name:</span> service-a-canary</span><br><span class="line"><span class="symbol">  labels:</span></span><br><span class="line"><span class="symbol">    name:</span> service-a</span><br><span class="line">...</span><br><span class="line"><span class="symbol">selector:</span></span><br><span class="line"><span class="symbol">    matchLabels:</span></span><br><span class="line"><span class="symbol">      app:</span> service-a</span><br></pre></td></tr></table></figure>
+<p>If you release the new pods at this time point, new pods will running fine, but serving no traffic:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">▶ kubectl get pods -n service-a</span><br><span class="line">NAME                               READY   STATUS    RESTARTS   AGE</span><br><span class="line">service-a<span class="number">-68</span>db48dff7-pckg9         <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">0</span>          <span class="number">195</span>d</span><br><span class="line">service-a<span class="number">-68</span>db48dff7-rxtm4         <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">0</span>          <span class="number">159</span>d</span><br><span class="line">service-a-canary<span class="number">-6</span>f7784fc7-wg7kz   <span class="number">1</span>/<span class="number">1</span>     Running   <span class="number">0</span>          <span class="number">2</span>d20h</span><br></pre></td></tr></table></figure>
+<h3 id="Enable-canary-with-ingress-controller"><a href="#Enable-canary-with-ingress-controller" class="headerlink" title="Enable canary with ingress-controller"></a>Enable canary with ingress-controller</h3><p>To make canary deployment serving real traffic, simply adding few lines in ingress.yaml</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx<span class="selector-class">.ingress</span><span class="selector-class">.kubernetes</span><span class="selector-class">.io</span>/canary: <span class="string">"true"</span></span><br><span class="line">nginx<span class="selector-class">.ingress</span><span class="selector-class">.kubernetes</span><span class="selector-class">.io</span>/canary-weight: <span class="string">"10"</span></span><br></pre></td></tr></table></figure>
+<p>nginx.ingress.kubernetes.io/canary-weight is the percentage of traffic that will be routed to canary deployment.</p>
+<p>NOW, you can check your logs to see if traffic routed to canary deployment.</p>
 
       
     </div>
@@ -511,7 +509,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Growth/" rel="tag"># Growth</a>
+            <a href="/tags/k8s/" rel="tag"># k8s</a>
           
         </div>
       
@@ -524,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Life/写给Daphne的诗/" rel="next" title="写给Daphne的诗">
-                <i class="fa fa-chevron-left"></i> 写给Daphne的诗
+              <a href="/System-Design/Realtime-Distributed-OLAP-Datastore/" rel="next" title="Realtime Distributed OLAP Datastore">
+                <i class="fa fa-chevron-left"></i> Realtime Distributed OLAP Datastore
               </a>
             
           </div>
@@ -533,10 +531,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/System-Design/Best-practises-to-use-Apache-Spark/" rel="prev" title="Best practices to use Apache Spark">
-                Best practices to use Apache Spark <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -587,8 +581,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -748,6 +751,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Situation"><span class="nav-number">1.</span> <span class="nav-text">Situation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Canary-Deployment"><span class="nav-number">2.</span> <span class="nav-text">Canary Deployment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-new-pods-with-correct-annotation"><span class="nav-number">2.1.</span> <span class="nav-text">Deploy new pods with correct annotation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enable-canary-with-ingress-controller"><span class="nav-number">2.2.</span> <span class="nav-text">Enable canary with ingress-controller</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -929,9 +949,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yqian1991.github.io/Life/Starting-a-new-journey/";
-    this.page.identifier = "Life/Starting-a-new-journey/";
-    this.page.title = 'Starting a new journey';
+    this.page.url = "http://yqian1991.github.io/SRE/Canary-Deployment-with-k8s-ingress-controller/";
+    this.page.identifier = "SRE/Canary-Deployment-with-k8s-ingress-controller/";
+    this.page.title = 'Canary Deployment with k8s ingress-controller';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
@@ -1041,13 +1061,13 @@
       var articles = db.collection('articles')
 
       //https://hexo.io/docs/variables.html
-      var isPost = 'Starting a new journey'.length > 0
+      var isPost = 'Canary Deployment with k8s ingress-controller'.length > 0
       var isArchive = '' === 'true'
       var isCategory = ''.length > 0
       var isTag = ''.length > 0
 
       if (isPost) { //is article page
-        var title = 'Starting a new journey'
+        var title = 'Canary Deployment with k8s ingress-controller'
         var doc = articles.doc(title)
 
         getCount(doc, true).then(appendCountTo($('.post-meta')))
