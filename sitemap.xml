@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yqian1991.github.io/SRE/Canary-Deployment-with-k8s-ingress-controller/</loc>
+    <loc>http://yqian1991.github.io/System-Design/Realtime-Distributed-OLAP-Datastore/</loc>
     
-    <lastmod>2020-03-03T02:02:00.156Z</lastmod>
+    <lastmod>2020-03-03T02:10:19.316Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/System-Design/Realtime-Distributed-OLAP-Datastore/</loc>
+    <loc>http://yqian1991.github.io/SRE/Canary-Deployment-with-k8s-ingress-controller/</loc>
     
-    <lastmod>2020-03-02T02:31:14.330Z</lastmod>
+    <lastmod>2020-03-03T02:02:00.156Z</lastmod>
     
   </url>
   
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/Life/%E5%86%99%E7%BB%99Daphne%E7%9A%84%E8%AF%97/</loc>
+    <loc>http://yqian1991.github.io/System-Design/how_to_build_a_feed_system/</loc>
     
     <lastmod>2019-09-21T00:35:13.443Z</lastmod>
     
@@ -79,7 +79,7 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/System-Design/how_to_build_a_feed_system/</loc>
+    <loc>http://yqian1991.github.io/Life/%E5%86%99%E7%BB%99Daphne%E7%9A%84%E8%AF%97/</loc>
     
     <lastmod>2019-09-21T00:35:13.443Z</lastmod>
     
@@ -100,6 +100,13 @@
   </url>
   
   <url>
+    <loc>http://yqian1991.github.io/Data-Science/Notes-on-data-science-self-learning/</loc>
+    
+    <lastmod>2019-09-21T00:35:13.442Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yqian1991.github.io/Languages/Python-2-and-Python-3/</loc>
     
     <lastmod>2019-09-21T00:35:13.442Z</lastmod>
@@ -114,28 +121,7 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/Data-Science/Notes-on-data-science-self-learning/</loc>
-    
-    <lastmod>2019-09-21T00:35:13.442Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yqian1991.github.io/System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/</loc>
-    
-    <lastmod>2019-09-21T00:35:13.442Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yqian1991.github.io/Languages/The-poem-of-Python/</loc>
-    
-    <lastmod>2019-09-21T00:35:13.442Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yqian1991.github.io/Software-Development/Things-I-learnt-from-colleagues/</loc>
     
     <lastmod>2019-09-21T00:35:13.442Z</lastmod>
     
@@ -149,14 +135,28 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/System-Design/Data-pipeline-with-Airflow-Go-serverless/</loc>
+    <loc>http://yqian1991.github.io/Software-Development/Things-I-learnt-from-colleagues/</loc>
+    
+    <lastmod>2019-09-21T00:35:13.442Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yqian1991.github.io/Languages/The-poem-of-Python/</loc>
+    
+    <lastmod>2019-09-21T00:35:13.442Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yqian1991.github.io/System-Design/Fun-topics-in-distributed-system/</loc>
     
     <lastmod>2019-09-21T00:35:13.441Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/System-Design/Fun-topics-in-distributed-system/</loc>
+    <loc>http://yqian1991.github.io/System-Design/Data-pipeline-with-Airflow-Go-serverless/</loc>
     
     <lastmod>2019-09-21T00:35:13.441Z</lastmod>
     
