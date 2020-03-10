@@ -4,7 +4,7 @@
   <url>
     <loc>http://yqian1991.github.io/System-Design/Realtime-Distributed-OLAP-Datastore/</loc>
     
-    <lastmod>2020-03-03T02:10:19.316Z</lastmod>
+    <lastmod>2020-03-10T02:15:27.825Z</lastmod>
     
   </url>
   
@@ -100,13 +100,6 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/Data-Science/Notes-on-data-science-self-learning/</loc>
-    
-    <lastmod>2019-09-21T00:35:13.442Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yqian1991.github.io/Languages/Python-2-and-Python-3/</loc>
     
     <lastmod>2019-09-21T00:35:13.442Z</lastmod>
@@ -114,7 +107,7 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/Software-Development/Searching-with-bloom-filter/</loc>
+    <loc>http://yqian1991.github.io/Data-Science/Notes-on-data-science-self-learning/</loc>
     
     <lastmod>2019-09-21T00:35:13.442Z</lastmod>
     
@@ -122,6 +115,13 @@
   
   <url>
     <loc>http://yqian1991.github.io/System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/</loc>
+    
+    <lastmod>2019-09-21T00:35:13.442Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yqian1991.github.io/Software-Development/Searching-with-bloom-filter/</loc>
     
     <lastmod>2019-09-21T00:35:13.442Z</lastmod>
     
@@ -149,14 +149,14 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/System-Design/Fun-topics-in-distributed-system/</loc>
+    <loc>http://yqian1991.github.io/System-Design/Data-pipeline-with-Airflow-Go-serverless/</loc>
     
     <lastmod>2019-09-21T00:35:13.441Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/System-Design/Data-pipeline-with-Airflow-Go-serverless/</loc>
+    <loc>http://yqian1991.github.io/System-Design/Fun-topics-in-distributed-system/</loc>
     
     <lastmod>2019-09-21T00:35:13.441Z</lastmod>
     
@@ -170,14 +170,14 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/System-Design/How-we-implemented-consistent-hashing-efficiently/</loc>
+    <loc>http://yqian1991.github.io/System-Design/NLP-in-big-companies/</loc>
     
     <lastmod>2019-09-21T00:35:13.441Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/System-Design/NLP-in-big-companies/</loc>
+    <loc>http://yqian1991.github.io/System-Design/How-we-implemented-consistent-hashing-efficiently/</loc>
     
     <lastmod>2019-09-21T00:35:13.441Z</lastmod>
     
