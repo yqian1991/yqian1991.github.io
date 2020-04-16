@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yqian1991.github.io/"/>
-  <updated>2020-04-16T01:27:19.843Z</updated>
+  <updated>2020-04-16T01:27:59.549Z</updated>
   <id>http://yqian1991.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Understanding blocking/non-blocking, sync/async</title>
+    <title>The way to async I/O</title>
     <link href="http://yqian1991.github.io/Software-Development/Understanding-blocking-non-blocking-sync-async/"/>
     <id>http://yqian1991.github.io/Software-Development/Understanding-blocking-non-blocking-sync-async/</id>
     <published>2020-04-15T22:02:39.000Z</published>
-    <updated>2020-04-16T01:27:19.843Z</updated>
+    <updated>2020-04-16T01:27:59.549Z</updated>
     
     <content type="html"><![CDATA[<h1 id="CPU-intensive-vs-I-O-intensive"><a href="#CPU-intensive-vs-I-O-intensive" class="headerlink" title="CPU intensive vs I/O intensive"></a>CPU intensive vs I/O intensive</h1><p>If your program is not interacting with disks, media, devices, network and peripheries, then it is CPU intensive, otherwise it is I/O intensive.</p><p>The mode really effects the performance of your program. For example, if you want to know how many RPS my program can handle:</p><ul><li><p>For CPU intensive: (Number of Cores) / time_to_complete_a_request_in_seconds</p></li><li><p>For I/O intensive: (RAM / worker memory) / time_to_complete_a_request_in_seconds</p><p>In I/O intensive scenarios, CPU is doing nothing, so the performance is limited by how many workers are running, thus memory related.</p></li></ul><h1 id="Blocking-vs-Non-blocking"><a href="#Blocking-vs-Non-blocking" class="headerlink" title="Blocking vs Non-blocking"></a>Blocking vs Non-blocking</h1><p>When a program spending most of the time dealing with I/O and not doing anything else, then it will be blocked by the I/O operations, thus CPU stay there and do nothing.</p><p>In order to reuse CPU during waiting, we need to make it non blocking.</p><p>Essentially, it means instead of waiting, it periodically checking the status of I/O operation, only back to handle it if it finishes, otherwise, allow the system to do other tasks.</p><h1 id="Synchronous-vs-asynchronous"><a href="#Synchronous-vs-asynchronous" class="headerlink" title="Synchronous vs asynchronous"></a>Synchronous vs asynchronous</h1><p>Blocking and synchronous are almost the same, a thread focuses on doing one task, no distractions.</p><p>But the difference between non-blocking and asynchronous sometimes is hard to understand. They can be the same in many ways, especially when you don’t deep dive into it.</p><p>If we understand it at thread level, asynchronous means task can be delegated to a different thread, responses can be communicated by other ways like event driven or an callback mechanism, whereas, non-blocking, the thread needs to periodically checking result until task finished.</p><h1 id="Different-models"><a href="#Different-models" class="headerlink" title="Different models"></a>Different models</h1><p>You can design a program as:</p><ul><li><p>synchronous, non-blocking I/O: Since we still need to periodically checking task status in the same thread, and concurrency can only be achieved by spawning more threads, thus more overhead doing context switch.</p></li><li><p>asynchronous, non-blocking I/O: This is preferred by modern web servers. E.g you can achieve this by one thread using event loop. Some real life examples are Python Twisted, Java Netty.</p></li></ul>]]></content>
     

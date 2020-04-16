@@ -401,7 +401,7 @@
         
           <a class="post-title-link" href="/Software-Development/Understanding-blocking-non-blocking-sync-async/" itemprop="url">
             
-              <span itemprop="name">Understanding blocking/non-blocking, sync/async</span>
+              <span itemprop="name">The way to async I/O</span>
             
           </a>
         
@@ -1204,7 +1204,7 @@
       else if (!isArchive && !isCategory && !isTag) { //is index page
         var titles = [] //array to titles
 
-        var postsstr = 'titles.push("Understanding blocking/non-blocking, sync/async");titles.push("Canary Deployment with k8s ingress-controller");titles.push("Realtime Distributed OLAP Datastore");titles.push("100 Questions About Cassandra");titles.push("我们的2019");titles.push("Best practices to use Apache Spark");titles.push("Starting a new journey");titles.push("写给Daphne的诗");titles.push("Fun topics in distributed system");titles.push("Hidden Companies (Toronto)");' //if you have a better way to get titles of posts, please change it
+        var postsstr = 'titles.push("The way to async I/O");titles.push("Canary Deployment with k8s ingress-controller");titles.push("Realtime Distributed OLAP Datastore");titles.push("100 Questions About Cassandra");titles.push("我们的2019");titles.push("Best practices to use Apache Spark");titles.push("Starting a new journey");titles.push("写给Daphne的诗");titles.push("Fun topics in distributed system");titles.push("Hidden Companies (Toronto)");' //if you have a better way to get titles of posts, please change it
         eval(postsstr)
 
         var promises = titles.map(function (title) {
