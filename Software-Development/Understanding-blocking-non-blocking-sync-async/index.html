@@ -97,18 +97,18 @@
 
 
 
-  <meta name="description" content="CPU intensive vs I/O intensiveIf your program is not interacting with disks, media, devices, network and peripheries, then it is CPU intensive, otherwise it is I/O intensive. The mode really effects t">
+  <meta name="description" content="Concurrency vs Parallelism Concurrency: Do multiple tasks at the same time.  Parallelism: Do one task at a time, but the task can be splitted to multiple sub tasks which can be executed in parallel.">
 <meta name="keywords" content="Async">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The way to async I&#x2F;O">
 <meta property="og:url" content="http://yqian1991.github.io/Software-Development/Understanding-blocking-non-blocking-sync-async/index.html">
 <meta property="og:site_name" content="Yu of Daphne">
-<meta property="og:description" content="CPU intensive vs I/O intensiveIf your program is not interacting with disks, media, devices, network and peripheries, then it is CPU intensive, otherwise it is I/O intensive. The mode really effects t">
+<meta property="og:description" content="Concurrency vs Parallelism Concurrency: Do multiple tasks at the same time.  Parallelism: Do one task at a time, but the task can be splitted to multiple sub tasks which can be executed in parallel.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-04-16T01:27:59.549Z">
+<meta property="og:updated_time" content="2020-04-16T03:02:40.972Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The way to async I&#x2F;O">
-<meta name="twitter:description" content="CPU intensive vs I/O intensiveIf your program is not interacting with disks, media, devices, network and peripheries, then it is CPU intensive, otherwise it is I/O intensive. The mode really effects t">
+<meta name="twitter:description" content="Concurrency vs Parallelism Concurrency: Do multiple tasks at the same time.  Parallelism: Do one task at a time, but the task can be splitted to multiple sub tasks which can be executed in parallel.">
 
 
 
@@ -399,7 +399,7 @@
                 
               
 
-              <time title="Created: 2020-04-15 18:02:39 / Modified: 21:27:59" itemprop="dateCreated datePublished" datetime="2020-04-15T18:02:39-04:00">2020-04-15</time>
+              <time title="Created: 2020-04-15 18:02:39 / Modified: 23:02:40" itemprop="dateCreated datePublished" datetime="2020-04-15T18:02:39-04:00">2020-04-15</time>
             
 
             
@@ -469,7 +469,13 @@
       
 
       
-        <h1 id="CPU-intensive-vs-I-O-intensive"><a href="#CPU-intensive-vs-I-O-intensive" class="headerlink" title="CPU intensive vs I/O intensive"></a>CPU intensive vs I/O intensive</h1><p>If your program is not interacting with disks, media, devices, network and peripheries, then it is CPU intensive, otherwise it is I/O intensive.</p>
+        <h1 id="Concurrency-vs-Parallelism"><a href="#Concurrency-vs-Parallelism" class="headerlink" title="Concurrency vs Parallelism"></a>Concurrency vs Parallelism</h1><ul>
+<li><p>Concurrency: Do multiple tasks at the same time.</p>
+</li>
+<li><p>Parallelism: Do one task at a time, but the task can be splitted to multiple sub tasks which can be executed in parallel.</p>
+</li>
+</ul>
+<h1 id="CPU-intensive-vs-I-O-intensive"><a href="#CPU-intensive-vs-I-O-intensive" class="headerlink" title="CPU intensive vs I/O intensive"></a>CPU intensive vs I/O intensive</h1><p>If your program is not interacting with disks, media, devices, network and peripheries, then it is CPU intensive, otherwise it is I/O intensive.</p>
 <p>The mode really effects the performance of your program. For example, if you want to know how many RPS my program can handle:</p>
 <ul>
 <li><p>For CPU intensive: (Number of Cores) / time_to_complete_a_request_in_seconds</p>
@@ -769,7 +775,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CPU-intensive-vs-I-O-intensive"><span class="nav-number">1.</span> <span class="nav-text">CPU intensive vs I/O intensive</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Blocking-vs-Non-blocking"><span class="nav-number">2.</span> <span class="nav-text">Blocking vs Non-blocking</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Synchronous-vs-asynchronous"><span class="nav-number">3.</span> <span class="nav-text">Synchronous vs asynchronous</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Different-models"><span class="nav-number">4.</span> <span class="nav-text">Different models</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Concurrency-vs-Parallelism"><span class="nav-number">1.</span> <span class="nav-text">Concurrency vs Parallelism</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CPU-intensive-vs-I-O-intensive"><span class="nav-number">2.</span> <span class="nav-text">CPU intensive vs I/O intensive</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Blocking-vs-Non-blocking"><span class="nav-number">3.</span> <span class="nav-text">Blocking vs Non-blocking</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Synchronous-vs-asynchronous"><span class="nav-number">4.</span> <span class="nav-text">Synchronous vs asynchronous</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Different-models"><span class="nav-number">5.</span> <span class="nav-text">Different models</span></a></li></ol></div>
             
 
           </div>
