@@ -97,18 +97,18 @@
 
 
 
-  <meta name="description" content="There are a lot job websites we use to seek a job, like LinkedIn, GlassDoor, Indeed, Monster. But there is still a ton of jobs outside those popular sites. And also, most of time, we are interested in">
-<meta name="keywords" content="Job seeking">
+  <meta name="description" content="CPU intensive vs I/O intensiveIf your program is not interacting with disks, media, devices, network and peripheries, then it is CPU intensive, otherwise it is I/O intensive. The mode really effects t">
+<meta name="keywords" content="Async">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hidden Companies (Toronto)">
-<meta property="og:url" content="http://yqian1991.github.io/Careers/Hidden-Companies/index.html">
+<meta property="og:title" content="Understanding blocking&#x2F;non-blocking, sync&#x2F;async">
+<meta property="og:url" content="http://yqian1991.github.io/Software-Development/Understanding-blocking-non-blocking-sync-async/index.html">
 <meta property="og:site_name" content="Yu of Daphne">
-<meta property="og:description" content="There are a lot job websites we use to seek a job, like LinkedIn, GlassDoor, Indeed, Monster. But there is still a ton of jobs outside those popular sites. And also, most of time, we are interested in">
+<meta property="og:description" content="CPU intensive vs I/O intensiveIf your program is not interacting with disks, media, devices, network and peripheries, then it is CPU intensive, otherwise it is I/O intensive. The mode really effects t">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-21T00:35:13.441Z">
+<meta property="og:updated_time" content="2020-04-16T01:27:19.843Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hidden Companies (Toronto)">
-<meta name="twitter:description" content="There are a lot job websites we use to seek a job, like LinkedIn, GlassDoor, Indeed, Monster. But there is still a ton of jobs outside those popular sites. And also, most of time, we are interested in">
+<meta name="twitter:title" content="Understanding blocking&#x2F;non-blocking, sync&#x2F;async">
+<meta name="twitter:description" content="CPU intensive vs I/O intensiveIf your program is not interacting with disks, media, devices, network and peripheries, then it is CPU intensive, otherwise it is I/O intensive. The mode really effects t">
 
 
 
@@ -116,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://yqian1991.github.io/Careers/Hidden-Companies/">
+  <link rel="canonical" href="http://yqian1991.github.io/Software-Development/Understanding-blocking-non-blocking-sync-async/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>Hidden Companies (Toronto) | Yu of Daphne</title>
+  <title>Understanding blocking/non-blocking, sync/async | Yu of Daphne</title>
   
 
 
@@ -356,7 +356,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/Careers/Hidden-Companies/">
+    <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/Software-Development/Understanding-blocking-non-blocking-sync-async/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yu Qian">
@@ -373,7 +373,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hidden Companies (Toronto)
+          <h1 class="post-title" itemprop="name headline">Understanding blocking/non-blocking, sync/async
 
               
             
@@ -399,24 +399,12 @@
                 
               
 
-              <time title="Created: 2019-04-20 11:32:04" itemprop="dateCreated datePublished" datetime="2019-04-20T11:32:04-04:00">2019-04-20</time>
+              <time title="Created: 2020-04-15 18:02:39 / Modified: 21:27:19" itemprop="dateCreated datePublished" datetime="2020-04-15T18:02:39-04:00">2020-04-15</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-09-20 20:35:13" itemprop="dateModified" datetime="2019-09-20T20:35:13-04:00">2019-09-20</time>
               
             
           </span>
@@ -433,7 +421,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Careers/" itemprop="url" rel="index"><span itemprop="name">Careers</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Software-Development/" itemprop="url" rel="index"><span itemprop="name">Software Development</span></a></span>
 
                 
                 
@@ -452,8 +440,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/Careers/Hidden-Companies/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Careers/Hidden-Companies/" itemprop="commentCount"></span>
+                <a href="/Software-Development/Understanding-blocking-non-blocking-sync-async/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Software-Development/Understanding-blocking-non-blocking-sync-async/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -481,18 +469,27 @@
       
 
       
-        <p>There are a lot job websites we use to seek a job, like LinkedIn, GlassDoor, Indeed, Monster.</p>
-<p>But there is still a ton of jobs outside those popular sites. And also, most of time, we are interested in opportunities in our local area.</p>
-<p>I did find a lot hidden companies that not easy to be aware of(based in Toronto). Usually due to the following reasons:</p>
+        <h1 id="CPU-intensive-vs-I-O-intensive"><a href="#CPU-intensive-vs-I-O-intensive" class="headerlink" title="CPU intensive vs I/O intensive"></a>CPU intensive vs I/O intensive</h1><p>If your program is not interacting with disks, media, devices, network and peripheries, then it is CPU intensive, otherwise it is I/O intensive.</p>
+<p>The mode really effects the performance of your program. For example, if you want to know how many RPS my program can handle:</p>
 <ul>
-<li><p>They don’t have physical offices in Toronto, but support remote working:<br>Stripe<br>Github<br>DataDog<br>Zapier</p>
+<li><p>For CPU intensive: (Number of Cores) / time_to_complete_a_request_in_seconds</p>
 </li>
-<li><p>They are actually good ones/Unicorns, but they only run a tiny team in Toronto, thus less advertised and less presence:<br>Etsy<br>Snap: Through acquisition of Bitmoji<br>Okta<br>iHerb<br>Pivotal (CloudFoundry)<br>Instacart: This one is getting bigger and bigger in Toronto.</p>
+<li><p>For I/O intensive: (RAM / worker memory) / time_to_complete_a_request_in_seconds</p>
+<p>In I/O intensive scenarios, CPU is doing nothing, so the performance is limited by how many workers are running, thus memory related.</p>
 </li>
 </ul>
-<p>Many companies entered Toronto tech scene through acquiring local startups</p>
+<h1 id="Blocking-vs-Non-blocking"><a href="#Blocking-vs-Non-blocking" class="headerlink" title="Blocking vs Non-blocking"></a>Blocking vs Non-blocking</h1><p>When a program spending most of the time dealing with I/O and not doing anything else, then it will be blocked by the I/O operations, thus CPU stay there and do nothing.</p>
+<p>In order to reuse CPU during waiting, we need to make it non blocking.</p>
+<p>Essentially, it means instead of waiting, it periodically checking the status of I/O operation, only back to handle it if it finishes, otherwise, allow the system to do other tasks.</p>
+<h1 id="Synchronous-vs-asynchronous"><a href="#Synchronous-vs-asynchronous" class="headerlink" title="Synchronous vs asynchronous"></a>Synchronous vs asynchronous</h1><p>Blocking and synchronous are almost the same, a thread focuses on doing one task, no distractions.</p>
+<p>But the difference between non-blocking and asynchronous sometimes is hard to understand. They can be the same in many ways, especially when you don’t deep dive into it.</p>
+<p>If we understand it at thread level, asynchronous means task can be delegated to a different thread, responses can be communicated by other ways like event driven or an callback mechanism, whereas, non-blocking, the thread needs to periodically checking result until task finished.</p>
+<h1 id="Different-models"><a href="#Different-models" class="headerlink" title="Different models"></a>Different models</h1><p>You can design a program as:</p>
 <ul>
-<li>They are emerging startups, but some of them will become popular.<br>Dessa<br>Element AI</li>
+<li><p>synchronous, non-blocking I/O: Since we still need to periodically checking task status in the same thread, and concurrency can only be achieved by spawning more threads, thus more overhead doing context switch.</p>
+</li>
+<li><p>asynchronous, non-blocking I/O: This is preferred by modern web servers. E.g you can achieve this by one thread using event loop. Some real life examples are Python Twisted, Java Netty.</p>
+</li>
 </ul>
 
       
@@ -517,7 +514,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Job-seeking/" rel="tag"># Job seeking</a>
+            <a href="/tags/Async/" rel="tag"># Async</a>
           
         </div>
       
@@ -530,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/System-Design/NLP-in-big-companies/" rel="next" title="NLP in big companies">
-                <i class="fa fa-chevron-left"></i> NLP in big companies
+              <a href="/SRE/Canary-Deployment-with-k8s-ingress-controller/" rel="next" title="Canary Deployment with k8s ingress-controller">
+                <i class="fa fa-chevron-left"></i> Canary Deployment with k8s ingress-controller
               </a>
             
           </div>
@@ -539,10 +536,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/System-Design/Fun-topics-in-distributed-system/" rel="prev" title="Fun topics in distributed system">
-                Fun topics in distributed system <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -593,8 +586,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -756,6 +758,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CPU-intensive-vs-I-O-intensive"><span class="nav-number">1.</span> <span class="nav-text">CPU intensive vs I/O intensive</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Blocking-vs-Non-blocking"><span class="nav-number">2.</span> <span class="nav-text">Blocking vs Non-blocking</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Synchronous-vs-asynchronous"><span class="nav-number">3.</span> <span class="nav-text">Synchronous vs asynchronous</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Different-models"><span class="nav-number">4.</span> <span class="nav-text">Different models</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -937,9 +956,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yqian1991.github.io/Careers/Hidden-Companies/";
-    this.page.identifier = "Careers/Hidden-Companies/";
-    this.page.title = 'Hidden Companies (Toronto)';
+    this.page.url = "http://yqian1991.github.io/Software-Development/Understanding-blocking-non-blocking-sync-async/";
+    this.page.identifier = "Software-Development/Understanding-blocking-non-blocking-sync-async/";
+    this.page.title = 'Understanding blocking/non-blocking, sync/async';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
@@ -1049,13 +1068,13 @@
       var articles = db.collection('articles')
 
       //https://hexo.io/docs/variables.html
-      var isPost = 'Hidden Companies (Toronto)'.length > 0
+      var isPost = 'Understanding blocking/non-blocking, sync/async'.length > 0
       var isArchive = '' === 'true'
       var isCategory = ''.length > 0
       var isTag = ''.length > 0
 
       if (isPost) { //is article page
-        var title = 'Hidden Companies (Toronto)'
+        var title = 'Understanding blocking/non-blocking, sync/async'
         var doc = articles.doc(title)
 
         getCount(doc, true).then(appendCountTo($('.post-meta')))
