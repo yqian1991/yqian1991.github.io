@@ -97,16 +97,18 @@
 
 
 
-  <meta name="description" content="Do something matters">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yu of Daphne">
-<meta property="og:url" content="http://yqian1991.github.io/tags/CI-CD/index.html">
+  <meta name="description" content="Spark structured streaming is implemented in spark sql module. Spark Session:sparkSession is the entry to Spark sql and structured streaming.  Spark Context: spark context is the entry point of spark,">
+<meta name="keywords" content="Streaming processing,Learning Notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark Structured Streaming Internal">
+<meta property="og:url" content="http://yqian1991.github.io/System-Design/Spark-Structured-Streaming-Internal/index.html">
 <meta property="og:site_name" content="Yu of Daphne">
-<meta property="og:description" content="Do something matters">
+<meta property="og:description" content="Spark structured streaming is implemented in spark sql module. Spark Session:sparkSession is the entry to Spark sql and structured streaming.  Spark Context: spark context is the entry point of spark,">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-31T03:41:48.685Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yu of Daphne">
-<meta name="twitter:description" content="Do something matters">
+<meta name="twitter:title" content="Spark Structured Streaming Internal">
+<meta name="twitter:description" content="Spark structured streaming is implemented in spark sql module. Spark Session:sparkSession is the entry to Spark sql and structured streaming.  Spark Context: spark context is the entry point of spark,">
 
 
 
@@ -114,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://yqian1991.github.io/tags/CI-CD/">
+  <link rel="canonical" href="http://yqian1991.github.io/System-Design/Spark-Structured-Streaming-Internal/">
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>Tag: CI/CD | Yu of Daphne</title>
+  <title>Spark Structured Streaming Internal | Yu of Daphne</title>
   
 
 
@@ -172,7 +174,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -252,7 +254,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -334,83 +336,266 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>CI/CD<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/System-Design/Spark-Structured-Streaming-Internal/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yu Qian">
+      <meta itemprop="description" content="Do something matters">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yu of Daphne">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/Software-Development/Git-branching-model-for-development/" itemprop="url">
-            
-              <span itemprop="name">Git branching model for development</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Spark Structured Streaming Internal
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-05-01T21:58:23-04:00" content="2018-05-01">
-          05-01
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-05-30 22:58:25 / Modified: 23:41:48" itemprop="dateCreated datePublished" datetime="2020-05-30T22:58:25-04:00">2020-05-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/System-Design/" itemprop="url" rel="index"><span itemprop="name">System Design</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/System-Design/Spark-Structured-Streaming-Internal/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="System-Design/Spark-Structured-Streaming-Internal/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Spark structured streaming is implemented in spark sql module.</p>
+<h1 id="Spark-Session"><a href="#Spark-Session" class="headerlink" title="Spark Session:"></a>Spark Session:</h1><p>sparkSession is the entry to Spark sql and structured streaming.</p>
+<ul>
+<li>Spark Context: spark context is the entry point of spark, so it’s naturally the bedrock of spark session as well.</li>
+<li>readStream: Read streaming data in as a DataFrame, this method returns an DataStreamReader object</li>
+<li>StreamingQueryManager: Managing the execution of all streaming quires</li>
+<li>createDataFrame: Generate Data frames from various sources,(DataFrame=Dataset[Row])</li>
+<li>createDataset:</li>
+<li>sql: execute sql quires and return data as DataFrame</li>
+</ul>
+<h1 id="DataStreamReader-and-DataStreamWriter"><a href="#DataStreamReader-and-DataStreamWriter" class="headerlink" title="DataStreamReader and DataStreamWriter"></a>DataStreamReader and DataStreamWriter</h1><ul>
+<li>DataStreamReader: Load streaming data from external sources</li>
+<li>DataStreamWriter: Output streaming data to external sources<br>DataStreamWriter has a start() method which calls <code>df.sparkSession.sessionState.StreamingQueryManager.startQuery()</code> to start streaming query.<br>As you can see, the query is started through StreamingQueryManager.</li>
+</ul>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">streamSource = spark \</span><br><span class="line">  .readStream \</span><br><span class="line">  .format(<span class="string">"kafka"</span>) \</span><br><span class="line">  .option(<span class="string">"kafka.bootstrap.servers"</span>, <span class="type">KAFKA_BROKER</span>) \</span><br><span class="line">  .option(<span class="string">"subscribe"</span>, <span class="type">KAFKA_TOPIC</span>) \</span><br><span class="line">  .option(<span class="string">"startingOffsets"</span>, <span class="string">"earliest"</span>) \</span><br><span class="line">  .option(<span class="string">"group.id"</span>,  <span class="type">CONSUMER_ID</span>) \</span><br><span class="line">  .load()   <span class="comment">// DataStreamReader</span></span><br><span class="line"></span><br><span class="line">output = streamSource \</span><br><span class="line">  .writeStream \</span><br><span class="line">  .outputMode(<span class="string">"complete"</span>) \</span><br><span class="line">  .trigger(processingTime = trigger_interval) \</span><br><span class="line">  .foreach(sink) \</span><br><span class="line">  .start() <span class="comment">// DataStreamWriter</span></span><br></pre></td></tr></table></figure>
+<h1 id="Dataset-API"><a href="#Dataset-API" class="headerlink" title="Dataset API"></a>Dataset API</h1><p>Dataset is a strong typed data structure used to do transformations and actions in structured streaming.</p>
+<ul>
+<li>logicalPlan: After transformations and actions defined on a Dataset, it will be analyzed to logical plan, then optimized to physical plan for final execution.</li>
+</ul>
+<p>Some features can be applied are:</p>
+<ul>
+<li>withWatermark: A watermark defines a point in time before which we assume no more late data is going to arrive. This is useful for late data in streaming situation.</li>
+<li>checkpoint: Apply dataset checkpointing, either eagerly or non eagerly.</li>
+<li><p>cache: Cache dataset to memory.</p>
+<p>A lot transformations can be applied:</p>
+<ul>
+<li>groupBy:</li>
+<li>groupByKey: This will return a KeyValueGroupedDataset</li>
+<li>agg:</li>
+<li>repartition/coalesce: Returns a new dataset by specified partitioning.</li>
+</ul>
+</li>
+</ul>
+<h1 id="StreamingQueryManager"><a href="#StreamingQueryManager" class="headerlink" title="StreamingQueryManager"></a>StreamingQueryManager</h1><p>Manages all the StreamingQuerys active in a <code>SparkSession</code>.</p>
+<ul>
+<li><code>startQuery</code> method: create query with DataFrame and call StreamingExecution start()</li>
+</ul>
+<h1 id="StreamingExecution"><a href="#StreamingExecution" class="headerlink" title="StreamingExecution"></a>StreamingExecution</h1><p>StreamingExecution is a implementation of trait StreamingQuery, it can be:</p>
+<ul>
+<li>ContinousExecution</li>
+<li>MicrobatchExecution</li>
+</ul>
+<p>Some methods in StreamingExecution:</p>
+<ul>
+<li>start(): start a thread of queryEexcutionThread</li>
+<li>queryExecutionThread: This thread will run method runStream()</li>
+<li>runStream(): The method to materialize the streaming query</li>
+<li>runActivatedStream: All implementations need to implement this method. working on the logical plan</li>
+</ul>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Streaming-processing/" rel="tag"># Streaming processing</a>
+          
+            <a href="/tags/Learning-Notes/" rel="tag"># Learning Notes</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/System-Design/Spark-Streaming-Source-Code-Understanding/" rel="next" title="Spark Streaming Understanding">
+                <i class="fa fa-chevron-left"></i> Spark Streaming Understanding
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -430,8 +615,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -594,6 +788,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spark-Session"><span class="nav-number">1.</span> <span class="nav-text">Spark Session:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DataStreamReader-and-DataStreamWriter"><span class="nav-number">2.</span> <span class="nav-text">DataStreamReader and DataStreamWriter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dataset-API"><span class="nav-number">3.</span> <span class="nav-text">Dataset API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#StreamingQueryManager"><span class="nav-number">4.</span> <span class="nav-text">StreamingQueryManager</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#StreamingExecution"><span class="nav-number">5.</span> <span class="nav-text">StreamingExecution</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -750,6 +961,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -768,9 +983,46 @@
   <script id="dsq-count-scr" src="https://yqian1991.disqus.com/count.js" async></script>
 
 
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yqian1991.github.io/System-Design/Spark-Structured-Streaming-Internal/";
+    this.page.identifier = "System-Design/Spark-Structured-Streaming-Internal/";
+    this.page.title = 'Spark Structured Streaming Internal';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://yqian1991.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
 
 
 
+
+
+  
 
 
   
@@ -845,13 +1097,13 @@
       var articles = db.collection('articles')
 
       //https://hexo.io/docs/variables.html
-      var isPost = ''.length > 0
+      var isPost = 'Spark Structured Streaming Internal'.length > 0
       var isArchive = '' === 'true'
       var isCategory = ''.length > 0
-      var isTag = 'CI/CD'.length > 0
+      var isTag = ''.length > 0
 
       if (isPost) { //is article page
-        var title = ''
+        var title = 'Spark Structured Streaming Internal'
         var doc = articles.doc(title)
 
         getCount(doc, true).then(appendCountTo($('.post-meta')))
@@ -859,7 +1111,7 @@
       else if (!isArchive && !isCategory && !isTag) { //is index page
         var titles = [] //array to titles
 
-        var postsstr = 'titles.push("Git branching model for development");' //if you have a better way to get titles of posts, please change it
+        var postsstr = '' //if you have a better way to get titles of posts, please change it
         eval(postsstr)
 
         var promises = titles.map(function (title) {
