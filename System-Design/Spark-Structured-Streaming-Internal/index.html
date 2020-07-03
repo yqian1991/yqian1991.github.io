@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="Yu of Daphne">
 <meta property="og:description" content="Spark structured streaming is implemented in spark sql module. Spark Session:sparkSession is the entry to Spark sql and structured streaming.  Spark Context: spark context is the entry point of spark,">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-31T03:41:48.685Z">
+<meta property="og:updated_time" content="2020-06-02T20:09:49.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark Structured Streaming Internal">
 <meta name="twitter:description" content="Spark structured streaming is implemented in spark sql module. Spark Session:sparkSession is the entry to Spark sql and structured streaming.  Spark Context: spark context is the entry point of spark,">
@@ -399,12 +399,24 @@
                 
               
 
-              <time title="Created: 2020-05-30 22:58:25 / Modified: 23:41:48" itemprop="dateCreated datePublished" datetime="2020-05-30T22:58:25-04:00">2020-05-30</time>
+              <time title="Created: 2020-05-30 22:58:25" itemprop="dateCreated datePublished" datetime="2020-05-30T22:58:25-04:00">2020-05-30</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-06-02 16:09:49" itemprop="dateModified" datetime="2020-06-02T16:09:49-04:00">2020-06-02</time>
               
             
           </span>
@@ -508,8 +520,8 @@
 </ul>
 <h1 id="StreamingExecution"><a href="#StreamingExecution" class="headerlink" title="StreamingExecution"></a>StreamingExecution</h1><p>StreamingExecution is a implementation of trait StreamingQuery, it can be:</p>
 <ul>
-<li>ContinousExecution</li>
-<li>MicrobatchExecution</li>
+<li>ContinousExecution: This mode doesn’t support <code>complete</code> outputMode and aggregation either.</li>
+<li>MicrobatchExecution:</li>
 </ul>
 <p>Some methods in StreamingExecution:</p>
 <ul>
