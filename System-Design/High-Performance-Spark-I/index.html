@@ -97,17 +97,18 @@
 
 
 
-  <meta name="description" content="Do something matters">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yqian1991.github.io/tags/index.html">
+  <meta name="description" content="As like many other programming languages or frameworks, writing a toy program is easy but it’s always difficult how to make a program high performant, especially with Spark, which is popular running i">
+<meta name="keywords" content="Learning Notes,Spark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="High Performance Spark Reading Notes">
+<meta property="og:url" content="http://yqian1991.github.io/System-Design/High-Performance-Spark-I/index.html">
 <meta property="og:site_name" content="Yu of Daphne">
-<meta property="og:description" content="Do something matters">
+<meta property="og:description" content="As like many other programming languages or frameworks, writing a toy program is easy but it’s always difficult how to make a program high performant, especially with Spark, which is popular running i">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-21T00:35:13.444Z">
+<meta property="og:updated_time" content="2020-07-03T16:33:49.821Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="Do something matters">
+<meta name="twitter:title" content="High Performance Spark Reading Notes">
+<meta name="twitter:description" content="As like many other programming languages or frameworks, writing a toy program is easy but it’s always difficult how to make a program high performant, especially with Spark, which is popular running i">
 
 
 
@@ -115,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://yqian1991.github.io/tags/">
+  <link rel="canonical" href="http://yqian1991.github.io/System-Design/High-Performance-Spark-I/">
 
 
 
@@ -125,7 +126,7 @@
   };
 </script>
 
-  <title>tags | Yu of Daphne</title>
+  <title>High Performance Spark Reading Notes | Yu of Daphne</title>
   
 
 
@@ -253,7 +254,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -335,181 +336,269 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/System-Design/High-Performance-Spark-I/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yu Qian">
+      <meta itemprop="description" content="Do something matters">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yu of Daphne">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">tags
-
-</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
+          <h1 class="post-title" itemprop="name headline">High Performance Spark Reading Notes
+
               
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-              23 tags in total
-            </div>
-            <div class="tag-cloud-tags">
-              
-                <a href="/tags/Airflow/" style="font-size: 16.5px; color: #9d9d9d">Airflow</a> <a href="/tags/Algorithm/" style="font-size: 16.5px; color: #9d9d9d">Algorithm</a> <a href="/tags/Async/" style="font-size: 12px; color: #ccc">Async</a> <a href="/tags/CI-CD/" style="font-size: 12px; color: #ccc">CI/CD</a> <a href="/tags/Cassandra/" style="font-size: 12px; color: #ccc">Cassandra</a> <a href="/tags/Data-pipeline/" style="font-size: 25.5px; color: #404040">Data pipeline</a> <a href="/tags/Database/" style="font-size: 12px; color: #ccc">Database</a> <a href="/tags/Distributed-System/" style="font-size: 16.5px; color: #9d9d9d">Distributed System</a> <a href="/tags/Feed/" style="font-size: 12px; color: #ccc">Feed</a> <a href="/tags/Github/" style="font-size: 12px; color: #ccc">Github</a> <a href="/tags/Growth/" style="font-size: 16.5px; color: #9d9d9d">Growth</a> <a href="/tags/Job-seeking/" style="font-size: 12px; color: #ccc">Job seeking</a> <a href="/tags/Learning-Notes/" style="font-size: 30px; color: #111">Learning Notes</a> <a href="/tags/Machine-learning/" style="font-size: 21px; color: #6f6f6f">Machine learning</a> <a href="/tags/NLP/" style="font-size: 16.5px; color: #9d9d9d">NLP</a> <a href="/tags/Python/" style="font-size: 16.5px; color: #9d9d9d">Python</a> <a href="/tags/Serverless/" style="font-size: 12px; color: #ccc">Serverless</a> <a href="/tags/She/" style="font-size: 16.5px; color: #9d9d9d">She</a> <a href="/tags/Spark/" style="font-size: 12px; color: #ccc">Spark</a> <a href="/tags/Streaming-processing/" style="font-size: 25.5px; color: #404040">Streaming processing</a> <a href="/tags/We/" style="font-size: 12px; color: #ccc">We</a> <a href="/tags/database/" style="font-size: 12px; color: #ccc">database</a> <a href="/tags/k8s/" style="font-size: 12px; color: #ccc">k8s</a>
-              
-            </div>
-          </div>
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-07-03 12:02:54 / Modified: 12:33:49" itemprop="dateCreated datePublished" datetime="2020-07-03T12:02:54-04:00">2020-07-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/System-Design/" itemprop="url" rel="index"><span itemprop="name">System Design</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/System-Design/High-Performance-Spark-I/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="System-Design/High-Performance-Spark-I/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>As like many other programming languages or frameworks, writing a toy program is easy but it’s always difficult how to make a program high performant, especially with Spark, which is popular running in distributed environment.</p>
+<p>Spark provides a rich lib of functions to meet various requirements, but you may only need some of them in your daily work. Here are some notes I took during reading the book “High Performance Spark”, with this notes, hope developers can have a better design of spark programs at upfront instead of learn from failures themselves. While a key takeaway is that, instead of only knowing how to use what, it’s more important why it is better.</p>
+<p>Pyspark seems very popular in the market because of the popularity of big data, but since Spark relies heavily on inline function definitions and lambda expressions, which are much more naturally supported in Scala, also lazy evaluation within memory computations makes it particularly unique, this also makes programming in Scala has its own advantages over Python.</p>
+<h1 id="General-RDDs"><a href="#General-RDDs" class="headerlink" title="General RDDs"></a>General RDDs</h1><p>Evert RDD has the following properties:</p>
+<ul>
+<li>A list of partition objects,</li>
+<li>A function for computing an iterator of each partition,</li>
+<li>A list of dependencies on other RDDs,</li>
+<li>A partitioner,</li>
+<li>A list of preferred locations</li>
+</ul>
+<p>Transformations and actions are two categories of operations that working on your data,</p>
+<ul>
+<li>A transformation is a function that return another RDD. e.g: <code>flatMap</code>, <code>map</code>, <code>reduceByKey</code>, <code>groupByKey</code> etc</li>
+<li>An action is an operation that returns something other than an RDD,<br>Actions trigger the scheduler, which builds a directed acyclic graph (called the DAG), based on the dependencies between RDD transformations (I also mentioned this in a previous post).</li>
+</ul>
+<p>Note that not all transformations are 100% lazy. <code>sortByKey</code> needs to evaluate the RDD to determine the range of data, so it involves both a transformation and an action.</p>
+<p>When persisting RDDs, the default implementation of RDDs evicts the least recently used partition (called LRU caching) if the space it takes is required to compute or to cache a new partition. However, you can change this behaviour and control Spark’s memory prioritization with the <code>persistencePriority()</code> function in the RDD class</p>
+<h1 id="Knowing-your-Spark-Program"><a href="#Knowing-your-Spark-Program" class="headerlink" title="Knowing your Spark Program"></a>Knowing your Spark Program</h1><p>The Spark program itself runs in the driver node and sends some instructions to the executors</p>
+<p>When the SparkContext is started, a driver and a series of executors are started on the worker nodes of the cluster. The SparkContext determines how many resources are allotted to each executor</p>
+<p>With each action in a spark application, the Spark scheduler builds an execution graph and launches a Spark job, A job is then divided into stages and tasks. Stage boundary is determined by wide transformations which requires shuffle (narrow and wide transformations).</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">J<span class="function"><span class="title">ob</span> -&gt;</span> <span class="function"><span class="title">stages</span> -&gt;</span> tasks</span><br></pre></td></tr></table></figure>
+<p>The execution of job is taken care of by different kinds of schedulers:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dag<span class="built_in"> Scheduler </span>-&gt; Task Scheduler</span><br></pre></td></tr></table></figure>
+<h1 id="DataSet-and-DataFrame"><a href="#DataSet-and-DataFrame" class="headerlink" title="DataSet and DataFrame"></a>DataSet and DataFrame</h1><p>DataFrames and Datasets can be read using the Spark SQL equivalent to a SparkContext, the SparkSession.</p>
+<p>DataFrames are Datasets of a special Row object, which doesn’t provide any compile-time type checking, DataFrames allow Spark’s optimizer to better understand our code and our data, which allows for a new class of optimizations.</p>
+<p>DataSet API is quite different when compared with general RDD APIs, it has its own optimizer and execution plans.<br>jobs are transformed to logical plan and then physical plan which has better performance.</p>
+<h1 id="Spark-ML-and-Spark-MLlib"><a href="#Spark-ML-and-Spark-MLlib" class="headerlink" title="Spark ML and Spark MLlib"></a>Spark ML and Spark MLlib</h1><p>Spark ML provides a higher-level API than MLlib with the goal of allowing users to more easily create practical machine learning pipelines. Spark MLlib is primarily built on top of RDDs and uses functions from Spark Core, while ML is built on top of Spark SQL DataFrames</p>
+<h1 id="Some-optimization-tips"><a href="#Some-optimization-tips" class="headerlink" title="Some optimization tips"></a>Some optimization tips</h1><ul>
+<li><p>Sharing the same partitioner with RDDs are materialized by the same action, so thet will end up being co-located (which can even reduce network traffic).</p>
+</li>
+<li><p>Speed up joins by broad cast join, real world application is way more complicate than this, it depends on the property of the two datasets you want to join. If you are joining a big dataset with a small one, then you can broadcast the small one.</p>
+</li>
+<li><p>Since we can’t control the partitioner for DataFrames or Datasets, so we can’t manually avoid shuffles as you did with core Spark joins</p>
+</li>
+<li><p>Minimizing object creation in your RDD operations:</p>
+<ul>
+<li>Reusing existing objects: but note this may cause object mutable</li>
+<li>Using smaller data structures, using primitive types instead of case classes, objects</li>
+<li>Reduce setup overhead: db connection etc</li>
+<li>Reusing RDD: persist, cache, checkpoint, shuffle files. but notice it is space intensive to store data in memory and will take time to serialize and deserialize</li>
+</ul>
+</li>
+<li><p>Some common issues to avoid when doing key-value transformations:</p>
+<ul>
+<li>Memory error on Spark Driver: Avoid calling <code>collection</code>, <code>collectionAsMap</code> on large dataset.</li>
+<li>OOM on executors: Spark parameter tuning, reduce data loading by filtering or aggregation first</li>
+<li>Shuffle failures: Try to preserve partitioning across narrow transformations to avoid reshuffling data</li>
+<li>Straggler tasks: Make partition size even by customizing partitioner</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Learning-Notes/" rel="tag"># Learning Notes</a>
+          
+            <a href="/tags/Spark/" rel="tag"># Spark</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/System-Design/Spark-Structured-Streaming-Internal/" rel="next" title="Spark Structured Streaming Internal">
+                <i class="fa fa-chevron-left"></i> Spark Structured Streaming Internal
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -529,8 +618,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -694,6 +792,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#General-RDDs"><span class="nav-number">1.</span> <span class="nav-text">General RDDs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Knowing-your-Spark-Program"><span class="nav-number">2.</span> <span class="nav-text">Knowing your Spark Program</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DataSet-and-DataFrame"><span class="nav-number">3.</span> <span class="nav-text">DataSet and DataFrame</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spark-ML-and-Spark-MLlib"><span class="nav-number">4.</span> <span class="nav-text">Spark ML and Spark MLlib</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Some-optimization-tips"><span class="nav-number">5.</span> <span class="nav-text">Some optimization tips</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -873,9 +988,46 @@
   <script id="dsq-count-scr" src="https://yqian1991.disqus.com/count.js" async></script>
 
 
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yqian1991.github.io/System-Design/High-Performance-Spark-I/";
+    this.page.identifier = "System-Design/High-Performance-Spark-I/";
+    this.page.title = 'High Performance Spark Reading Notes';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://yqian1991.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
 
 
 
+
+
+  
 
 
   
@@ -950,13 +1102,13 @@
       var articles = db.collection('articles')
 
       //https://hexo.io/docs/variables.html
-      var isPost = 'tags'.length > 0
+      var isPost = 'High Performance Spark Reading Notes'.length > 0
       var isArchive = '' === 'true'
       var isCategory = ''.length > 0
       var isTag = ''.length > 0
 
       if (isPost) { //is article page
-        var title = 'tags'
+        var title = 'High Performance Spark Reading Notes'
         var doc = articles.doc(title)
 
         getCount(doc, true).then(appendCountTo($('.post-meta')))

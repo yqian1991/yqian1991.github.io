@@ -264,7 +264,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">23</span></a>
 
   </li>
         
@@ -370,6 +370,32 @@
         <h1>System Design<small>Category</small>
         </h1>
       </div>
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/System-Design/How-we-implemented-consistent-hashing-efficiently/" itemprop="url">
+            
+              <span itemprop="name">[译] 我们是如何高效实现一致性哈希的</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2018-07-22T10:01:32-04:00" content="2018-07-22">
+          07-22
+        </time>
+      </div>
+
+    </header>
+  </article>
+
 
       
         
@@ -504,7 +530,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -596,7 +622,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -915,7 +943,7 @@
       else if (!isArchive && !isCategory && !isTag) { //is index page
         var titles = [] //array to titles
 
-        var postsstr = 'titles.push("Data pipeline with Airflow, Go serverless");titles.push("How to build a feed system");titles.push("Some numbers for back-of-the-envelope usage calculations");' //if you have a better way to get titles of posts, please change it
+        var postsstr = 'titles.push("[译] 我们是如何高效实现一致性哈希的");titles.push("Data pipeline with Airflow, Go serverless");titles.push("How to build a feed system");titles.push("Some numbers for back-of-the-envelope usage calculations");' //if you have a better way to get titles of posts, please change it
         eval(postsstr)
 
         var promises = titles.map(function (title) {

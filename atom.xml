@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yqian1991.github.io/"/>
-  <updated>2020-06-02T20:09:49.342Z</updated>
+  <updated>2020-07-03T16:33:49.821Z</updated>
   <id>http://yqian1991.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>High Performance Spark Reading Notes</title>
+    <link href="http://yqian1991.github.io/System-Design/High-Performance-Spark-I/"/>
+    <id>http://yqian1991.github.io/System-Design/High-Performance-Spark-I/</id>
+    <published>2020-07-03T16:02:54.000Z</published>
+    <updated>2020-07-03T16:33:49.821Z</updated>
+    
+    <content type="html"><![CDATA[<p>As like many other programming languages or frameworks, writing a toy program is easy but it’s always difficult how to make a program high performant, especially with Spark, which is popular running in distributed environment.</p><p>Spark provides a rich lib of functions to meet various requirements, but you may only need some of them in your daily work. Here are some notes I took during reading the book “High Performance Spark”, with this notes, hope developers can have a better design of spark programs at upfront instead of learn from failures themselves. While a key takeaway is that, instead of only knowing how to use what, it’s more important why it is better.</p><p>Pyspark seems very popular in the market because of the popularity of big data, but since Spark relies heavily on inline function definitions and lambda expressions, which are much more naturally supported in Scala, also lazy evaluation within memory computations makes it particularly unique, this also makes programming in Scala has its own advantages over Python.</p><h1 id="General-RDDs"><a href="#General-RDDs" class="headerlink" title="General RDDs"></a>General RDDs</h1><p>Evert RDD has the following properties:</p><ul><li>A list of partition objects,</li><li>A function for computing an iterator of each partition,</li><li>A list of dependencies on other RDDs,</li><li>A partitioner,</li><li>A list of preferred locations</li></ul><p>Transformations and actions are two categories of operations that working on your data,</p><ul><li>A transformation is a function that return another RDD. e.g: <code>flatMap</code>, <code>map</code>, <code>reduceByKey</code>, <code>groupByKey</code> etc</li><li>An action is an operation that returns something other than an RDD,<br>Actions trigger the scheduler, which builds a directed acyclic graph (called the DAG), based on the dependencies between RDD transformations (I also mentioned this in a previous post).</li></ul><p>Note that not all transformations are 100% lazy. <code>sortByKey</code> needs to evaluate the RDD to determine the range of data, so it involves both a transformation and an action.</p><p>When persisting RDDs, the default implementation of RDDs evicts the least recently used partition (called LRU caching) if the space it takes is required to compute or to cache a new partition. However, you can change this behaviour and control Spark’s memory prioritization with the <code>persistencePriority()</code> function in the RDD class</p><h1 id="Knowing-your-Spark-Program"><a href="#Knowing-your-Spark-Program" class="headerlink" title="Knowing your Spark Program"></a>Knowing your Spark Program</h1><p>The Spark program itself runs in the driver node and sends some instructions to the executors</p><p>When the SparkContext is started, a driver and a series of executors are started on the worker nodes of the cluster. The SparkContext determines how many resources are allotted to each executor</p><p>With each action in a spark application, the Spark scheduler builds an execution graph and launches a Spark job, A job is then divided into stages and tasks. Stage boundary is determined by wide transformations which requires shuffle (narrow and wide transformations).</p><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">J<span class="function"><span class="title">ob</span> -&gt;</span> <span class="function"><span class="title">stages</span> -&gt;</span> tasks</span><br></pre></td></tr></table></figure><p>The execution of job is taken care of by different kinds of schedulers:</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dag<span class="built_in"> Scheduler </span>-&gt; Task Scheduler</span><br></pre></td></tr></table></figure><h1 id="DataSet-and-DataFrame"><a href="#DataSet-and-DataFrame" class="headerlink" title="DataSet and DataFrame"></a>DataSet and DataFrame</h1><p>DataFrames and Datasets can be read using the Spark SQL equivalent to a SparkContext, the SparkSession.</p><p>DataFrames are Datasets of a special Row object, which doesn’t provide any compile-time type checking, DataFrames allow Spark’s optimizer to better understand our code and our data, which allows for a new class of optimizations.</p><p>DataSet API is quite different when compared with general RDD APIs, it has its own optimizer and execution plans.<br>jobs are transformed to logical plan and then physical plan which has better performance.</p><h1 id="Spark-ML-and-Spark-MLlib"><a href="#Spark-ML-and-Spark-MLlib" class="headerlink" title="Spark ML and Spark MLlib"></a>Spark ML and Spark MLlib</h1><p>Spark ML provides a higher-level API than MLlib with the goal of allowing users to more easily create practical machine learning pipelines. Spark MLlib is primarily built on top of RDDs and uses functions from Spark Core, while ML is built on top of Spark SQL DataFrames</p><h1 id="Some-optimization-tips"><a href="#Some-optimization-tips" class="headerlink" title="Some optimization tips"></a>Some optimization tips</h1><ul><li><p>Sharing the same partitioner with RDDs are materialized by the same action, so thet will end up being co-located (which can even reduce network traffic).</p></li><li><p>Speed up joins by broad cast join, real world application is way more complicate than this, it depends on the property of the two datasets you want to join. If you are joining a big dataset with a small one, then you can broadcast the small one.</p></li><li><p>Since we can’t control the partitioner for DataFrames or Datasets, so we can’t manually avoid shuffles as you did with core Spark joins</p></li><li><p>Minimizing object creation in your RDD operations:</p><ul><li>Reusing existing objects: but note this may cause object mutable</li><li>Using smaller data structures, using primitive types instead of case classes, objects</li><li>Reduce setup overhead: db connection etc</li><li>Reusing RDD: persist, cache, checkpoint, shuffle files. but notice it is space intensive to store data in memory and will take time to serialize and deserialize</li></ul></li><li><p>Some common issues to avoid when doing key-value transformations:</p><ul><li>Memory error on Spark Driver: Avoid calling <code>collection</code>, <code>collectionAsMap</code> on large dataset.</li><li>OOM on executors: Spark parameter tuning, reduce data loading by filtering or aggregation first</li><li>Shuffle failures: Try to preserve partitioning across narrow transformations to avoid reshuffling data</li><li>Straggler tasks: Make partition size even by customizing partitioner</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;As like many other programming languages or frameworks, writing a toy program is easy but it’s always difficult how to make a program hig
+      
+    
+    </summary>
+    
+      <category term="System Design" scheme="http://yqian1991.github.io/categories/System-Design/"/>
+    
+    
+      <category term="Learning Notes" scheme="http://yqian1991.github.io/tags/Learning-Notes/"/>
+    
+      <category term="Spark" scheme="http://yqian1991.github.io/tags/Spark/"/>
+    
+  </entry>
   
   <entry>
     <title>Spark Structured Streaming Internal</title>
@@ -531,31 +558,6 @@
       <category term="Distributed System" scheme="http://yqian1991.github.io/tags/Distributed-System/"/>
     
       <category term="Algorithm" scheme="http://yqian1991.github.io/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Things I learnt from colleagues</title>
-    <link href="http://yqian1991.github.io/Software-Development/Things-I-learnt-from-colleagues/"/>
-    <id>http://yqian1991.github.io/Software-Development/Things-I-learnt-from-colleagues/</id>
-    <published>2018-05-11T19:50:01.000Z</published>
-    <updated>2019-09-21T00:35:13.442Z</updated>
-    
-    <content type="html"><![CDATA[<p>I always believe there are always things you can learn from your colleagues no matter what size of your company you are working for, what industry you are in, but a good company culture can help you grow faster.</p><h1 id="Days-in-OMSignal"><a href="#Days-in-OMSignal" class="headerlink" title="Days in OMSignal"></a>Days in OMSignal</h1><p>OMSignal is a wearable tech startup company, it is my first job after my graduation.<br>The thing I learnt from the first day is that ask, ask, ask. Everybody is busy and it’s not that people don’t want to tell you, without a systematic onboarding guide like a mature company does, no one really know what’s the right thing to tell you, so asking question is the best way to figure out the situation.</p><p>Be transparent, don’t hide problems, at the early days, I sometimes feel afraid to report problems since there are many, and I am afraid people will not be happy if I speak out without solving them by myself. Later I learnt that try to solve problems by yourself, but if you can’t, reporting early will avoid big problems in the future.</p><p>Another lesson I learnt is that besides getting work done, thinking about your career path, because you never know when the company doesn’t need you any more.</p><p>I left OMSignal half years later with a shock, I hope I can learn more before finding the next adventure, but this is how the world works, a company’s outlook decides whether they expanding or reduce.</p><h1 id="Days-at-SurveyMonkey"><a href="#Days-at-SurveyMonkey" class="headerlink" title="Days at SurveyMonkey"></a>Days at SurveyMonkey</h1><p>One month after I left OMSignal, I joined SurveyMonkey through alumni referral. I have so much to talk about, this is a great company that I learnt a lot, a lot.</p><p>This is not a company to the scale like Google, Facebook, Amazon, but the company is making a lot changes everyday to make it a great place to work. The onboarding experience is pretty good, you got everything you need to start. you can start contributing in one week, and at the same time, you will get a glance of how the company works. This is not a large company, but not small, it has more than 700 employees around the world.</p><p>Since I am talking about colleagues, let’s back to it. a great culture nourishes people, everyone is humble, friendly, even I am not good at speaking, but everyone is still like a good friend when you need them. This shapes my attitude in work. Be humble, be friendly, take the company as home.</p><p>Senior developers are really good mentors here, they help you understanding what your teams do, there is no dumb question here, but they helps you to not get confused with it next time, it helps you grow.</p><p>I have 1:1 meeting with my manager biweekly, they share experiences, guide you to the next level, you got a lot intuitions for your career path. I can still clearly think of the cascading path my manager guide me.<br>From designing a small system independently to participate in complex system work, from be active in a meeting to how to attract your audience. From making your code a product to increase your impact both on the tech side also team cooperation.</p><p>This is place that tolerant your fault, but it doesn’t mean people ignore it. they take it seriously with helping you get through it instead of blaming.</p><h1 id="Days-in-the-future"><a href="#Days-in-the-future" class="headerlink" title="Days in the future"></a>Days in the future</h1><p>What I learnt today will help me do better in the future. but I will remember to learning continuously.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;I always believe there are always things you can learn from your colleagues no matter what size of your company you are working for, what
-      
-    
-    </summary>
-    
-      <category term="Software Development" scheme="http://yqian1991.github.io/categories/Software-Development/"/>
-    
-    
-      <category term="Growth" scheme="http://yqian1991.github.io/tags/Growth/"/>
     
   </entry>
   
