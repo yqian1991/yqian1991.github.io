@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta name="google-site-verification" content="3xuEZIO1FhT2SCb033aQvmzrLMINKOQ7Xp2Agrlg_AU">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -179,7 +179,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -189,7 +189,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
     
@@ -363,20 +363,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/System-Design/How-we-implemented-consistent-hashing-efficiently/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yu Qian">
       <meta itemprop="description" content="Do something matters">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Yu of Daphne">
     </span>
 
@@ -445,7 +445,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/System-Design/" itemprop="url" rel="index"><span itemprop="name">System Design</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/System-Design/" itemprop="url" rel="index"><span itemprop="name">System Design</span></a></span>
 
                 
                 
@@ -507,7 +507,7 @@
 <h3 id="再谈哈希"><a href="#再谈哈希" class="headerlink" title="再谈哈希"></a>再谈哈希</h3><p>还记得大学里学的那个古老而原始的哈希方法吗？通过使用哈希函数，我们确保了计算机程序所需要的资源可以通过一种高效的方式存储在内存中，也确保了内存数据结构能被均匀加载。我们也确保了这种资源存储策略使信息检索变得更高效，从而让程序运行得更快。</p>
 <p>经典的哈希方法用一个哈希函数来生成一个伪随机数，然后这个伪随机数被内存空间大小整除，从而将一个随机的数值标识转换成可用内存空间里的一个位置。就如同下面这个函数所示：</p>
 <p><code>location = hash(key) mod size</code></p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*ojknKxQ7uxGaJEam2nQYWQ.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*ojknKxQ7uxGaJEam2nQYWQ.png" alt=""></p>
 <h3 id="既然如此，我们为什么不能用同样的方法来处理网络请求呢？"><a href="#既然如此，我们为什么不能用同样的方法来处理网络请求呢？" class="headerlink" title="既然如此，我们为什么不能用同样的方法来处理网络请求呢？"></a>既然如此，我们为什么不能用同样的方法来处理网络请求呢？</h3><p>在各种不同的程序、计算机或者用户从多个服务器请求资源的场景里，我们需要一种机制来将请求均匀地分布到可用的服务器上，从而保证负载均衡，并且保持稳定一致的性能。我们可以将这些服务器节点看做是一个或多个请求可以被映射到的位置。</p>
 <p>现在让我们先退一步。在传统的哈希方法中，我们总是假设：</p>
 <ul>
@@ -515,9 +515,9 @@
 <li>这个数量从不改变</li>
 </ul>
 <p>例如，在 Ably，我们一整天里通常需要扩大或者缩减集群的大小，而且我们也要处理一些意外的故障。但是，如果我们考虑前面提到的这些场景的话，我们就不能保证服务器数量是不变的。如果其中一个服务器发生意外故障了怎么办？如果继续使用最简单的哈希方法，结果就是我们需要对每个哈希键重新计算哈希值，因为新的映射完全决定于服务器节点或者内存地址的数量，如下图所示：</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*ojknKxQ7uxGaJEam2nQYWQ.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*ojknKxQ7uxGaJEam2nQYWQ.png" alt=""></p>
 <p>节点变化之前</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*8wnQ4y-9waQPC6sHdmZgdg.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*8wnQ4y-9waQPC6sHdmZgdg.png" alt=""></p>
 <p>节点变化之后</p>
 <p>在分布式系统中使用简单再哈希存在的问题 — 每个哈希键的存放位置都会变化 — 就是因为每个节点都存放了一个状态；哪怕只是集群数目的一个非常小的变化，都可能导致需要重新排列集群上的所有数据，从而产生巨大的工作量。随着集群的增长，重新哈希的方法是没法持续使用的，因为重新哈希所需要的工作量会随着集群的大小而线性地增长。这就是一致性哈希的概念被引入的场景。</p>
 <h3 id="一致性哈希-—-它到底是什么？"><a href="#一致性哈希-—-它到底是什么？" class="headerlink" title="一致性哈希 — 它到底是什么？"></a>一致性哈希 — 它到底是什么？</h3><p>一致性哈希可以用下面的方式描述：</p>
@@ -526,11 +526,11 @@
 <li>存储位置的数量不再是确定的，但是我们认为这个环上有无穷多个点并且服务器节点可以被放置到环上的任意位置。当然，我们仍然可以使用哈希函数来选择这个随机数，但是之前的第二个步骤，也就是除以存储位置数量的那一步被省略了，因为存储位置的数量不再是一个有限的数值。</li>
 <li>请求，例如用户，计算机或者无服务（serverless）程序，这些就等同于传统哈希方法中的键，也使用同样的哈希函数被放置到同样的环上。</li>
 </ul>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*002BDjvoadVRbPyo0lkuiQ.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*002BDjvoadVRbPyo0lkuiQ.png" alt=""></p>
 <p>那么它到底是如何决定请求被哪个服务器所服务呢？如果我们假设这个环是有序的，而且在环上进行顺时针遍历就对应着存储地址的增长顺序，每个请求可以被顺时针遍历过程中所遇到的第一个节点所服务；也就是说，第一个在环上的地址比请求的地址大的服务器会服务这个请求。如果请求的地址比节点中的最大地址还大，那它会反过来被拥有最小地址的那个服务器服务，因为在这个环上的遍历是以循环的方式进行的。方法用下图进行了阐明：</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*yhBejrSaatHa4b0gr96tvQ.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*yhBejrSaatHa4b0gr96tvQ.png" alt=""></p>
 <p>理论上，每个服务器‘拥有’哈希环（hashring）上的一段区间范围，任何映射到这个范围里的请求都将被同一个服务器服务。现在好了，如果其中一个服务器出现故障了怎么办，就以节点 3 为例吧，这个时候下一个服务器节点在环上的地址范围就会扩大，并且映射到这个范围的任何请求会被分派给新的服务器。仅此而已。只有对应到故障节点的区间范围内的哈希需要被重新分配，而哈希环上其余的部分和请求 - 服务器的分配仍然不会受到影响。这跟传统的哈希技术正好是相反的，在传统的哈希中，哈希表大小的变化会影响 <em>全部</em> 的映射。因为有了 <strong>一致性哈希</strong>，只有一部分（这跟环的分布因子有关）请求会受已知的哈希环变化的影响。（节点增加或者删除会导致环的变化，从而引起一些请求 - 服务器之间的映射发生改变。）</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*59Mn6sT0Wu7qQJmX1FOhtw.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*59Mn6sT0Wu7qQJmX1FOhtw.png" alt=""></p>
 <h3 id="一种高效的实现方法"><a href="#一种高效的实现方法" class="headerlink" title="一种高效的实现方法"></a>一种高效的实现方法</h3><p>现在我们对什么是哈希环已经熟悉了…</p>
 <p>我们需要实现以下内容来让它工作：</p>
 <ol>
@@ -584,7 +584,7 @@
 <p><code>B:0xa2d65c0</code></p>
 <p>在此我们将节点放到一个虚拟的环上，数值 <code>0x0</code>、<code>0x1</code> 和 <code>0x2</code>… 是被连续放置到环上的直到 <code>0xffffffff</code>，就这样在环上绕一个圈后 <code>0xffffffff</code> 的后面正好跟着的就是 <code>0x0</code>。</p>
 <p>由于节点 A 的哈希是 <code>0x5e6058e5</code>，它负责的就是从 <code>0xa2d65c0+1</code> 到 <code>0xffffffff</code>，以及从 <code>0x0</code> 到 <code>0x5e6058e5</code> 范围里的任何请求，如下图所示：</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*inKL8q-CTZ6Asl_uSpDYew.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*inKL8q-CTZ6Asl_uSpDYew.png" alt=""></p>
 <p>另一方面，B 负责的是从 <code>0x5e6058e5+1</code> 到 <code>0xa2d65c0</code> 的范围。如此，整个哈希空间都被划分了。</p>
 <p>从节点到它们的哈希之间的映射在整个集群上是共享的，这样保证了每次环计算的结果总是一致的。因此，任何节点在需要服务请求的时候都可以判断请求放在哪里。</p>
 <p>比如我们需要寻找 （或者创建）一个新的请求，这个请求的标识符是 ‘<a href="mailto:bobs.blog@example.com" target="_blank" rel="noopener">bobs.blog@example.com</a>’。</p>
@@ -595,23 +595,23 @@
 <p>因此 B 是负责这个请求的节点。如果我们再次需要这个请求，我们将重复以上步骤并且又会得到同样的节点，它会包含我们需要的的状态。</p>
 <p>这个例子是过于简单了。在实际情况中，只给每个节点一个哈希可能导致负载非常不均匀的分布。你可能已经注意到了，在这个例子中，B 负责环的 <code>(0xa2d656c0-0x5e6058e5)/232 = 26.7%</code>，同时 A 负责剩下的部分。理想的情况是，每个节点可以负责环上同等大小的一部分。</p>
 <p>让分布更均衡合理的一种方法是为每个节点产生多个随机哈希，像下面这样：</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*7qNhuMpoIWhatDWSOJaZVA.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*7qNhuMpoIWhatDWSOJaZVA.png" alt=""></p>
 <p>事实上，我们发现这样做的结果照样令人不满意，因此我们将环分成 64 个同样大小的片段并且确保每个节点都会被放到每个片段中的某个位置；这个的细节就不是那么重要了。反正目的就是确保每个节点能负责环上同等大小的一部分，因此保证负载是均匀分布的。（为每个节点产生多个哈希的另一个优势就是哈希可以在环上逐渐的被增加或者删除，这样就避免了负载的突然间的变化。）</p>
 <p>假设我们现在在环上增加一个新节点叫做 C，我们为 C 产生一个随机哈希值。</p>
 <p><code>A:0x5e6058e5</code></p>
 <p><code>B:0xa2d65c0</code></p>
 <p><code>C:0xe12f751c</code></p>
 <p>现在，<code>0xa2d65c0 + 1</code> 和 <code>0xe12f751c</code> （以前是属于A的部分）之间的环空间被分配给了 C。所有其他的请求像以前一样继续被哈希到同样的节点。为了处理节点职责的变化，这个范围内的已经分配给 A 的所有请求需要将它们的所有状态转移给 C。</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*9EH-yVTX8U9dxRdQ7pjK1Q.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*9EH-yVTX8U9dxRdQ7pjK1Q.png" alt=""></p>
 <p>现在你理解了为什么在分布式系统中均衡负载是需要哈希的。然而我们需要一致性哈希来确保在环发生任何变化的时候最小化集群上所需要的工作量。</p>
 <p>另外，节点需要存在于环上的多个地方，这样可以从统计学的角度保证负载被均匀分布。每次环发生变化都遍历整个哈希环的效率是不高的，随着你的分布式系统的伸缩，有一种更高效的方法来决定什么发生了变化是很必要的，它能帮助你尽可能的最小化环变化带来的性能上的影响。我们需要新的索引和数据类型来解决这个问题。</p>
 <hr>
 <p>构建分布式系统是很难的事情。但是我们热爱它并且我们喜欢谈论它。如果你需要依靠一种分布式系统的话，选择 Ably。如果你想跟我们谈一谈的话，联系我们！</p>
 <p>在此特别感谢 Ably 的分布式系统工程师 <a href="https://github.com/jdmnd" target="_blank" rel="noopener">John Diamond</a> 对本文的贡献。</p>
 <hr>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*L6S-jVuznYcx4W1o4i9i9w.jpeg" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*L6S-jVuznYcx4W1o4i9i9w.jpeg" alt=""></p>
 <p>Srushtika 是 <a href="http://ably.io" target="_blank" rel="noopener">Ably Realtime</a>的软件开发顾问</p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*g_I_lIRmw4_IODWKLJweqw.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*g_I_lIRmw4_IODWKLJweqw.png" alt=""></p>
 <p>感谢 <a href="https://medium.com/@john_91129?source=post_page" target="_blank" rel="noopener">John Diamond</a> 和 <a href="https://medium.com/@matt.at.ably?source=post_page" target="_blank" rel="noopener">Matthew O’Riordan</a>。</p>
 <blockquote>
 <p>如果发现译文存在错误或其他需要改进的地方，欢迎到 <a href="https://github.com/xitu/gold-miner" target="_blank" rel="noopener">掘金翻译计划</a> 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 <strong>本文永久链接</strong> 即为本文在 GitHub 上的 MarkDown 链接。</p>
@@ -733,7 +733,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yu Qian">
             
@@ -748,7 +748,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -939,7 +939,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 

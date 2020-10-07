@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta name="google-site-verification" content="3xuEZIO1FhT2SCb033aQvmzrLMINKOQ7Xp2Agrlg_AU">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -179,7 +179,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -189,7 +189,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
     
@@ -363,20 +363,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/System-Design/译-Airflow-一个工作流程管理平台/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yu Qian">
       <meta itemprop="description" content="Do something matters">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Yu of Daphne">
     </span>
 
@@ -445,7 +445,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/System-Design/" itemprop="url" rel="index"><span itemprop="name">System Design</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/System-Design/" itemprop="url" rel="index"><span itemprop="name">System Design</span></a></span>
 
                 
                 
@@ -504,7 +504,7 @@
 </ul>
 </blockquote>
 <h1 id="Airflow-一个工作流程管理平台"><a href="#Airflow-一个工作流程管理平台" class="headerlink" title="Airflow: 一个工作流程管理平台"></a>Airflow: 一个工作流程管理平台</h1><p>出自 <a href="https://medium.com/@maximebeauchemin" target="_blank" rel="noopener">Maxime Beauchemin</a></p>
-<p><img src="https://cdn-images-1.medium.com/max/800/0*277Imf2r7ouTXOVy.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/0*277Imf2r7ouTXOVy.png" alt=""></p>
 <p><strong>Airbnb</strong> 是一个快速增长的、数据启示型的公司。我们的数据团队和数据量都在快速地增长，同时我们所面临的挑战的复杂性也在同步增长。我们正在扩张的数据工程师、数据科学家和分析师团队在使用 <strong>Airflow</strong>，它是我们搭建的一个可以快速推进工作，保持发展优势的平台，因为我们可以自己编辑、监控和改写 <strong>数据管道</strong>。</p>
 <p>今天，我们非常自豪地宣布我们要 <strong>开源</strong> 和 <strong>共享</strong> 我们的工作流程管理平台：<strong>Airflow</strong>。</p>
 <p><a href="https://github.com/apache/incubator-airflow" target="_blank" rel="noopener">https://github.com/airbnb/airflow</a></p>
@@ -552,20 +552,20 @@
 </ul>
 <p><strong>执行器（Executors）</strong> 实现了一个接口，它可以让 Airflow 组件（命令行接口、调度器和 web 服务器）可以远程执行作业。目前，Airflow 自带一个 SequentialExecutor（用来做测试）、一个多线程的 LocalExecutor、一个使用了 <a href="http://www.celeryproject.org/" target="_blank" rel="noopener">Celery</a> 的 CeleryExecutor 和一个超棒的基于分布式消息传递的异步任务队列。我们也计划在不久后开源 YarnExecutor。</p>
 <h3 id="一个绚丽的用户界面"><a href="#一个绚丽的用户界面" class="headerlink" title="一个绚丽的用户界面"></a>一个绚丽的用户界面</h3><p>虽然 Airflow 提供了一个丰富的<a href="https://airflow.apache.org/cli.html" target="_blank" rel="noopener">命令行接口</a>，但是最好的工作流监控和交互办法还是使用 web 用户接口。你可以容易地图形化显示管道依赖项、查看进度、轻松获取日志、查阅相关代码、触发任务、修正 false positives/negatives 以及分析任务消耗的时间，同时你也能得到一个任务通常在每天什么时候结束的全面视图。用户界面也提供了一些管理功能：管理连接、池和暂停有向无环图的进程。</p>
-<p><img src="https://cdn-images-1.medium.com/max/400/1*nbwR8O-CDH67fkHrXVDvYw.png" alt></p>
-<p><img src="https://cdn-images-1.medium.com/max/400/1*0Mask8UZw_aCsd_7JM2Rjw.png" alt></p>
-<p><img src="https://cdn-images-1.medium.com/max/400/1*JNOJotSnC3t0TIQC8gYcsg.png" alt></p>
-<p><img src="https://cdn-images-1.medium.com/max/600/1*qqOg_8bMS_MzDgWSbgdtOw.png" alt></p>
-<p><img src="https://cdn-images-1.medium.com/max/400/1*rNaZuJ2168jvUYiEkdu1ww.png" alt></p>
-<p><img src="https://cdn-images-1.medium.com/max/400/1*ojItdtSC6etsUWOZIK8trw.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/400/1*nbwR8O-CDH67fkHrXVDvYw.png" alt=""></p>
+<p><img src="https://cdn-images-1.medium.com/max/400/1*0Mask8UZw_aCsd_7JM2Rjw.png" alt=""></p>
+<p><img src="https://cdn-images-1.medium.com/max/400/1*JNOJotSnC3t0TIQC8gYcsg.png" alt=""></p>
+<p><img src="https://cdn-images-1.medium.com/max/600/1*qqOg_8bMS_MzDgWSbgdtOw.png" alt=""></p>
+<p><img src="https://cdn-images-1.medium.com/max/400/1*rNaZuJ2168jvUYiEkdu1ww.png" alt=""></p>
+<p><img src="https://cdn-images-1.medium.com/max/400/1*ojItdtSC6etsUWOZIK8trw.png" alt=""></p>
 <p>锦上添花的是，用户界面有一个 <a href="https://airflow.apache.org/profiling.html" target="_blank" rel="noopener">Data Profiling</a> 区，可以让用户在注册好的连接上进行 SQL 查询、浏览结果集，同时也提供了创建和分享一些简单图表的方法。这个制图应用是由 <a href="http://www.highcharts.com/" target="_blank" rel="noopener">Highcharts</a>、<a href="https://flask-admin.readthedocs.org/en/v1.0.9/" target="_blank" rel="noopener">Flask Admin</a> 的增删改查接口以及 Airflow 的 <a href="https://airflow.apache.org/code.html#hooks" target="_blank" rel="noopener">hooks</a> 和 <a href="https://airflow.apache.org/code.html#macros" target="_blank" rel="noopener">宏</a>库混搭而成的。URL 参数可以传递给你图表中使用的 SQL，Airflow 的宏是通过 <a href="http://jinja.pocoo.org/" target="_blank" rel="noopener">Jinja templating</a> 的方式工作的。有了这些特性和查询功能，Airflow 用户可以很容易的创建和分享结果集和图表。</p>
-<p><img src="https://cdn-images-1.medium.com/max/400/1*8SD5x-62kLVzZ9SSfAXKCg.png" alt></p>
-<p><img src="https://cdn-images-1.medium.com/max/400/1*2L-uvEnYDvf5FG3eMuknuQ.png" alt></p>
-<p><img src="https://cdn-images-1.medium.com/max/400/1*EbUXRyeS65GZTXbCPWrF7w.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/400/1*8SD5x-62kLVzZ9SSfAXKCg.png" alt=""></p>
+<p><img src="https://cdn-images-1.medium.com/max/400/1*2L-uvEnYDvf5FG3eMuknuQ.png" alt=""></p>
+<p><img src="https://cdn-images-1.medium.com/max/400/1*EbUXRyeS65GZTXbCPWrF7w.png" alt=""></p>
 <h3 id="一种催化剂"><a href="#一种催化剂" class="headerlink" title="一种催化剂"></a>一种催化剂</h3><p>使用 Airflow 之后，Airbnb 的员工进行数据工作的生产率和热情提高了好g几倍。管道的编写也加速了，监控和错误排查所花费的时间也显著减少了。更重要的是，这个平台允许人们从一个更高级别的抽象中去创建可重用的模块、计算框架以及服务。</p>
 <h3 id="说得够多的了！"><a href="#说得够多的了！" class="headerlink" title="说得够多的了！"></a>说得够多的了！</h3><p>我们已经通过一个启发式的教程把试用 Airflow 变得极其简单。想看到示例结果也只需要执行几个 shell 命令。看一看 <a href="https://airflow.apache.org/" target="_blank" rel="noopener">Airflow 文档</a> 的<a href="https://airflow.apache.org/start.html" target="_blank" rel="noopener">快速上手</a>和<a href="https://airflow.apache.org/tutorial.html" target="_blank" rel="noopener">教程</a>部分，你可以在几分钟之内就让你的 Airflow web 程序以及它自带的交互式实例跑起来！</p>
 <p><a href="https://github.com/apache/incubator-airflow" target="_blank" rel="noopener">https://github.com/airbnb/airflow</a></p>
-<p><img src="https://cdn-images-1.medium.com/max/800/1*YsUOrWx3mRxZZljtc9xZyw.png" alt></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*YsUOrWx3mRxZZljtc9xZyw.png" alt=""></p>
 <h4 id="在-airbnb-io-上查看我们所有的开源项目并-在-Twitter-上关注我们：-AirbnbEng-AirbnbData"><a href="#在-airbnb-io-上查看我们所有的开源项目并-在-Twitter-上关注我们：-AirbnbEng-AirbnbData" class="headerlink" title="在 airbnb.io 上查看我们所有的开源项目并 在 Twitter 上关注我们：@AirbnbEng + @AirbnbData"></a>在 <a href="http://airbnb.io" target="_blank" rel="noopener">airbnb.io</a> 上查看我们所有的开源项目并 在 Twitter 上关注我们：<a href="https://twitter.com/AirbnbEng" target="_blank" rel="noopener">@AirbnbEng</a> + <a href="https://twitter.com/AirbnbData" target="_blank" rel="noopener">@AirbnbData</a></h4><blockquote>
 <p>如果发现译文存在错误或其他需要改进的地方，欢迎到 <a href="https://github.com/xitu/gold-miner" target="_blank" rel="noopener">掘金翻译计划</a> 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 <strong>本文永久链接</strong> 即为本文在 GitHub 上的 MarkDown 链接。</p>
 </blockquote>
@@ -686,7 +686,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yu Qian">
             
@@ -701,7 +701,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -892,7 +892,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
