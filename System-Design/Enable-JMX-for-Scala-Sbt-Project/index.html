@@ -111,7 +111,7 @@
 <meta property="og:image" content="http://yqian1991.github.io/System-Design/Enable-JMX-for-Scala-Sbt-Project/1set_jmx_connection.png">
 <meta property="og:image" content="http://yqian1991.github.io/System-Design/Enable-JMX-for-Scala-Sbt-Project/1view_jmx.png">
 <meta property="og:image" content="http://yqian1991.github.io/System-Design/Enable-JMX-for-Scala-Sbt-Project/1view_jmx_2.png">
-<meta property="og:updated_time" content="2020-10-07T21:18:20.545Z">
+<meta property="og:updated_time" content="2020-10-07T21:34:01.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Enable JMX for Scala&#x2F;Sbt Project">
 <meta name="twitter:description" content="Java Management Extensions (JMX) is a Java technology that supplies tools for managing and monitoring applications, system objects, devices (such as printers) and service-oriented networks. Those reso">
@@ -406,7 +406,7 @@
                 
               
 
-              <time title="Created: 2020-10-07 16:22:13 / Modified: 17:18:20" itemprop="dateCreated datePublished" datetime="2020-10-07T16:22:13-04:00">2020-10-07</time>
+              <time title="Created: 2020-10-07 16:22:13 / Modified: 17:34:01" itemprop="dateCreated datePublished" datetime="2020-10-07T16:22:13-04:00">2020-10-07</time>
             
 
             
@@ -481,7 +481,9 @@
 <h1 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a>Prerequisite</h1><p>Follow the link below to install VisualVM: <a href="https://visualvm.github.io/" target="_blank" rel="noopener">https://visualvm.github.io/</a>.</p>
 <p>If you don’t want to use VisualVM, Jconsole is an option too.</p>
 <h1 id="Setup-sbt-project-with-JMX"><a href="#Setup-sbt-project-with-JMX" class="headerlink" title="Setup sbt project with JMX"></a>Setup sbt project with JMX</h1><p>Enable jmx settings in <code>build.sbt</code></p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">javaOptions <span class="keyword">in</span> Universal ++= Seq(</span><br><span class="line">  <span class="string">"-J-Djavax.management.builder.initial="</span>,</span><br><span class="line">  <span class="string">"-J-Djava.rmi.server.hostname=127.0.0.1"</span>,</span><br><span class="line">  <span class="string">"-J-Dcom.sun.management.jmxremote=true"</span>,</span><br><span class="line">  <span class="string">"-J-Dcom.sun.management.jmxremote.port=9186"</span>,</span><br><span class="line">  <span class="string">"-J-Dcom.sun.management.jmxremote.rmi.port=9186"</span>,</span><br><span class="line">  <span class="string">"-J-Dcom.sun.management.jmxremote.ssl=false"</span>,</span><br><span class="line">  <span class="string">"-J-Dcom.sun.management.jmxremote.authenticate=false"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">javaOptions <span class="keyword">in</span> Universal ++= Seq(</span><br><span class="line">  <span class="string">"-Djavax.management.builder.initial="</span>,</span><br><span class="line">  <span class="string">"-Djava.rmi.server.hostname=127.0.0.1"</span>,</span><br><span class="line">  <span class="string">"-Dcom.sun.management.jmxremote=true"</span>,</span><br><span class="line">  <span class="string">"-Dcom.sun.management.jmxremote.port=9186"</span>,</span><br><span class="line">  <span class="string">"-Dcom.sun.management.jmxremote.rmi.port=9186"</span>,</span><br><span class="line">  <span class="string">"-Dcom.sun.management.jmxremote.ssl=false"</span>,</span><br><span class="line">  <span class="string">"-Dcom.sun.management.jmxremote.authenticate=false"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>Note: if you are adding JVM settings here, you need to prefix with <code>-J</code>, eg,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"-J--Xmx3000M"</span></span><br></pre></td></tr></table></figure>
 <p>With this configured and if you run your program locally, jconsole and VisualVM can auto detect running processes already.</p>
 <h1 id="Setup-for-remote-access"><a href="#Setup-for-remote-access" class="headerlink" title="Setup for remote access"></a>Setup for remote access</h1><p>If you want to to debug service running on a remote server. e.g staging environment. you will need to expose the jmx port at the same time.</p>
 <p>Below instructions are based on a helm chart context, since all our services are deployed to EKS through helm chart.</p>
