@@ -97,18 +97,18 @@
 
 
 
-  <meta name="description" content="DescriptionCompared to traditional API services which is pull based, a push based webhook service stands out in many ways:  Performance: In real time scenarios (for example, you want to receive real t">
-<meta name="keywords" content="Distributed System">
+  <meta name="description" content="Reactive ArchitectureReactive means a series of design principles for creating cohesive systems, it’s mostly guided by the famous Reactive manifesto:  Responsive: This is the overall goal of the syste">
+<meta name="keywords" content="Distributed System,Microservice">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Design a web hook service">
-<meta property="og:url" content="http://yqian1991.github.io/System-Design/Design-a-web-hook-service/index.html">
+<meta property="og:title" content="Domain Driven Design 101">
+<meta property="og:url" content="http://yqian1991.github.io/System-Design/Domain-Driven-Design-101/index.html">
 <meta property="og:site_name" content="Yu of Daphne">
-<meta property="og:description" content="DescriptionCompared to traditional API services which is pull based, a push based webhook service stands out in many ways:  Performance: In real time scenarios (for example, you want to receive real t">
+<meta property="og:description" content="Reactive ArchitectureReactive means a series of design principles for creating cohesive systems, it’s mostly guided by the famous Reactive manifesto:  Responsive: This is the overall goal of the syste">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-10-05T20:28:47.586Z">
+<meta property="og:updated_time" content="2020-10-26T22:12:51.713Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Design a web hook service">
-<meta name="twitter:description" content="DescriptionCompared to traditional API services which is pull based, a push based webhook service stands out in many ways:  Performance: In real time scenarios (for example, you want to receive real t">
+<meta name="twitter:title" content="Domain Driven Design 101">
+<meta name="twitter:description" content="Reactive ArchitectureReactive means a series of design principles for creating cohesive systems, it’s mostly guided by the famous Reactive manifesto:  Responsive: This is the overall goal of the syste">
 
 
 
@@ -116,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://yqian1991.github.io/System-Design/Design-a-web-hook-service/">
+  <link rel="canonical" href="http://yqian1991.github.io/System-Design/Domain-Driven-Design-101/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>Design a web hook service | Yu of Daphne</title>
+  <title>Domain Driven Design 101 | Yu of Daphne</title>
   
 
 
@@ -356,7 +356,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/System-Design/Design-a-web-hook-service/">
+    <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/System-Design/Domain-Driven-Design-101/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yu Qian">
@@ -373,7 +373,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Design a web hook service
+          <h1 class="post-title" itemprop="name headline">Domain Driven Design 101
 
               
             
@@ -399,7 +399,7 @@
                 
               
 
-              <time title="Created: 2020-10-05 16:18:20 / Modified: 16:28:47" itemprop="dateCreated datePublished" datetime="2020-10-05T16:18:20-04:00">2020-10-05</time>
+              <time title="Created: 2020-10-26 17:15:57 / Modified: 18:12:51" itemprop="dateCreated datePublished" datetime="2020-10-26T17:15:57-04:00">2020-10-26</time>
             
 
             
@@ -440,8 +440,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/System-Design/Design-a-web-hook-service/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="System-Design/Design-a-web-hook-service/" itemprop="commentCount"></span>
+                <a href="/System-Design/Domain-Driven-Design-101/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="System-Design/Domain-Driven-Design-101/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -469,41 +469,63 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>Compared to traditional API services which is pull based, a push based webhook service stands out in many ways:</p>
+        <h1 id="Reactive-Architecture"><a href="#Reactive-Architecture" class="headerlink" title="Reactive Architecture"></a>Reactive Architecture</h1><p>Reactive means a series of design principles for creating cohesive systems, it’s mostly guided by the famous Reactive manifesto:</p>
 <ul>
-<li>Performance: In real time scenarios (for example, you want to receive real time update of information, metrics or alerts), polling(in an interval) is not efficient.<ul>
-<li>Polling too often may waste resources, polling too late may not process the data in a timely manner.</li>
+<li>Responsive: This is the overall goal of the system, it needs to be responsive in any circumstances.</li>
+<li>Elastic: The system needs to be responsive even under a ‘heavy’ load</li>
+<li>Resilient: The system needs to be responsive under failure</li>
+<li>Message driven: This is the key to achieve above goals</li>
 </ul>
-</li>
-</ul>
+<h2 id="Reactive-Programming"><a href="#Reactive-Programming" class="headerlink" title="Reactive Programming"></a>Reactive Programming</h2><p>This is the difference between architecture and programming, architecture is usually a guideline/principles of designing a system, while programming is an implementation strategy of a reactive system.</p>
+<p>It is <em>event driven</em> approach used in a single node/single micro service for data flow management and logic</p>
+<p>For example, callback, declarative methods(map(), filter()).</p>
+<p>Cool, then what is event driven:</p>
 <ul>
-<li>User experience: Instead of working around the API to pull data, it’s much easier to just handle the data pushed to you based on defined schema.<br>Only process when data is available.</li>
+<li>An event listener must be attached to the event source in order to consume it.</li>
+<li>An event represents an action/fact</li>
 </ul>
-<p>Many product provide web hooks to strengthen their features like SendGrid webhook, Sparkpost web hook.</p>
-<h1 id="Design"><a href="#Design" class="headerlink" title="Design"></a>Design</h1><p>To have a web hook service working, 3 problems need to be engineered.</p>
-<h2 id="Setup-subscription"><a href="#Setup-subscription" class="headerlink" title="Setup subscription"></a>Setup subscription</h2><p>Allow clients to subscribe to the web hook, an authentication method preferred. Use OAuth 2 or built your own</p>
-<h2 id="Event-Categorization"><a href="#Event-Categorization" class="headerlink" title="Event Categorization"></a>Event Categorization</h2><p>Make it capable for clients to subscribe to different kinds of event categories.</p>
-<p>At the minimum, clients need to provide the following informations to subscribe to the web hook:</p>
+<p><em>Akka</em> is a great example that practises reactive programming.</p>
+<h2 id="Reactive-System"><a href="#Reactive-System" class="headerlink" title="Reactive System"></a>Reactive System</h2><p>A reactive system is message driven, designed at architect level for cloud native, distributed system.</p>
+<p>It can also be interpreted as a system that followed reactive architecture and its implementation may  involve reactive programming.</p>
+<h1 id="Domain-Driven-Design"><a href="#Domain-Driven-Design" class="headerlink" title="Domain Driven Design"></a>Domain Driven Design</h1><p>DDD is an architectural approach to design large systems which has similar goal as reactive system.</p>
+<p>DDD has a systematic theory to architect a system, by saying this, you will see a lot concepts using DDD.</p>
+<h2 id="Identity-Domains"><a href="#Identity-Domains" class="headerlink" title="Identity Domains"></a>Identity Domains</h2><p>Domain experts model the real business requirements to domains, a domain usually defined based on  business context/knowledge, for example, in a retail company, Shipping department is a domain, inventory is another domain.</p>
+<h2 id="Make-Ubiquitous-Languages"><a href="#Make-Ubiquitous-Languages" class="headerlink" title="Make Ubiquitous Languages"></a>Make Ubiquitous Languages</h2><p>Use a ubiquitous language to understand business or idea, to communicate between software developers and domain experts, ubiquitous language maybe different between different domains, because it is used to communicate inside a domain.</p>
+<h2 id="Bounded-context"><a href="#Bounded-context" class="headerlink" title="Bounded context"></a>Bounded context</h2><p>When a domain is complex enough, it should be further break down to sub domain or a bounded context.</p>
+<p>Now we can talk about how to identify domains, event storming is one way to achieve this, domain experts gather in front of a white board, listing out all events/activities that can happen in the system using using <em>subject-verb-object</em> notation.</p>
+<h2 id="Domain-Activities"><a href="#Domain-Activities" class="headerlink" title="Domain Activities:"></a>Domain Activities:</h2><p>Some common types of domain activities include:</p>
 <ul>
-<li>callback_url: String,    For where the web hook send events to</li>
-<li>event categories: List,    For what events web hook should send, eg: unsubscribe events.</li>
-<li>requester: String, For security check.</li>
-<li>status:    String,    Status of the subscription, subscribe, suspend, unsubscribe</li>
+<li>Command: This means initiate a request, for example, register an account.</li>
+<li>Query: This basically means the request to retrieving information and expecting to see the result.</li>
+<li>Event: This means the fact that something happened in the past, for example, user account created.</li>
 </ul>
-<h2 id="Sending-events"><a href="#Sending-events" class="headerlink" title="Sending events"></a>Sending events</h2><p>Once a subscription is validated, you should send events as soon as them arrive.</p>
-<p>There are different triggering mechanisms for a web hook:</p>
+<h2 id="Domain-Objects"><a href="#Domain-Objects" class="headerlink" title="Domain Objects:"></a>Domain Objects:</h2><ul>
+<li>Value: A piece of information that is immutable</li>
+<li>Entity(unique, mutable): This can be designed as a micro service.</li>
+<li>Aggregation root:</li>
+</ul>
+<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><ul>
+<li>Domain abstraction: service(stateless), factory(create object), repository(delete object)</li>
+<li>Anti corruption layer: to keep bounded context boundary clean and maintain purity</li>
+</ul>
+<h1 id="Visualizing-Software-Architecture"><a href="#Visualizing-Software-Architecture" class="headerlink" title="Visualizing Software Architecture"></a>Visualizing Software Architecture</h1><p>C4 model is one way to visualize the software architecture, it uses 4 level to guide you top-down visualization of a system.</p>
 <ul>
-<li>realtime: Always on sending action.</li>
-<li>scheduled: Useful if only hourly/daily/monthly data required</li>
+<li>Context: The highest level of the architecture.</li>
+<li>Container: A container is a deployable functional unit inside the context.</li>
+<li>Component: A functional part of a container, it can be a module, lib etc.</li>
+<li>Code: This is very similar to the data modelling</li>
 </ul>
-<h2 id="Event-schema"><a href="#Event-schema" class="headerlink" title="Event schema"></a>Event schema</h2><p>For events sending, we also needs to design a universal event schema.</p>
-<h2 id="Events-Delivery-Guarantee"><a href="#Events-Delivery-Guarantee" class="headerlink" title="Events Delivery Guarantee"></a>Events Delivery Guarantee</h2><p>Client needs to send a response to acknowledge they received the events.</p>
-<p>If web hook failed to send events or client replied back with a non success response, we should resent events.</p>
-<p>Back pressure in place in case client’s response rate is lag behind the web hook publish rate</p>
-<h2 id="Manage-Web-hook-status"><a href="#Manage-Web-hook-status" class="headerlink" title="Manage Web hook status"></a>Manage Web hook status</h2><p>Since web hook is push based, you should always keep your clients up-to-date the current health status of the web hook.</p>
-<h1 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h1><p>This implementation is based on the requirements of serving push campaign metrics, which will show up in push management dashboard</p>
-<p>TODO</p>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a href="https://mandrill.zendesk.com/hc/en-us/articles/205583257-How-to-Authenticate-Webhook-Requests" target="_blank" rel="noopener">https://mandrill.zendesk.com/hc/en-us/articles/205583257-How-to-Authenticate-Webhook-Requests</a></p>
+<h1 id="Other-topics-in-SOA"><a href="#Other-topics-in-SOA" class="headerlink" title="Other topics in SOA"></a>Other topics in SOA</h1><ul>
+<li>Bulkheading: isolate failures to a specific area of the system, prevent cascading errors</li>
+<li>Circuit breakers</li>
+<li>Autonomy: less dependencies, self healing</li>
+<li>Gateway services</li>
+<li>CAP</li>
+<li>SAGAS: a long running transaction in distributed system, often using FSM(e.g akka persistence)</li>
+<li>Delivery guarantee</li>
+<li>CQRS: auditable system, split to command and query parts</li>
+<li>Event sourcing: publish events as source of truth for every fact/state changes</li>
+</ul>
 
       
     </div>
@@ -529,6 +551,8 @@
           
             <a href="/tags/Distributed-System/" rel="tag"># Distributed System</a>
           
+            <a href="/tags/Microservice/" rel="tag"># Microservice</a>
+          
         </div>
       
 
@@ -540,8 +564,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/System-Design/High-Performance-Spark-I/" rel="next" title="High Performance Spark Reading Notes">
-                <i class="fa fa-chevron-left"></i> High Performance Spark Reading Notes
+              <a href="/Life/从中国到加拿大（二）-枫叶国体验/" rel="next" title="从中国到加拿大（二）-- 枫叶国体验">
+                <i class="fa fa-chevron-left"></i> 从中国到加拿大（二）-- 枫叶国体验
               </a>
             
           </div>
@@ -549,10 +573,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/System-Design/Enable-JMX-for-Scala-Sbt-Project/" rel="prev" title="Enable JMX for Scala/Sbt Project">
-                Enable JMX for Scala/Sbt Project <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -798,7 +818,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Design"><span class="nav-number">2.</span> <span class="nav-text">Design</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup-subscription"><span class="nav-number">2.1.</span> <span class="nav-text">Setup subscription</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Event-Categorization"><span class="nav-number">2.2.</span> <span class="nav-text">Event Categorization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sending-events"><span class="nav-number">2.3.</span> <span class="nav-text">Sending events</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Event-schema"><span class="nav-number">2.4.</span> <span class="nav-text">Event schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Events-Delivery-Guarantee"><span class="nav-number">2.5.</span> <span class="nav-text">Events Delivery Guarantee</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Manage-Web-hook-status"><span class="nav-number">2.6.</span> <span class="nav-text">Manage Web hook status</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Implementation"><span class="nav-number">3.</span> <span class="nav-text">Implementation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reactive-Architecture"><span class="nav-number">1.</span> <span class="nav-text">Reactive Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactive-Programming"><span class="nav-number">1.1.</span> <span class="nav-text">Reactive Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reactive-System"><span class="nav-number">1.2.</span> <span class="nav-text">Reactive System</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Domain-Driven-Design"><span class="nav-number">2.</span> <span class="nav-text">Domain Driven Design</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Identity-Domains"><span class="nav-number">2.1.</span> <span class="nav-text">Identity Domains</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Make-Ubiquitous-Languages"><span class="nav-number">2.2.</span> <span class="nav-text">Make Ubiquitous Languages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bounded-context"><span class="nav-number">2.3.</span> <span class="nav-text">Bounded context</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Domain-Activities"><span class="nav-number">2.4.</span> <span class="nav-text">Domain Activities:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Domain-Objects"><span class="nav-number">2.5.</span> <span class="nav-text">Domain Objects:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Others"><span class="nav-number">2.6.</span> <span class="nav-text">Others</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Visualizing-Software-Architecture"><span class="nav-number">3.</span> <span class="nav-text">Visualizing Software Architecture</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-topics-in-SOA"><span class="nav-number">4.</span> <span class="nav-text">Other topics in SOA</span></a></li></ol></div>
             
 
           </div>
@@ -985,9 +1005,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yqian1991.github.io/System-Design/Design-a-web-hook-service/";
-    this.page.identifier = "System-Design/Design-a-web-hook-service/";
-    this.page.title = 'Design a web hook service';
+    this.page.url = "http://yqian1991.github.io/System-Design/Domain-Driven-Design-101/";
+    this.page.identifier = "System-Design/Domain-Driven-Design-101/";
+    this.page.title = 'Domain Driven Design 101';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
@@ -1097,13 +1117,13 @@
       var articles = db.collection('articles')
 
       //https://hexo.io/docs/variables.html
-      var isPost = 'Design a web hook service'.length > 0
+      var isPost = 'Domain Driven Design 101'.length > 0
       var isArchive = '' === 'true'
       var isCategory = ''.length > 0
       var isTag = ''.length > 0
 
       if (isPost) { //is article page
-        var title = 'Design a web hook service'
+        var title = 'Domain Driven Design 101'
         var doc = articles.doc(title)
 
         getCount(doc, true).then(appendCountTo($('.post-meta')))
