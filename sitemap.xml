@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yqian1991.github.io/System-Design/Designing-Data-Intensive-Applications-5-Data-Replication/</loc>
+    
+    <lastmod>2020-10-29T19:28:51.298Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yqian1991.github.io/System-Design/Designing-Data-Intensive-Applications-4-Data-Encoding-and-Evolution/</loc>
     
     <lastmod>2020-10-29T17:18:45.838Z</lastmod>
@@ -142,13 +149,6 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/Life/%E5%86%99%E7%BB%99Daphne%E7%9A%84%E8%AF%97/</loc>
-    
-    <lastmod>2019-09-21T00:35:13.443Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yqian1991.github.io/Life/%E6%9C%89%E4%B8%80%E5%80%8B%E5%A7%91%E5%A8%98/</loc>
     
     <lastmod>2019-09-21T00:35:13.443Z</lastmod>
@@ -157,6 +157,13 @@
   
   <url>
     <loc>http://yqian1991.github.io/System-Design/%E8%AF%91-Airflow-%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</loc>
+    
+    <lastmod>2019-09-21T00:35:13.443Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yqian1991.github.io/Life/%E5%86%99%E7%BB%99Daphne%E7%9A%84%E8%AF%97/</loc>
     
     <lastmod>2019-09-21T00:35:13.443Z</lastmod>
     
@@ -184,14 +191,14 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/Software-Development/Searching-with-bloom-filter/</loc>
+    <loc>http://yqian1991.github.io/System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/</loc>
     
     <lastmod>2019-09-21T00:35:13.442Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/System-Design/Some-numbers-for-back-of-the-envelope-usage-calculations/</loc>
+    <loc>http://yqian1991.github.io/Software-Development/Searching-with-bloom-filter/</loc>
     
     <lastmod>2019-09-21T00:35:13.442Z</lastmod>
     
@@ -240,13 +247,6 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/System-Design/NLP-in-big-companies/</loc>
-    
-    <lastmod>2019-09-21T00:35:13.441Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yqian1991.github.io/System-Design/How-we-implemented-consistent-hashing-efficiently/</loc>
     
     <lastmod>2019-09-21T00:35:13.441Z</lastmod>
@@ -255,6 +255,13 @@
   
   <url>
     <loc>http://yqian1991.github.io/Data-Science/Natural-Language-Processing-101/</loc>
+    
+    <lastmod>2019-09-21T00:35:13.441Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yqian1991.github.io/System-Design/NLP-in-big-companies/</loc>
     
     <lastmod>2019-09-21T00:35:13.441Z</lastmod>
     
