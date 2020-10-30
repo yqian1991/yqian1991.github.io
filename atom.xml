@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yqian1991.github.io/"/>
-  <updated>2020-10-29T20:52:12.495Z</updated>
+  <updated>2020-10-30T02:58:09.430Z</updated>
   <id>http://yqian1991.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Designing Data-Intensive Applications (7) - Transactions</title>
+    <link href="http://yqian1991.github.io/System-Design/Designing-Data-Intensive-Applications-7-Trsansactions/"/>
+    <id>http://yqian1991.github.io/System-Design/Designing-Data-Intensive-Applications-7-Trsansactions/</id>
+    <published>2020-10-29T22:10:43.000Z</published>
+    <updated>2020-10-30T02:58:09.430Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is my personal learning notes from reading &lt;<designing data-intensive="" applications="">&gt; Chapter 7.</designing></p><h1 id="What-is-transaction"><a href="#What-is-transaction" class="headerlink" title="What is transaction?"></a>What is transaction?</h1><p>A transaction consists of multiple operations, only consider a transaction succeed when all the operations succeed. We are familiar with this when we learning database knowledge.</p><p>But in distributed environment, it means more. For example, when client fire a request to the distributed system, to return a response to the client, the backend may needs to fire multiple service calls to other services, any of them fail during the process may cause no response to the client, so we need to handle transactions in this semantic as well.</p><p>Transaction has the following properties:</p><ul><li>Atomicity: The smallest operation that can’t be separated further.</li><li>Consistency:</li><li>Isolation:</li><li>Durability:</li></ul><h1 id="What-makes-transaction-difficult"><a href="#What-makes-transaction-difficult" class="headerlink" title="What makes transaction difficult?"></a>What makes transaction difficult?</h1><p>TODO</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>TODO</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;This is my personal learning notes from reading &amp;lt;&lt;designing data-intensive=&quot;&quot; applications=&quot;&quot;&gt;&amp;gt; Chapter 7.&lt;/designing&gt;&lt;/p&gt;
+&lt;h1 id=&quot;
+      
+    
+    </summary>
+    
+      <category term="System Design" scheme="http://yqian1991.github.io/categories/System-Design/"/>
+    
+    
+      <category term="Distributed System" scheme="http://yqian1991.github.io/tags/Distributed-System/"/>
+    
+  </entry>
   
   <entry>
     <title>Designing Data-Intensive Applications (6) - Data Partition</title>
@@ -526,31 +552,6 @@
     
     
       <category term="She" scheme="http://yqian1991.github.io/tags/She/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Fun topics in distributed system</title>
-    <link href="http://yqian1991.github.io/System-Design/Fun-topics-in-distributed-system/"/>
-    <id>http://yqian1991.github.io/System-Design/Fun-topics-in-distributed-system/</id>
-    <published>2019-04-26T19:54:05.000Z</published>
-    <updated>2019-09-21T00:35:13.441Z</updated>
-    
-    <content type="html"><![CDATA[<p>During the first days of learning distributed system design, we heard a lot buzzwords and technologies, and we are busy with learning one after one.</p><ul><li>Micro services architecture</li><li>CDN, Caching, load balancer</li><li>Event Sourcing</li><li>Messaging</li><li>CAP<br>…</li></ul><p>Needless to say, each of these topics are complex enough and takes years to learn. What we expect is: when we are tasked with a system design problem, we will be able to have a robust architecture overall.</p><p>Well, this is important, but when after you see tons of architectures in different use cases, still there is no one fit all solution. There are always tough challenges come up. and usually, the issue that stops you is not the high level design, it’s some small problems instead.</p><ul><li>Sticky Session</li></ul><p>Now we have a lot machines behind the load balancer can serve the traffic, that means requests from a same user can be served by different nodes, hmm, do I need to sign in again every time if the node doesn’t have my session info?</p><p>Absolutely not necessary, now you may think of sticky session which routes the requests for a particular session to the same physical machine that serviced the first request for that session. But problem is not totally solved at this point yet, this method may still cause uneven loads to service which actually we want to solve by distributed system.</p><p><a href="http://www.chaosincomputing.com/2012/05/sticky-sessions-are-evil/" target="_blank" rel="noopener">http://www.chaosincomputing.com/2012/05/sticky-sessions-are-evil/</a></p><ul><li>Distributed transactions</li></ul><p>When we throw out a nice distributed architecture, we are confident that it supports high throughputs with decent performance, and you also adds on that, it can handle traffic bursts by adding more machines since it’s a distributed oriented. This looks nice, <em>but how do you handle failures in payment transactions?</em></p><p>I will stuck here for a while, yes, this is not easy, in one machine environment, we can locking and waiting, but if the system is distributed, how can we make sure the transaction ACID?.</p><p>I am not a innovator, but curiosity drives me to find answers with two phase commits and PAXOS. There are tons of materials about those, just giving some I read:<br><a href="https://shekhargulati.com/2018/09/05/two-phase-commit-protocol/" target="_blank" rel="noopener">https://shekhargulati.com/2018/09/05/two-phase-commit-protocol/</a></p><ul><li>Distributed Tracing.<br>It’s common that a user request may cause cascading services calls in the backend, in case of data analysis or debugging, how can we stitch requests to the same origin?</li></ul><p>Using same RequestID is a common strategy, but usually, you will need another service/lib dedicated for distributed tracing. There are some popular frameworks for it, like opentracing.</p><h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>Distributed system is good, but also introduces more problems you need to solve.<br>Generate a fancy system architecture is easy, what’s more important is how to solve the problems it brings.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;During the first days of learning distributed system design, we heard a lot buzzwords and technologies, and we are busy with learning one
-      
-    
-    </summary>
-    
-      <category term="System Design" scheme="http://yqian1991.github.io/categories/System-Design/"/>
-    
-    
-      <category term="Distributed System" scheme="http://yqian1991.github.io/tags/Distributed-System/"/>
     
   </entry>
   
