@@ -4,7 +4,7 @@
   <url>
     <loc>http://yqian1991.github.io/System-Design/Designing-Data-Intensive-Applications-7-Trsansactions/</loc>
     
-    <lastmod>2020-10-30T02:58:09.430Z</lastmod>
+    <lastmod>2020-11-02T21:16:40.888Z</lastmod>
     
   </url>
   
@@ -170,14 +170,14 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/Life/%E6%9C%89%E4%B8%80%E5%80%8B%E5%A7%91%E5%A8%98/</loc>
+    <loc>http://yqian1991.github.io/System-Design/%E8%AF%91-Airflow-%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</loc>
     
     <lastmod>2019-09-21T00:35:13.443Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/System-Design/%E8%AF%91-Airflow-%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</loc>
+    <loc>http://yqian1991.github.io/Life/%E6%9C%89%E4%B8%80%E5%80%8B%E5%A7%91%E5%A8%98/</loc>
     
     <lastmod>2019-09-21T00:35:13.443Z</lastmod>
     
@@ -219,14 +219,14 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/Life/Starting-a-new-journey/</loc>
+    <loc>http://yqian1991.github.io/Software-Development/Things-I-learnt-from-colleagues/</loc>
     
     <lastmod>2019-09-21T00:35:13.442Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/Software-Development/Things-I-learnt-from-colleagues/</loc>
+    <loc>http://yqian1991.github.io/Life/Starting-a-new-journey/</loc>
     
     <lastmod>2019-09-21T00:35:13.442Z</lastmod>
     
@@ -247,13 +247,6 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/Careers/Hidden-Companies/</loc>
-    
-    <lastmod>2019-09-21T00:35:13.441Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yqian1991.github.io/System-Design/Fun-topics-in-distributed-system/</loc>
     
     <lastmod>2019-09-21T00:35:13.441Z</lastmod>
@@ -261,7 +254,7 @@
   </url>
   
   <url>
-    <loc>http://yqian1991.github.io/System-Design/NLP-in-big-companies/</loc>
+    <loc>http://yqian1991.github.io/Careers/Hidden-Companies/</loc>
     
     <lastmod>2019-09-21T00:35:13.441Z</lastmod>
     
@@ -269,6 +262,13 @@
   
   <url>
     <loc>http://yqian1991.github.io/System-Design/How-we-implemented-consistent-hashing-efficiently/</loc>
+    
+    <lastmod>2019-09-21T00:35:13.441Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yqian1991.github.io/System-Design/NLP-in-big-companies/</loc>
     
     <lastmod>2019-09-21T00:35:13.441Z</lastmod>
     
