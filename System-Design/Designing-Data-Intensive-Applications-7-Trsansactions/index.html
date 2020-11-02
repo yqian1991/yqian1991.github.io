@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="Yu of Daphne">
 <meta property="og:description" content="This is my personal learning notes from reading &amp;lt;&amp;gt; Chapter 7. What is transaction?A transaction consists of multiple operations, only consider a transaction succeed when all the operations succe">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-11-02T21:20:52.825Z">
+<meta property="og:updated_time" content="2020-11-02T21:34:38.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Designing Data-Intensive Applications (7) - Transactions">
 <meta name="twitter:description" content="This is my personal learning notes from reading &amp;lt;&amp;gt; Chapter 7. What is transaction?A transaction consists of multiple operations, only consider a transaction succeed when all the operations succe">
@@ -416,7 +416,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-02 16:20:52" itemprop="dateModified" datetime="2020-11-02T16:20:52-05:00">2020-11-02</time>
+                <time title="Modified: 2020-11-02 16:34:38" itemprop="dateModified" datetime="2020-11-02T16:34:38-05:00">2020-11-02</time>
               
             
           </span>
@@ -503,7 +503,11 @@
 </ul>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>Concurrency control(avoid race condition) maybe the most difficult problem in transaction. Different isolation levels are used to solve this problems:</p>
 <h2 id="Read-Committed"><a href="#Read-Committed" class="headerlink" title="Read Committed"></a>Read Committed</h2><p>The most basic level of transaction isolation and it is also the default setting for many databases used to prevent <code>Dirty reads/writes</code>.</p>
-<p>When reading/writing to database, only <code>committed</code> data can be seen/overwritten</p>
+<p>When reading/writing to database, only <code>committed</code> data can be seen/overwritten.</p>
+<ul>
+<li>Dirty reads: Transaction 1 modifies a row. Transaction 2 reads the same row before Transaction 1 commits.</li>
+<li>Dirty writes: Transaction 1 modifies row A, transaction 2 modifies row A after transaction modified A. then transaction 1 wants to modify row B and check row A again, but now row A contains the data that modified by transaction 2 which is totally flawed.</li>
+</ul>
 <h2 id="Snapshot-isolation-and-repeatable-read"><a href="#Snapshot-isolation-and-repeatable-read" class="headerlink" title="Snapshot isolation and repeatable read"></a>Snapshot isolation and repeatable read</h2><p>Read committed can’t solve <code>read skew</code>: read values in the middle of another transaction, and after that transaction finished, the read values are changed (non repeatable read).</p>
 <p>This indicates that before a transaction finished, we shouldn’t allow to read the intermediate data.</p>
 <p>Snapshot isolation ensures the database to return old values(from a snapshot) that before a transaction, this means that database needs to maintain multiple version of object(Multiple Version Concurrency Control).</p>
@@ -514,7 +518,7 @@
 <li>Explicit locking: Explicitly lock objects that are going to be updated, if any other transaction tries to concurrently read the same object, it is forced to wait until the first read-modify-write cycle has completed.</li>
 <li>Detect/resolve lost update: This is useful in a distributed system that data has multiple replicas, then conflict resolution mentioned in previous blogs can be used.</li>
 </ul>
-<h2 id="Serializability"><a href="#Serializability" class="headerlink" title="Serializability"></a>Serializability</h2><p>Write skew/phantom read: two transactions read the same object but update different objects. in real world, a ticketing system needs to handle this issue carefully(how to not issue ticket to two people when there is only one left).</p>
+<h2 id="Serializability"><a href="#Serializability" class="headerlink" title="Serializability"></a>Serializability</h2><p><code>Write skew/phantom read</code>: two transactions read the same object but update different objects. in real world, a ticketing system needs to handle this issue carefully(how to not issue ticket to two people when there is only one left).</p>
 <p>To handle this problem, previous solution won’t work because two transactions are updating different objects. A very naive way of handling this issue is to avoid concurrency, transform two transactions to execute serially. But it’s very obviously that it has performance concerns.</p>
 <p>Serialization is also the strongest isolation level, writers don’t just block other writers; they also block readers and vice versa.</p>
 
