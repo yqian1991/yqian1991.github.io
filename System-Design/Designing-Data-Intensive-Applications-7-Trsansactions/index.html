@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="Yu of Daphne">
 <meta property="og:description" content="This is my personal learning notes from reading &amp;lt;&amp;gt; Chapter 7. What is transaction?A transaction consists of multiple operations, only consider a transaction succeed when all the operations succe">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-11-02T21:34:38.697Z">
+<meta property="og:updated_time" content="2020-12-15T02:26:49.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Designing Data-Intensive Applications (7) - Transactions">
 <meta name="twitter:description" content="This is my personal learning notes from reading &amp;lt;&amp;gt; Chapter 7. What is transaction?A transaction consists of multiple operations, only consider a transaction succeed when all the operations succe">
@@ -416,7 +416,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-02 16:34:38" itemprop="dateModified" datetime="2020-11-02T16:34:38-05:00">2020-11-02</time>
+                <time title="Modified: 2020-12-14 21:26:49" itemprop="dateModified" datetime="2020-12-14T21:26:49-05:00">2020-12-14</time>
               
             
           </span>
@@ -521,6 +521,7 @@
 <h2 id="Serializability"><a href="#Serializability" class="headerlink" title="Serializability"></a>Serializability</h2><p><code>Write skew/phantom read</code>: two transactions read the same object but update different objects. in real world, a ticketing system needs to handle this issue carefully(how to not issue ticket to two people when there is only one left).</p>
 <p>To handle this problem, previous solution won’t work because two transactions are updating different objects. A very naive way of handling this issue is to avoid concurrency, transform two transactions to execute serially. But it’s very obviously that it has performance concerns.</p>
 <p>Serialization is also the strongest isolation level, writers don’t just block other writers; they also block readers and vice versa.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a href="https://tikv.github.io/deep-dive-tikv/distributed-transaction/distributed-algorithms.html" target="_blank" rel="noopener">https://tikv.github.io/deep-dive-tikv/distributed-transaction/distributed-algorithms.html</a></p>
 
       
     </div>
@@ -647,7 +648,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -815,7 +816,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-transaction"><span class="nav-number">1.</span> <span class="nav-text">What is transaction?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What-makes-transaction-difficult"><span class="nav-number">2.</span> <span class="nav-text">What makes transaction difficult?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Read-Committed"><span class="nav-number">3.1.</span> <span class="nav-text">Read Committed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Snapshot-isolation-and-repeatable-read"><span class="nav-number">3.2.</span> <span class="nav-text">Snapshot isolation and repeatable read</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Serializability"><span class="nav-number">3.3.</span> <span class="nav-text">Serializability</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-transaction"><span class="nav-number">1.</span> <span class="nav-text">What is transaction?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What-makes-transaction-difficult"><span class="nav-number">2.</span> <span class="nav-text">What makes transaction difficult?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Read-Committed"><span class="nav-number">3.1.</span> <span class="nav-text">Read Committed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Snapshot-isolation-and-repeatable-read"><span class="nav-number">3.2.</span> <span class="nav-text">Snapshot isolation and repeatable read</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Serializability"><span class="nav-number">3.3.</span> <span class="nav-text">Serializability</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>
