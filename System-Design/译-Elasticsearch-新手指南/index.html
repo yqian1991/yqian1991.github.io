@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta name="google-site-verification" content="3xuEZIO1FhT2SCb033aQvmzrLMINKOQ7Xp2Agrlg_AU">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="原文地址：The Beginners Guide to Elasticsearch 原文作者：Landy Simpson 译文出自：掘金翻译计划 本文永久链接：https://github.com/xitu/gold-miner/blob/master/article/2020/the-beginners-guide-to-elasticsearch.md 译者：yqian1991 校对者：T">
+<meta name="keywords" content="Data pipeline">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[译] Elasticsearch 新手指南">
+<meta property="og:url" content="http://yqian1991.github.io/System-Design/译-Elasticsearch-新手指南/index.html">
+<meta property="og:site_name" content="Yu of Daphne">
+<meta property="og:description" content="原文地址：The Beginners Guide to Elasticsearch 原文作者：Landy Simpson 译文出自：掘金翻译计划 本文永久链接：https://github.com/xitu/gold-miner/blob/master/article/2020/the-beginners-guide-to-elasticsearch.md 译者：yqian1991 校对者：T">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/11520/0*a75ztDiDQX1fhNKE">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/4096/1*s51gp1IMLoTpsDHfGUimGg.png">
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/4096/1*QOQTNHjwiqe7KYj1IZ5cYw.png">
+<meta property="og:updated_time" content="2021-01-04T02:44:04.863Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[译] Elasticsearch 新手指南">
+<meta name="twitter:description" content="原文地址：The Beginners Guide to Elasticsearch 原文作者：Landy Simpson 译文出自：掘金翻译计划 本文永久链接：https://github.com/xitu/gold-miner/blob/master/article/2020/the-beginners-guide-to-elasticsearch.md 译者：yqian1991 校对者：T">
+<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/11520/0*a75ztDiDQX1fhNKE">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yqian1991.github.io/System-Design/译-Elasticsearch-新手指南/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[译] Elasticsearch 新手指南 | Yu of Daphne</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yu of Daphne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">春秋笔法·丹枫嫩寒</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">28</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">7</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-timeline">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Timeline</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yqian1991.github.io/System-Design/译-Elasticsearch-新手指南/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yu Qian">
+      <meta itemprop="description" content="Do something matters">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yu of Daphne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[译] Elasticsearch 新手指南
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2021-01-03 21:42:10 / Modified: 21:44:04" itemprop="dateCreated datePublished" datetime="2021-01-03T21:42:10-05:00">2021-01-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/System-Design/" itemprop="url" rel="index"><span itemprop="name">System Design</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/System-Design/译-Elasticsearch-新手指南/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="System-Design/译-Elasticsearch-新手指南/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<ul>
+<li>原文地址：<a href="https://levelup.gitconnected.com/the-beginners-guide-to-elasticsearch-8fc237fc3209" target="_blank" rel="noopener">The Beginners Guide to Elasticsearch</a></li>
+<li>原文作者：<a href="https://medium.com/@simplyy" target="_blank" rel="noopener">Landy Simpson</a></li>
+<li>译文出自：<a href="https://github.com/xitu/gold-miner" target="_blank" rel="noopener">掘金翻译计划</a></li>
+<li>本文永久链接：<a href="https://github.com/xitu/gold-miner/blob/master/article/2020/the-beginners-guide-to-elasticsearch.md" target="_blank" rel="noopener">https://github.com/xitu/gold-miner/blob/master/article/2020/the-beginners-guide-to-elasticsearch.md</a></li>
+<li>译者：<a href="https://github.com/yqian1991" target="_blank" rel="noopener">yqian1991</a></li>
+<li>校对者：<a href="https://github.com/TrWestdoor" target="_blank" rel="noopener">TrWestdoor</a></li>
+</ul>
+</blockquote>
+<h1 id="Elasticsearch-新手指南"><a href="#Elasticsearch-新手指南" class="headerlink" title="Elasticsearch 新手指南"></a>Elasticsearch 新手指南</h1><p><img src="https://cdn-images-1.medium.com/max/11520/0*a75ztDiDQX1fhNKE" alt="图片来自 [Markus Spiske](https://unsplash.com/@markusspiske?utm_source=medium&amp;utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&amp;utm_medium=referral)"></p>
+<p>Elasticsearch 是一种支持非结构化数据的复杂聚合的分布式、可扩展的分析类搜索引擎。</p>
+<p><strong>类似于 NoSQL 数据库，Elasticsearch 是为处理非架构化数据格式并动态确定字段数据类型而创建的。</strong>它处理的主要数据格式是 JSON<strong>（Javascript Object Notation）</strong>文档。JSON schema-less 的数据格式使得数据存储变得很灵活，并且易于添加数据而无需管理或者创建数据关系。</p>
+<p>然而，Elasticsearch 并不一定能作为 NoSQL 数据库使用。<strong>Elasticsearch 与 NoSQL 是有差别的，而且它自身也有一些局限性。</strong>例如，Elasticsearch 分布式系统在执行事务的时候会增加一层复杂性。尽管完成分布式事务也不是不可能，但为了简化流程还是尽可能避免使用它的分布式事务处理。</p>
+<p>Elasticsearch 还会认为提供给节点的内存是足够的。因此它不擅长处理内存溢出。这就使得 Elasticsearch 相比于其他的数据存储系统鲁棒性更低。</p>
+<p>Elasticsearch 常被用来作为其他类型数据库的辅助工具。<strong>记住 Elasticsearch 是为速度而生的这一点很重要。它是搜索和过滤文档的理想之选。</strong></p>
+<h4 id="节点和集群"><a href="#节点和集群" class="headerlink" title="节点和集群"></a>节点和集群</h4><p><strong>Elasticsearch 由多个节点构成</strong>（也叫做 Elasticsearch 实例），<strong>一组连接在一起的节点则被称为集群。</strong>同一个集群内的所有节点都知道集群内的其他节点的信息。集群内的每个节点都可以通过 HTTP 请求<strong>（POST, GET, PUT, DELETE）</strong>来执行增删改查操作。这种模式使得节点可以将客户请求转交其他节点来完成。</p>
+<p><img src="https://cdn-images-1.medium.com/max/4096/1*s51gp1IMLoTpsDHfGUimGg.png" alt="1 个包含 3 个节点 (ES 实例) 和 5 个分片的集群"></p>
+<h4 id="索引和分片"><a href="#索引和分片" class="headerlink" title="索引和分片"></a>索引和分片</h4><p>Elasticsearch 的索引有时候会被误认为跟关系型数据库中的索引是一样的。但是，理解它们之间的区别至关重要。<strong>Elasticsearch 索引是一组分片的集合，而文档则均匀分布在这些分片上的。</strong>如果没有特别说明，Elasticsearch 默认为每个索引分配 5 个主分片。上图可见这种分配模式。</p>
+<p>例如，你可能会定义一个名为 <code>products</code> 的索引。这个索引里存在不同的产品文档，如下所示:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[&#123;</span><br><span class="line"> <span class="attr">"title"</span>: <span class="string">"Apple MacBook Pro 13-Inch 'Core i7' 2.4"</span>,</span><br><span class="line"> <span class="attr">"price"</span>: <span class="string">"$2559"</span>,</span><br><span class="line"> <span class="attr">"sku"</span>: <span class="string">"123SampleBLK20"</span>,</span><br><span class="line"> <span class="attr">"itemCondition"</span>: <span class="string">"New"</span>,</span><br><span class="line"> <span class="attr">"availability"</span>: <span class="string">"IN_STOCK"</span>,</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line"> <span class="attr">"title"</span>: <span class="string">"Apple iPad Pro 12.9 (Wi-Fi Only - 4th Gen) 128GB"</span>,</span><br><span class="line"> <span class="attr">"price"</span>: <span class="string">"$699"</span>,</span><br><span class="line"> <span class="attr">"sku"</span>: <span class="string">"123SampleBLK21"</span>,</span><br><span class="line"> <span class="attr">"itemCondition"</span>: <span class="string">"Used"</span>,</span><br><span class="line"> <span class="attr">"availability"</span>: <span class="string">"IN_STOCK"</span>,</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line"> <span class="attr">"title"</span>: <span class="string">"Samsung Galaxy S20 - 128GB"</span>,</span><br><span class="line"> <span class="attr">"price"</span>: <span class="string">"$1199"</span>,</span><br><span class="line"> <span class="attr">"sku"</span>: <span class="string">"123SampleBLK22"</span>,</span><br><span class="line"> <span class="attr">"itemCondition"</span>: <span class="string">"New"</span>,</span><br><span class="line"> <span class="attr">"availability"</span>: <span class="string">"OUT_OF_STOCK"</span>,</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+<p>当文档被添加到一个索引时，Elasticsearch 会决定哪个分片用来装载这些文档。<strong>分片是均匀分布在集群内的节点上的。</strong>如果新的节点加入到集群中，Elasticsearch 将在集群里重新均匀地分配分片。</p>
+<p><img src="https://cdn-images-1.medium.com/max/4096/1*QOQTNHjwiqe7KYj1IZ5cYw.png" alt="注意一个额外的节点被添加到了集群，现在这些分片被重新均匀分布了。"></p>
+<p>Elasticsearch 的 “<strong>活跃</strong>” 分片也值得提一下。<strong>活跃分片正如它的名字所表达的，指的是活跃着的保存有数据的分片。</strong> 如果文档不够多，不足以充分使用所有的分片，那么其中一些分片尽管是分配给这个索引的，也不会被认为是活跃的。稍后你将看到一个例子。</p>
+<h4 id="副本"><a href="#副本" class="headerlink" title="副本"></a>副本</h4><p>副本是分片的一种类型，只不过它是用来提高搜索性能并作为主分片的备份的。<strong>一个完整的副本由 5 个副本分片组成。</strong>因此我们通常可以认为每个索引拥有一个副本。</p>
+<p>副本分片可以作为可靠的故障转移，因为它们不会跟它所复制的数据被分配到同一个节点。如果你熟悉 RAID<strong>（冗余独立磁盘阵列）</strong>，那副本分片跟它有些类似。数据被镜像拷贝到一个冗余的磁盘，在 Elasticsearch 里其实就是镜像拷贝到一个分片。并且由于分片在一个独立的节点上，如果含有主分片的节点故障了，副本仍然是可用的。而副本分片的节点和主分片的节点同时故障的风险相对较小。</p>
+<h4 id="阐明与-“关系型数据库”-的类比"><a href="#阐明与-“关系型数据库”-的类比" class="headerlink" title="阐明与 “关系型数据库” 的类比"></a>阐明与 “关系型数据库” 的类比</h4><p>Elasticsearch 理解起来可能会有点复杂。这些困惑主要是 Elasticsearch 团队在描述这些概念时所使用的一些不准确的类比造成的。在那以后，Elasticsearch 团队也试图解释这些误解。</p>
+<p>大多数互联网上的资料都把一个索引和一个单独的关系型数据库做比较。那现在你可能会想，<strong>与其说索引像一个数据库，它难道不更像一张表吗？</strong></p>
+<p>你的理解是正确的，索引确实跟一张表类似。然而，在 Elasticsearch v.6 以及之前的版本中，一直有 <strong>类型</strong> 映射的概念。类型是用来表示一个索引内文档的类别的。举个例子，如果 <strong>“twitter”</strong> 是一个索引，那么我们可以描述 <strong>“twitter”</strong> 文档里的两种类型: “<strong>tweet”</strong> 和 “<strong>user</strong>”。 类型这个概念存在太多问题，因此我不会在这篇文章中深入探讨，但本质上，Elasticsearch 的类型是模仿了关系型数据库表。</p>
+<p><strong>我个人建议不要把 Elasticsearch 跟关系型数据库关联起来。这样只会让你更困惑，其实我也同样因此感到困惑。</strong></p>
+<h2 id="安装和入门"><a href="#安装和入门" class="headerlink" title="安装和入门"></a>安装和入门</h2><p><strong>如前文所述，与 Elasticsearch 交互的主要方式是通过 HTTP 请求（RESTFUL APIs）。</strong> 在本节内容里，作为入门，我们会回顾一些在 Elasticsearch 实例中创建索引的基本方法。</p>
+<p>开始使用 Elasticsearch 之前，需要安装 Docker 并创建一个名为 <code>data/elasticsearch</code> 的文件夹。然后运行下面的 docker 命令下载 Elasticsearch 的 docker 镜像文件并启动 docker 容器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run --restart=always -d --name elasticsearch \\</span><br><span class="line">    -e <span class="string">"discovery.type=single-node"</span>  \\</span><br><span class="line">    -v ~/data/elasticsearch:/usr/share/elasticsearch/data \\</span><br><span class="line">    -p 9200:9200 \\</span><br><span class="line">    -p 9300:9300 \\</span><br><span class="line">    docker.elastic.co/elasticsearch/elasticsearch:7.9.2</span><br></pre></td></tr></table></figure>
+<p>现在你就可以通过 <code>[http://localhost:9200](http://localhost:9200)</code> 访问 Elasticsearch 所有的 API 了。</p>
+<h4 id="创建一个新索引"><a href="#创建一个新索引" class="headerlink" title="创建一个新索引"></a>创建一个新索引</h4><p>你可以用下面两种方法中的任意一种来创建文档，通过 PUT 请求或者 POST 请求。因为我要使用的是 Elasticsearch v.7 版本，所以我会避免提到与类型有关的话题。我会坚持使用 Elasticsearch 的默认类型 <code>_doc</code> 来操作索引和文档。</p>
+<p>我们可以用如下方式创建一个空索引：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">PUT</span> http:<span class="comment">//localhost:9200/products</span></span><br></pre></td></tr></table></figure>
+<p>我们也可以通过在我们想要的索引中插入一个文档的方式来创建索引，如下所示:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">POST</span>: http://localhost:9200/product/_doc/</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"> "title": "Apple MacBook Pro 13-Inch 'Core i7' 2.4",</span><br><span class="line"> "price": "$2559",</span><br><span class="line"> "sku": "123SampleBLK20",</span><br><span class="line"> "itemCondition": "New",</span><br><span class="line"> "availability": "IN_STOCK",</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的请求将产生如下响应报文:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  <span class="attr">"_index"</span>: <span class="string">"product"</span>,</span><br><span class="line">  <span class="attr">"_type"</span>: <span class="string">"_doc"</span>,</span><br><span class="line">  <span class="attr">"_id"</span>: <span class="string">"xUs3MHYBPq6LuxBgrCHN"</span>,</span><br><span class="line">  <span class="attr">"_version"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">"result"</span>: <span class="string">"created"</span>,</span><br><span class="line">  <span class="attr">"_shards"</span>: &#123;</span><br><span class="line">    <span class="attr">"total"</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">"successful"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"failed"</span>: <span class="number">0</span></span><br><span class="line">&#125;,</span><br><span class="line">  <span class="attr">"_seq_no"</span>: <span class="number">6</span>,</span><br><span class="line">  <span class="attr">"_primary_term"</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的响应报文里，每个插入的文档都有一个随机生成的识别码 <code>_id</code>。但是如果你想指定识别码，就需要把 POST 请求改为一个 PUT 请求，并如下所示在请求的末尾添加一个识别码:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">PUT:</span> <span class="string">http:</span><span class="comment">//localhost:9200/product/_doc/1</span></span><br></pre></td></tr></table></figure>
+<p>再次回到上面的响应报文，我们注意到一共有 2 个分片，而其中一个分片在结果中显示是成功的。我在前文有简要的提及，活跃分片装载了数据，而副本分片装载了一份数据的拷贝。因此，这段响应报文告诉我们数据是从 2 个活跃分片 <strong>（其中一个是副本分片）</strong> 中的一个获取的。</p>
+<p>我们可以通过调用 CAT <strong>(压缩并对齐文本)</strong> API 来验证分片数量，如下所示:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET http:<span class="regexp">//</span>localhost:<span class="number">9200</span><span class="regexp">/_cat/</span>shards<span class="regexp">/product</span></span><br></pre></td></tr></table></figure>
+<p>CAT API 是用来对 Elasticsearch 集群进行统计查询的。我们可以查询关于节点，集群，索引，模板以及其它的 Elasticsearch 特征。</p>
+<p>上面的请求会产生如下结果:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">product <span class="number">0</span> <span class="selector-tag">p</span> STARTED    <span class="number">4</span> <span class="number">7</span>kb <span class="number">1</span>xx<span class="selector-class">.xx</span><span class="selector-class">.x</span><span class="selector-class">.x</span> a6ffefa157e8</span><br><span class="line">product <span class="number">0</span> r UNASSIGNED</span><br></pre></td></tr></table></figure>
+<p>这段响应报文告诉我们在索引 <code>product</code> 里找到的分片 <strong>（在此它们都被标记为 0）</strong> 要么是副本 <strong>r</strong>, 要么是主分片 <strong>p</strong>，并且状态是 <strong>STARTED</strong> 或者 <strong>UNASSIGNED</strong>。 这段响应也告诉了我们分片里的文档数量，磁盘大小，IP 地址和节点 id。</p>
+<p>要得到 CAT API 请求的完整列表，我们需要做如下请求:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET http:<span class="regexp">//</span>localhost:<span class="number">9200</span><span class="regexp">/_cat/</span></span><br></pre></td></tr></table></figure>
+<p><strong>我推荐把这个请求保存到你易于访问的地方。因为这个 API 可以方便你学习 Elasticsearch 。</strong></p>
+<h4 id="搜索索引"><a href="#搜索索引" class="headerlink" title="搜索索引"></a>搜索索引</h4><p>Elasticsearch 强大的搜索功能是很难用几个段落就总结完的。我这里会提供 2 个基本的搜索功能以便你们入门: <strong>获取索引里的所有文档和通过识别码获取一个文档</strong>。 我会在其他的文章里讨论更复杂、更有趣的搜索查询。</p>
+<p>我们可以用下面的请求获取一个索引里的全部文档:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET http:<span class="regexp">//</span>localhost:<span class="number">9200</span><span class="regexp">/product/</span>_search</span><br></pre></td></tr></table></figure>
+<p>然而，在默认情况下，Elasticsearch 每次只会返回 45 个文档。不过我们可以在查询字符串中提高这个限制值，正如下面请求里的 <code>size</code> 字段:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET http:<span class="regexp">//</span>localhost:<span class="number">9200</span><span class="regexp">/product/</span>_search?size=<span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p>通过识别码获取单一文档跟上文提到的添加一个文档的请求方法很类似，只不过要将 POST 请求改成 GET 请求，如下所示:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET http:<span class="regexp">//</span>localhost:<span class="number">9200</span><span class="regexp">/product_entity/</span>_doc<span class="regexp">/1</span></span><br></pre></td></tr></table></figure>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>Elasticsearch 是一个强大的分析类搜索引擎。但是它操作起来会很复杂。</p>
+<p>我在本文介绍了一些帮助你们入门的基础概念。但我还是强烈推荐你们浏览 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.9/index.html" target="_blank" rel="noopener">Elasticsearch v.7.9 或更高版本的文档</a> 以及 <a href="https://www.elastic.co/blog/" target="_blank" rel="noopener">Elasticsearch 博客</a> 来加深和拓展你的理解。</p>
+<blockquote>
+<p>如果发现译文存在错误或其他需要改进的地方，欢迎到 <a href="https://github.com/xitu/gold-miner" target="_blank" rel="noopener">掘金翻译计划</a> 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 <strong>本文永久链接</strong> 即为本文在 GitHub 上的 MarkDown 链接。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><a href="https://github.com/xitu/gold-miner" target="_blank" rel="noopener">掘金翻译计划</a> 是一个翻译优质互联网技术文章的社区，文章来源为 <a href="https://juejin.im" target="_blank" rel="noopener">掘金</a> 上的英文分享文章。内容覆盖 <a href="https://github.com/xitu/gold-miner#android" target="_blank" rel="noopener">Android</a>、<a href="https://github.com/xitu/gold-miner#ios" target="_blank" rel="noopener">iOS</a>、<a href="https://github.com/xitu/gold-miner#前端" target="_blank" rel="noopener">前端</a>、<a href="https://github.com/xitu/gold-miner#后端" target="_blank" rel="noopener">后端</a>、<a href="https://github.com/xitu/gold-miner#区块链" target="_blank" rel="noopener">区块链</a>、<a href="https://github.com/xitu/gold-miner#产品" target="_blank" rel="noopener">产品</a>、<a href="https://github.com/xitu/gold-miner#设计" target="_blank" rel="noopener">设计</a>、<a href="https://github.com/xitu/gold-miner#人工智能" target="_blank" rel="noopener">人工智能</a>等领域，想要查看更多优质译文请持续关注 <a href="https://github.com/xitu/gold-miner" target="_blank" rel="noopener">掘金翻译计划</a>、<a href="http://weibo.com/juejinfanyi" target="_blank" rel="noopener">官方微博</a>、<a href="https://zhuanlan.zhihu.com/juejinfanyi" target="_blank" rel="noopener">知乎专栏</a>。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Data-pipeline/" rel="tag"># Data pipeline</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Life/圣诞-新家/" rel="next" title="圣诞 + 新家">
+                <i class="fa fa-chevron-left"></i> 圣诞 + 新家
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yu Qian">
+            
+              <p class="site-author-name" itemprop="name">Yu Qian</p>
+              <div class="site-description motion-element" itemprop="description">Do something matters</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/yqian1991" title="GitHub &rarr; https://github.com/yqian1991" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/yqian33" title="CSDN &rarr; https://blog.csdn.net/yqian33" rel="noopener" target="_blank"><i class="fa fa-fw fa-rss"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch-新手指南"><span class="nav-number">1.</span> <span class="nav-text">Elasticsearch 新手指南</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#节点和集群"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">节点和集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引和分片"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">索引和分片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#副本"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">副本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阐明与-“关系型数据库”-的类比"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">阐明与 “关系型数据库” 的类比</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#安装和入门"><span class="nav-number">1.1.</span> <span class="nav-text">安装和入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个新索引"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">创建一个新索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搜索索引"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">搜索索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结语"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">结语</span></a></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yu Qian</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://yqian1991.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yqian1991.github.io/System-Design/译-Elasticsearch-新手指南/";
+    this.page.identifier = "System-Design/译-Elasticsearch-新手指南/";
+    this.page.title = '[译] Elasticsearch 新手指南';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://yqian1991.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    $(function() {
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll.disqus_scroll', function() {
+          // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('.disqus_scroll');
+            loadComments();
+          }
+        });
+      }
+    });
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+  
+  <script>
+    (function () {
+
+      firebase.initializeApp({
+        apiKey: 'AIzaSyBb2nBXwkQGfa92whrV-hWntHNf8Ao02AU',
+        projectId: 'sizzling-heat-3968'
+      })
+
+      function getCount(doc, increaseCount) {
+        //increaseCount will be false when not in article page
+
+        return doc.get().then(function (d) {
+          var count
+          if (!d.exists) { //has no data, initialize count
+            if (increaseCount) {
+              doc.set({
+                count: 1
+              })
+              count = 1
+            }
+            else {
+              count = 0
+            }
+          }
+          else { //has data
+            count = d.data().count
+            if (increaseCount) {
+              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
+                doc.set({ //increase count
+                  count: count + 1
+                })
+                count++
+              }
+            }
+          }
+          if (window.localStorage && increaseCount) { //mark as visited
+            localStorage.setItem(title, true)
+          }
+
+          return count
+        })
+      }
+
+      function appendCountTo(el) {
+        return function (count) {
+          $(el).append(
+            $('<span>').addClass('post-visitors-count').append(
+              $('<span>').addClass('post-meta-divider').text('|')
+            ).append(
+              $('<span>').addClass('post-meta-item-icon').append(
+                $('<i>').addClass('fa fa-users')
+              )
+              ).append($('<span>').text('Views ' + count))
+          )
+        }
+      }
+
+      var db = firebase.firestore()
+      var articles = db.collection('articles')
+
+      //https://hexo.io/docs/variables.html
+      var isPost = '[译] Elasticsearch 新手指南'.length > 0
+      var isArchive = '' === 'true'
+      var isCategory = ''.length > 0
+      var isTag = ''.length > 0
+
+      if (isPost) { //is article page
+        var title = '[译] Elasticsearch 新手指南'
+        var doc = articles.doc(title)
+
+        getCount(doc, true).then(appendCountTo($('.post-meta')))
+      }
+      else if (!isArchive && !isCategory && !isTag) { //is index page
+        var titles = [] //array to titles
+
+        var postsstr = '' //if you have a better way to get titles of posts, please change it
+        eval(postsstr)
+
+        var promises = titles.map(function (title) {
+          return articles.doc(title)
+        }).map(function (doc) {
+          return getCount(doc)
+        })
+        Promise.all(promises).then(function (counts) {
+          var metas = $('.post-meta')
+          counts.forEach(function (val, idx) {
+            appendCountTo(metas[idx])(val)
+          })
+        })
+      }
+    })()
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
